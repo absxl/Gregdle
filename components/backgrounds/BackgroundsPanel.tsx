@@ -9,6 +9,7 @@ import {
 } from "@/lib/backgrounds";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
 import { compressBackground } from "@/lib/image-compress";
+import { Lightbox } from "@/components/ui/Lightbox";
 
 /**
  * Backgrounds panel (D28): gallery (pin/shuffle), submission form
@@ -252,14 +253,20 @@ export function BackgroundsPanel({ onClose }: { onClose: () => void }) {
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
                 {items.map((bg) => (
                   <figure key={bg.id} className="flex flex-col gap-1">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <Lightbox
                       src={bg.url}
-                      alt={`Background by ${bg.author}`}
-                      className={`h-24 w-full rounded-lg border object-cover ${
-                        pinned === bg.id ? "border-accent" : "border-edge"
-                      }`}
-                    />
+                      caption={bg.title ? `${bg.title} — by ${bg.author}` : `by ${bg.author}`}
+                      className="rounded-lg"
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={bg.url}
+                        alt={`Background by ${bg.author}`}
+                        className={`h-24 w-full rounded-lg border object-cover ${
+                          pinned === bg.id ? "border-accent" : "border-edge"
+                        }`}
+                      />
+                    </Lightbox>
                     <figcaption className="flex items-center justify-between gap-1 text-xs">
                       <span className="truncate text-muted" title={bg.title ?? undefined}>
                         {bg.title ?? `by ${bg.author}`}
@@ -296,8 +303,8 @@ export function BackgroundsPanel({ onClose }: { onClose: () => void }) {
             >
               <p className="text-sm text-muted">
                 Landscape images work best (at least {MIN_WIDTH}px wide, JPG/PNG/WebP up to 2 MB).
-                Everything is compressed automatically before upload — roughly 500 KB is stored
-                per image. Credited as{" "}
+                Everything is compressed automatically before upload — roughly 500 KB is stored per
+                image. Credited as{" "}
                 <span className="font-bold text-foreground">
                   {signedIn ? displayName : "your Discord name"}
                 </span>

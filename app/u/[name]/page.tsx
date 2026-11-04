@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { computeProfileStats, type ProfileResultRow } from "@/lib/game/profile";
 import { StreakFire } from "@/components/game/StreakFire";
 import { CopyTagButton, SocialLinks } from "@/components/profile/ProfileIdentity";
+import { Lightbox } from "@/components/ui/Lightbox";
 import { MaybeProfileEdit } from "@/components/profile/MaybeProfileEdit";
 
 /**
@@ -18,6 +19,7 @@ interface Payload {
     display_name: string;
     joined: string;
     avatar_url: string | null;
+    discord_id: string | null;
     title: string | null;
     bio: string | null;
     reddit: string | null;
@@ -66,12 +68,29 @@ export default async function ProfilePage(props: { params: Promise<{ name: strin
       <header className="mt-2 flex w-full flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-4">
           {data.profile.avatar_url ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={data.profile.avatar_url}
-              alt={displayName}
-              className="h-16 w-16 rounded-2xl border border-edge object-cover"
-            />
+            data.profile.discord_id ? (
+              <a
+                href={`https://discord.com/users/${data.profile.discord_id}`}
+                target="_blank"
+                rel="noreferrer"
+                title={`${displayName} on Discord`}
+                className="rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={data.profile.avatar_url}
+                  alt={displayName}
+                  className="h-16 w-16 rounded-2xl border border-edge object-cover transition hover:border-accent"
+                />
+              </a>
+            ) : (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={data.profile.avatar_url}
+                alt={displayName}
+                className="h-16 w-16 rounded-2xl border border-edge object-cover"
+              />
+            )
           ) : (
             <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-edge bg-surface2 text-3xl font-black">
               {displayName.slice(0, 2).toUpperCase()}

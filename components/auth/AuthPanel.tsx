@@ -20,6 +20,7 @@ export function AuthPanel({ compact = false }: { compact?: boolean }) {
   const [displayName, setDisplayName] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
+  const [discordId, setDiscordId] = useState<string | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -53,6 +54,7 @@ export function AuthPanel({ compact = false }: { compact?: boolean }) {
 
       const meta = (user.user_metadata ?? {}) as Record<string, string | undefined>;
       if (meta.avatar_url) setAvatarUrl(meta.avatar_url);
+      if (meta.provider_id) setDiscordId(String(meta.provider_id));
 
       const { data: profile } = await supabase
         .from("profiles")
@@ -120,9 +122,12 @@ export function AuthPanel({ compact = false }: { compact?: boolean }) {
     if (phase !== "signed-in") return;
     void migrateGuestResults();
     if (avatarUrl && supabase) {
-      void supabase.rpc("set_my_avatar", { p_avatar_url: avatarUrl });
+      void supabase.rpc("set_my_avatar", {
+        p_avatar_url: avatarUrl,
+        p_discord_id: discordId,
+      });
     }
-  }, [phase, avatarUrl, supabase]);
+  }, [phase, avatarUrl, discordId, supabase]);
 
   const signOutAndClose = useCallback(async () => {
     setMenuOpen(false);
