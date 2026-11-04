@@ -53,7 +53,7 @@ function SupabasePublicConfig() {
   return (
     <script
       dangerouslySetInnerHTML={{
-        __html: `window.__GREGDLE_SUPABASE__=${json};Object.freeze(window.__GREGDLE_SUPABASE__)`,
+        __html: `window.__GREGDLE_SUPABASE__=${json};Object.freeze(window.__GREGDLE_SUPABASE__);window.__GREGDLE_SITE_URL__=${JSON.stringify(SITE_URL)}`,
       }}
     />
   );

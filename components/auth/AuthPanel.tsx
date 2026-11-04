@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
 import { migrateGuestResults } from "@/lib/game/migrate";
+import { canonicalSiteUrl } from "@/lib/site";
 
 /**
  * Sign-in panel (D22/D25/D28): Discord OAuth only. Display names are taken from the Discord tag (or email
@@ -109,7 +110,7 @@ export function AuthPanel({ compact = false }: { compact?: boolean }) {
     setError(null);
     const { error: err } = await supabase.auth.signInWithOAuth({
       provider: "discord",
-      options: { redirectTo: window.location.origin },
+      options: { redirectTo: canonicalSiteUrl() },
     });
     if (err) setError(err.message);
   }, [supabase]);
