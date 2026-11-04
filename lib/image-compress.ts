@@ -1,12 +1,14 @@
 /**
- * Client-side image compression for background uploads (D30): backgrounds
- * are decorative behind a heavy dim veil, so we downscale to at most
- * 1920px wide and re-encode as JPEG before uploading — typically 5-10x
- * smaller than the picked file. Keeps the Supabase free-tier storage quota
- * healthy.
+ * Client-side image compression for background uploads (D30/D32):
+ * backgrounds are decorative behind a heavy dim veil, so we
+ *  - center-crop to 16:9 when the image is out of proportion (never stretch
+ *    or letterbox — the excess is simply cut),
+ *  - downscale to at most 1920px wide (never upscale),
+ *  - re-encode as JPEG within the byte target (typically 5-10x smaller).
  */
 
 const MAX_WIDTH = 1920;
+const ASPECT = 16 / 9;
 const TARGET_BYTES = 500 * 1024; // aim: <= 500 KB stored per background
 const QUALITY_STEPS = [0.85, 0.78, 0.7, 0.6] as const;
 
@@ -28,7 +30,7 @@ export interface CompressedImage {
 }
 
 /**
- * Decode a picked image file, downscale to <= MAX_WIDTH (never upscale),
+ * Decode a picked image file, center-crop to 16:9, downscale to <= MAX_WIDTH,
  * and encode as JPEG within the byte target. Rejects undecodable files.
  */
 export async function compressBackground(file: File): Promise<CompressedImage> {
@@ -39,9 +41,21 @@ export async function compressBackground(file: File): Promise<CompressedImage> {
     img.src = URL.createObjectURL(file);
   });
 
-  const scale = Math.min(1, MAX_WIDTH / bitmap.naturalWidth);
-  const width = Math.max(1, Math.round(bitmap.naturalWidth * scale));
-  const height = Math.max(1, Math.round(bitmap.naturalHeight * scale));
+  // Cover-crop the source to 16:9 (centered): keep the larger fitting
+  // dimension, cut the excess from the other axis.
+  let cropW = bitmap.naturalWidth;
+  let cropH = bitmap.naturalHeight;
+  if (cropW / cropH > ASPECT) {
+    cropW = Math.round(cropH * ASPECT); // too wide -> trim the sides
+  } else {
+    cropH = Math.round(cropW / ASPECT); // too tall -> trim top/bottom
+  }
+  const cropX = Math.round((bitmap.naturalWidth - cropW) / 2);
+  const cropY = Math.round((bitmap.naturalHeight - cropH) / 2);
+
+  const scale = Math.min(1, MAX_WIDTH / cropW);
+  const width = Math.max(1, Math.round(cropW * scale));
+  const height = Math.max(1, Math.round(cropH * scale));
 
   const canvas = document.createElement("canvas");
   canvas.width = width;
@@ -49,7 +63,7 @@ export async function compressBackground(file: File): Promise<CompressedImage> {
   const ctx = canvas.getContext("2d");
   if (!ctx) throw new Error("canvas unavailable");
   ctx.imageSmoothingQuality = "high";
-  ctx.drawImage(bitmap, 0, 0, width, height);
+  ctx.drawImage(bitmap, cropX, cropY, cropW, cropH, 0, 0, width, height);
   URL.revokeObjectURL(bitmap.src);
 
   // Try decreasing quality until we fit the byte target (or run out of steps).

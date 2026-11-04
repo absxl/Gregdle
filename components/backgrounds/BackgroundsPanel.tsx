@@ -18,7 +18,7 @@ import { Lightbox } from "@/components/ui/Lightbox";
  */
 
 const MAX_BYTES = 2 * 1024 * 1024;
-const MIN_WIDTH = 1600;
+const MIN_WIDTH = 1200;
 
 interface SubmissionRow {
   id: string;
@@ -302,7 +302,7 @@ export function BackgroundsPanel({ onClose }: { onClose: () => void }) {
               title={signedIn ? undefined : "Login to Discord to upload"}
             >
               <p className="text-sm text-muted">
-                Landscape images work best (at least {MIN_WIDTH}px wide, JPG/PNG/WebP up to 2 MB).
+                Landscape 16:9 images fit best (at least {MIN_WIDTH}px wide, JPG/PNG/WebP up to 2 MB) — other proportions are center-cropped to 16:9 automatically.
                 Everything is compressed automatically before upload — roughly 500 KB is stored per
                 image. Credited as{" "}
                 <span className="font-bold text-foreground">
