@@ -173,7 +173,7 @@ export default async function LeaderboardPage(props: {
           THE REPO
         </a>
         <a
-          href="https://marcello.carletti.work"
+          href="https://carletti.work"
           target="_blank"
           rel="noreferrer"
           className="btn justify-start gap-2.5 py-3"
