@@ -26,6 +26,26 @@ export const metadata: Metadata = {
     "Guess the hidden GregTech machine from its attributes. A new answer every day at 00:00 UTC, for GTNH and GTCEu players.",
 };
 
+/** Ko-fi floating support widget (owner account: absxl). */
+function KoFiWidget() {
+  return (
+    <>
+      <Script
+        src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"
+        strategy="lazyOnload"
+      />
+      <Script id="kofi-overlay" strategy="lazyOnload">
+        {`kofiWidgetOverlay.draw('absxl', {
+  type: 'floating-chat',
+  'floating-chat.donateButton.text': 'Support me',
+  'floating-chat.donateButton.background-color': '#794bc4',
+  'floating-chat.donateButton.text-color': '#fff'
+});`}
+      </Script>
+    </>
+  );
+}
+
 /** AdSense script loads only when the publisher id is configured. */
 function AdSenseScript() {
   const client = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
@@ -110,6 +130,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           </p>
         </footer>
         <AdSenseScript />
+        <KoFiWidget />
       </body>
     </html>
   );
