@@ -78,6 +78,8 @@ export async function renderSharePng(input: ShareImageInput): Promise<Blob> {
   ctx.fillStyle = ACCENT;
   ctx.font = "700 15px sans-serif";
   ctx.fillText(summary, PAD + 22, PAD + 98);
+  ctx.fillStyle = MUTED;
+  ctx.fillText("colors and arrows only — no spoilers", PAD + 22 + ctx.measureText(summary).width + 18, PAD + 98);
 
   // Column headers
   const gridTop = PAD + headerH;
@@ -92,38 +94,37 @@ export async function renderSharePng(input: ShareImageInput): Promise<Blob> {
     ctx.fillText(c, x + cellW / 2, gridTop + 22);
   });
 
-  // Rows
+  // Rows — spoiler-safe: guess numbers instead of names, icons instead of
+  // values. Colors + icons alone carry the result (D42).
   let y = gridTop + colH;
-  for (const row of rows) {
-    // Name cell
+  rows.forEach((row, rowIndex) => {
+    // Guess-number cell
     roundRect(ctx, PAD, y, NAME_W, ROW_H, 10);
     ctx.fillStyle = SURFACE;
     ctx.fill();
     ctx.strokeStyle = EDGE;
     ctx.lineWidth = 1;
     ctx.stroke();
-    ctx.font = "700 14px sans-serif";
+    ctx.font = "800 15px sans-serif";
     ctx.fillStyle = TEXT;
-    ctx.textAlign = "left";
-    ctx.fillText(clip(ctx, row.guessName, NAME_W - 16), PAD + 10, y + ROW_H / 2 + 5);
+    ctx.textAlign = "center";
+    ctx.fillText(`GUESS #${rowIndex + 1}`, PAD + NAME_W / 2, y + ROW_H / 2 + 5);
 
-    // Attribute cells
+    // Attribute cells — state icon only, no value text.
     row.cells.forEach((cell, i) => {
       const x = PAD + NAME_W + CELL_GAP + i * (cellW + CELL_GAP);
       const c = COLORS[cell.state] ?? COLORS.wrong!;
       roundRect(ctx, x, y, cellW, ROW_H, 10);
       ctx.fillStyle = c.bg;
       ctx.fill();
-      ctx.font = "800 16px sans-serif";
+      ctx.font = "800 22px sans-serif";
       ctx.fillStyle = c.ink;
       ctx.textAlign = "center";
-      ctx.fillText(c.icon, x + cellW / 2, y + 24);
-      ctx.font = "700 12px sans-serif";
-      ctx.fillText(clip(ctx, cell.value, cellW - 10), x + cellW / 2, y + 44);
+      ctx.fillText(c.icon, x + cellW / 2, y + ROW_H / 2 + 8);
     });
 
     y += ROW_H + CELL_GAP;
-  }
+  });
 
   // Footer
   ctx.font = "700 14px sans-serif";
@@ -157,9 +158,3 @@ function roundRect(
   ctx.closePath();
 }
 
-function clip(ctx: CanvasRenderingContext2D, text: string, maxWidth: number): string {
-  if (ctx.measureText(text).width <= maxWidth) return text;
-  let t = text;
-  while (t.length > 1 && ctx.measureText(`${t}…`).width > maxWidth) t = t.slice(0, -1);
-  return `${t}…`;
-}
