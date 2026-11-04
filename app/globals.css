@@ -68,8 +68,8 @@ body {
   pointer-events: none;
   background-image:
     repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0 1px, transparent 1px 3px),
-    linear-gradient(rgba(139, 152, 167, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(139, 152, 167, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(139, 152, 167, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 152, 167, 0.025) 1px, transparent 1px);
   background-size:
     100% 3px,
     32px 32px,
