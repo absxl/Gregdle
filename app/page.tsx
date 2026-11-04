@@ -106,21 +106,21 @@ export default async function Home() {
           <BackgroundsButton />
           <AuthPanel compact />
         </div>
-        <div className="flex items-center gap-4">
-          {/* GTNH pack logo (GT New Horizons project) */}
+        <div className="flex flex-col items-center gap-2">
+          {/* Official Gregdle wordmark */}
           <Image
-            src="/gtnh-logo.png"
-            alt=""
-            width={80}
-            height={80}
-            className="h-14 w-14 border border-edge bg-surface object-contain p-1 sm:h-16 sm:w-16"
+            src="/logo.png"
+            alt="Gregdle"
+            width={1031}
+            height={340}
+            priority
+            className="h-20 w-auto sm:h-28"
           />
-          <div>
-            <h1 className="font-pixel text-6xl leading-none tracking-wide sm:text-7xl">GREGDLE</h1>
-            <p className="label mt-1">GREGTECH INDUSTRIES // DAILY MACHINE GUESSING TERMINAL</p>
-          </div>
         </div>
-        <p className="text-sm font-semibold text-muted">
+        <p className="label -mt-2 text-center">
+          GREGTECH INDUSTRIES // DAILY MACHINE GUESSING TERMINAL
+        </p>
+        <p className="text-center text-sm font-semibold text-muted">
           One hidden machine every day at 00:00 UTC. Type, guess, read the grid.
         </p>
       </header>

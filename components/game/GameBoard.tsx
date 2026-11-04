@@ -91,9 +91,7 @@ export function GameBoard({ datasetKey, difficulty, mode, initialSeed, pool, col
     name: string;
     image: string | null;
     sourceUrl?: string;
-  } | null>(
-    null,
-  );
+  } | null>(null);
   const [hints, setHints] = useState<Hint[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
