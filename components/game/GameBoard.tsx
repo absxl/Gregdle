@@ -14,7 +14,9 @@ import {
   utcDateToday,
 } from "@/lib/game/local-state";
 import { AdSlot } from "@/components/ads/AdSlot";
+import { resolveGuess } from "@/lib/game/match";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
+import { canonicalSiteUrl } from "@/lib/site";
 import { renderSharePng } from "@/lib/game/share-image";
 import { BackgroundsButton } from "@/components/backgrounds/BackgroundsButton";
 
@@ -95,6 +97,7 @@ export function GameBoard({ datasetKey, difficulty, mode, initialSeed, pool, col
   const [copied, setCopied] = useState(false);
   const [copiedImage, setCopiedImage] = useState(false);
   const [lightbox, setLightbox] = useState<{ src: string; name: string } | null>(null);
+  const [guest, setGuest] = useState(false);
   const resumedRef = useRef(false);
 
   // ------------------------------------------------------------- persistence
@@ -146,6 +149,27 @@ export function GameBoard({ datasetKey, difficulty, mode, initialSeed, pool, col
       setSeed(Math.random().toString(36).slice(2) + Date.now().toString(36));
     }
   }, [mode, seed]);
+
+  // Guest detection: enables the gentle "login to save progress" nudge (D37).
+  useEffect(() => {
+    const supabase = getSupabaseBrowser();
+    if (!supabase) return;
+    supabase.auth.getSession().then(({ data }) => {
+      if (!data.session)
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setGuest(true);
+    });
+  }, []);
+
+  const loginToSave = useCallback(async () => {
+    const supabase = getSupabaseBrowser();
+    if (!supabase) return;
+    // After returning, AuthPanel's migration pushes this finished game server-side.
+    await supabase.auth.signInWithOAuth({
+      provider: "discord",
+      options: { redirectTo: canonicalSiteUrl() },
+    });
+  }, []);
 
   // Countdown to UTC midnight
   useEffect(() => {
@@ -393,9 +417,12 @@ export function GameBoard({ datasetKey, difficulty, mode, initialSeed, pool, col
       </header>
 
       {/* Guess input */}
-      {status === "playing" && (
-        <Autocomplete pool={pool} exclude={guessedIds} disabled={loading} onPick={submitGuess} />
-      )}
+      {status === "playing" &&
+        (difficulty === "hard" ? (
+          <HardGuessInput pool={pool} disabled={loading} onPick={submitGuess} />
+        ) : (
+          <Autocomplete pool={pool} exclude={guessedIds} disabled={loading} onPick={submitGuess} />
+        ))}
 
       {error && (
         <p
@@ -415,47 +442,51 @@ export function GameBoard({ datasetKey, difficulty, mode, initialSeed, pool, col
         <LegendItem cls="cell-lower" icon="▼" label="answer lower" />
       </div>
 
-      {/* Hints */}
-      <div className="flex w-full flex-wrap items-center gap-2">
-        {HINT_THRESHOLDS.map((threshold, i) => {
-          const unlocked = availableHints > i;
-          const revealed = hints[i] !== undefined;
-          return revealed ? (
-            <div
-              key={i}
-              className="flex items-center gap-3 rounded-lg border border-edge bg-surface2 px-3 py-2"
-            >
-              {hints[i].image ? (
-                <button
-                  type="button"
-                  onClick={() => setLightbox({ src: hints[i].image!, name: "Mystery machine" })}
-                  className="cursor-zoom-in rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
-                  aria-label="Expand hint image"
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={hints[i].image}
-                    alt="Hint: the machine's appearance"
-                    className="h-24 w-24 rounded-lg border border-edge bg-black/30 object-contain p-1"
-                  />
-                </button>
-              ) : (
-                <span className="text-sm font-bold">{hints[i].text}</span>
-              )}
-            </div>
-          ) : (
-            <button
-              key={i}
-              type="button"
-              disabled={!unlocked || status !== "playing"}
-              onClick={() => revealHint(i as 0 | 1)}
-              className="btn"
-            >
-              {unlocked ? `Reveal hint ${i + 1}` : `Hint ${i + 1} unlocks at ${threshold} guesses`}
-            </button>
-          );
-        })}
-      </div>
+      {/* Hints — Hard mode plays without any hints (D36) */}
+      {difficulty === "easy" && (
+        <div className="flex w-full flex-wrap items-center gap-2">
+          {HINT_THRESHOLDS.map((threshold, i) => {
+            const unlocked = availableHints > i;
+            const revealed = hints[i] !== undefined;
+            return revealed ? (
+              <div
+                key={i}
+                className="flex items-center gap-3 rounded-lg border border-edge bg-surface2 px-3 py-2"
+              >
+                {hints[i].image ? (
+                  <button
+                    type="button"
+                    onClick={() => setLightbox({ src: hints[i].image!, name: "Mystery machine" })}
+                    className="cursor-zoom-in rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
+                    aria-label="Expand hint image"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={hints[i].image}
+                      alt="Hint: the machine's appearance"
+                      className="h-24 w-24 rounded-lg border border-edge bg-black/30 object-contain p-1"
+                    />
+                  </button>
+                ) : (
+                  <span className="text-sm font-bold">{hints[i].text}</span>
+                )}
+              </div>
+            ) : (
+              <button
+                key={i}
+                type="button"
+                disabled={!unlocked || status !== "playing"}
+                onClick={() => revealHint(i as 0 | 1)}
+                className="btn"
+              >
+                {unlocked
+                  ? `Reveal hint ${i + 1}`
+                  : `Hint ${i + 1} unlocks at ${threshold} guesses`}
+              </button>
+            );
+          })}
+        </div>
+      )}
 
       {/* Guess grid — sticky guess column, horizontally scrollable attributes */}
       <div className="panel w-full overflow-hidden p-2">
@@ -516,6 +547,11 @@ export function GameBoard({ datasetKey, difficulty, mode, initialSeed, pool, col
           <button type="button" onClick={() => setShowResult(true)} className="btn text-muted">
             Show result
           </button>
+          {guest && (
+            <button type="button" onClick={loginToSave} className="btn text-muted">
+              Login to save progress
+            </button>
+          )}
         </div>
       )}
 
@@ -607,6 +643,11 @@ export function GameBoard({ datasetKey, difficulty, mode, initialSeed, pool, col
                   Home
                 </Link>
               </div>
+              {guest && mode === "daily" && (
+                <button type="button" onClick={loginToSave} className="btn text-muted">
+                  Login to save progress
+                </button>
+              )}
               <AdSlot slot="result-modal" className="w-full" compact label="AD" />
             </div>
           </div>
@@ -885,6 +926,60 @@ function Confetti() {
           }
         />
       ))}
+    </div>
+  );
+}
+
+// ---------------------------------------------------------- hard mode input --
+
+/**
+ * Hard mode (D36): no dropdown, no machine list, no tags — plain typing.
+ * What is typed is auto-corrected to the closest machine name (small typos
+ * forgiven; wildly different strings are rejected).
+ */
+function HardGuessInput({
+  pool,
+  disabled,
+  onPick,
+}: {
+  pool: PoolEntry[];
+  disabled: boolean;
+  onPick: (id: string) => void;
+}) {
+  const [query, setQuery] = useState("");
+
+  const submit = () => {
+    const q = query.trim();
+    if (!q) return;
+    const match = resolveGuess(q, pool);
+    if (!match) {
+      // Surface a vague-failure without leaking how close they were.
+      setQuery("");
+      alert("No close machine match — check the spelling and try again.");
+      return;
+    }
+    setQuery("");
+    onPick(match.id);
+  };
+
+  return (
+    <div className="relative w-full">
+      <input
+        type="text"
+        value={query}
+        disabled={disabled}
+        placeholder="Type a machine name — no list, no hints. Hard mode."
+        aria-label="Type a machine name to guess"
+        autoComplete="off"
+        onChange={(e) => setQuery(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            submit();
+          }
+        }}
+        className="w-full rounded-lg border border-edge bg-surface2 px-4 py-3 text-base font-semibold text-foreground placeholder:font-normal placeholder:text-muted focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/40"
+      />
     </div>
   );
 }

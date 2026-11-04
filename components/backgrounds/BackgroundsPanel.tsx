@@ -17,8 +17,8 @@ import { Lightbox } from "@/components/ui/Lightbox";
  * owner-only moderation tab. Opened from the header button.
  */
 
-const MAX_BYTES = 2 * 1024 * 1024;
-const MIN_WIDTH = 1200;
+const MAX_BYTES = 2.5 * 1024 * 1024;
+const MIN_WIDTH = 720;
 
 interface SubmissionRow {
   id: string;

@@ -22,9 +22,14 @@ const createdBody = await created.json();
 if (created.ok) {
   userId = createdBody.id;
   console.log("auth user created:", userId);
-} else if (createdBody.msg?.includes("already") || createdBody.error_description?.includes("already")) {
+} else if (
+  createdBody.msg?.includes("already") ||
+  createdBody.error_description?.includes("already")
+) {
   // already exists — look them up
-  const lookup = await fetch(`${url}/auth/v1/admin/users?email=${encodeURIComponent(email)}`, { headers: H });
+  const lookup = await fetch(`${url}/auth/v1/admin/users?email=${encodeURIComponent(email)}`, {
+    headers: H,
+  });
   const list = (await lookup.json()).users ?? [];
   userId = list.find((u) => u.email === email)?.id;
   console.log("auth user already exists:", userId);
@@ -79,6 +84,9 @@ const qs = new URLSearchParams({
   order: "rank.asc",
 });
 const lb = await fetch(`${url}/rest/v1/leaderboard_daily?${qs}`, {
-  headers: { apikey: process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? key, Authorization: `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? key}` },
+  headers: {
+    apikey: process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? key,
+    Authorization: `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? key}`,
+  },
 });
 console.log("leaderboard (anon view):", JSON.stringify(await lb.json()));
