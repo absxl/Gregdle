@@ -150,7 +150,7 @@ export function GameBoard({ datasetKey, difficulty, mode, initialSeed, pool, col
     }
   }, [mode, seed]);
 
-  // Guest detection: enables the gentle "login to save progress" nudge (D37).
+  // Guest detection: enables the "sign in to save progress" nudge (D37).
   useEffect(() => {
     const supabase = getSupabaseBrowser();
     if (!supabase) return;
@@ -404,13 +404,25 @@ export function GameBoard({ datasetKey, difficulty, mode, initialSeed, pool, col
             GREGDLE
           </Link>
           <span className="text-sm font-bold text-muted">
-            {datasetLabel(datasetKey)} · {difficulty.toUpperCase()} ·{" "}
-            {mode === "daily" ? "Daily" : "Endless"}
+            {datasetLabel(datasetKey).replace(" // ", " · ")} ·{" "}
+            {difficulty === "easy" ? "Easy" : "Hard"} · {mode === "daily" ? "Daily" : "Endless"}
           </span>
         </div>
         {mode === "daily" && (
           <span className="chip" aria-label="Time until next daily">
-            <span aria-hidden="true">⏱</span>
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              aria-hidden="true"
+              className="text-muted"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 6v6l4 2" />
+            </svg>
             <span className="font-pixel text-lg tabular-nums text-foreground">{countdown}</span>
           </span>
         )}
@@ -549,7 +561,7 @@ export function GameBoard({ datasetKey, difficulty, mode, initialSeed, pool, col
           </button>
           {guest && (
             <button type="button" onClick={loginToSave} className="btn text-muted">
-              Login to save progress
+              Sign in to save progress
             </button>
           )}
         </div>
@@ -645,7 +657,7 @@ export function GameBoard({ datasetKey, difficulty, mode, initialSeed, pool, col
               </div>
               {guest && mode === "daily" && (
                 <button type="button" onClick={loginToSave} className="btn text-muted">
-                  Login to save progress
+                  Sign in to save progress
                 </button>
               )}
               <AdSlot slot="result-modal" className="w-full" compact label="AD" />
@@ -947,15 +959,17 @@ function HardGuessInput({
   onPick: (id: string) => void;
 }) {
   const [query, setQuery] = useState("");
+  const [error, setError] = useState<string | null>(null);
 
   const submit = () => {
+    setError(null);
     const q = query.trim();
     if (!q) return;
     const match = resolveGuess(q, pool);
     if (!match) {
-      // Surface a vague-failure without leaking how close they were.
+      // Deliberately vague: no hint about how close the guess was.
       setQuery("");
-      alert("No close machine match — check the spelling and try again.");
+      setError("No close machine match — check the spelling and try again.");
       return;
     }
     setQuery("");
@@ -963,12 +977,12 @@ function HardGuessInput({
   };
 
   return (
-    <div className="relative w-full">
+    <div className="flex w-full flex-col gap-2">
       <input
         type="text"
         value={query}
         disabled={disabled}
-        placeholder="Type a machine name — no list, no hints. Hard mode."
+        placeholder="Type the name of a machine — no suggestions on Hard."
         aria-label="Type a machine name to guess"
         autoComplete="off"
         onChange={(e) => setQuery(e.target.value)}
@@ -980,6 +994,11 @@ function HardGuessInput({
         }}
         className="w-full rounded-lg border border-edge bg-surface2 px-4 py-3 text-base font-semibold text-foreground placeholder:font-normal placeholder:text-muted focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/40"
       />
+      {error && (
+        <p role="alert" className="text-sm font-bold text-bad">
+          {error}
+        </p>
+      )}
     </div>
   );
 }

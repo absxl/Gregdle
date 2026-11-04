@@ -71,7 +71,9 @@ export default async function Home() {
         ))}
       </ul>
     ) : (
-      <p className="text-sm text-muted">No winners yet — first solve takes 🥇</p>
+      <p className="flex items-center gap-1.5 text-sm text-muted">
+        No winners yet — first solve takes <ItemIcon name="rank1" size={16} title="gold" />
+      </p>
     );
 
   return (

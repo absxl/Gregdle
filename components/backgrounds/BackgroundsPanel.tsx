@@ -142,7 +142,7 @@ export function BackgroundsPanel({ onClose }: { onClose: () => void }) {
         description: bgDesc.trim() || null,
       });
       if (insErr) throw new Error(insErr.message);
-      setMessage("Sent for approval — thanks! It appears once approved.");
+      setMessage("Submitted for review — it appears here once approved.");
       if (fileRef.current) fileRef.current.value = "";
       setBgTitle("");
       setBgDesc("");
@@ -302,7 +302,7 @@ export function BackgroundsPanel({ onClose }: { onClose: () => void }) {
                   ? "flex flex-col gap-3"
                   : "flex cursor-not-allowed flex-col gap-3 opacity-40"
               }
-              title={signedIn ? undefined : "Login to Discord to upload"}
+              title={signedIn ? undefined : "Sign in with Discord to upload"}
             >
               <p className="text-sm text-muted">
                 Landscape 16:9 images fit best (at least {MIN_WIDTH}px wide, JPG/PNG/WebP up to 2
@@ -353,7 +353,7 @@ export function BackgroundsPanel({ onClose }: { onClose: () => void }) {
             </div>
             {!signedIn && (
               <p className="text-sm font-semibold text-muted">
-                Login to Discord (top right) to upload.
+                Sign in with Discord (top right) to upload.
               </p>
             )}
           </div>
