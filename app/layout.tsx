@@ -90,6 +90,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <Link href="/leaderboard" className="hover:text-accent">
               LEADERBOARD
             </Link>
+            <Link href="/machines" className="hover:text-accent">
+              MACHINES
+            </Link>
             <Link href="/stats" className="hover:text-accent">
               STATS
             </Link>
