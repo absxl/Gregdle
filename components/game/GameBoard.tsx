@@ -35,6 +35,8 @@ interface PoolEntry {
   name: string;
   aliases: string[];
   image: string | null;
+  /** Wiki page URL — public data, safe to expose (D46). */
+  wiki?: string;
   /** Public attribute chips shown per suggestion (D20, Minedle-style). */
   info?: {
     tier: string;
@@ -820,9 +822,7 @@ function GuessGridRow({
               loading="lazy"
             />
           ))}
-        <span className="truncate text-base font-bold" title={row.guessName}>
-          {row.guessName}
-        </span>
+        <WikiNameLink name={row.guessName} />
       </div>
       {row.cells.map((cell, i) => (
         <div
@@ -1126,5 +1126,25 @@ function HardGuessInput({
         </p>
       )}
     </div>
+  );
+}
+
+/**
+ * Machine name linking to its GTNH wiki page (D46). Safe mid-game: a guess
+ * is already public knowledge — it never reveals the hidden answer.
+ */
+function WikiNameLink({ name }: { name: string }) {
+  const url = `https://wiki.gtnewhorizons.com/wiki/${encodeURIComponent(name.replace(/ /g, "_"))}`;
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noreferrer"
+      onClick={(e) => e.stopPropagation()}
+      className="truncate text-base font-bold hover:text-accent"
+      title={`${name} — open the GTNH wiki page`}
+    >
+      {name}
+    </a>
   );
 }
