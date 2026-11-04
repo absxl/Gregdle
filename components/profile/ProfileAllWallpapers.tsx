@@ -57,7 +57,6 @@ export function ProfileAllWallpapers({ profileName }: { profileName: string }) {
         .eq("user_id", uid)
         .order("created_at", { ascending: false });
       if (own) {
-         
         setRows(own as OwnRow[]);
       }
     });

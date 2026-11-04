@@ -62,12 +62,8 @@ export function AuthPanel({ compact = false }: { compact?: boolean }) {
       const idData = (identity?.identity_data ?? {}) as Record<string, string | undefined>;
       const avatar = meta.avatar_url ?? idData.avatar_url;
       const providerId = String(identity?.id ?? idData.provider_id ?? meta.provider_id ?? "");
-      if (avatar)
-         
-        setAvatarUrl(avatar);
-      if (providerId)
-         
-        setDiscordId(providerId);
+      if (avatar) setAvatarUrl(avatar);
+      if (providerId) setDiscordId(providerId);
 
       const { data: profile } = await supabase
         .from("profiles")
@@ -77,7 +73,7 @@ export function AuthPanel({ compact = false }: { compact?: boolean }) {
       if (profile?.display_name) {
         setDisplayName(profile.display_name);
         const { data: admin } = await supabase.rpc("am_i_admin");
-         
+
         setIsAdmin(Boolean(admin));
         setPhase("signed-in");
         return;

@@ -140,7 +140,6 @@ export default async function ProfilePage(props: { params: Promise<{ name: strin
               bio: data.profile.bio ?? "",
               reddit: data.profile.reddit ?? "",
               twitter: data.profile.twitter ?? "",
-              rankLabel: data.profile.rank_label ?? "OPERATOR",
             }}
           />
           <Link href="/" className="btn">

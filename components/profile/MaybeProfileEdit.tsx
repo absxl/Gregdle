@@ -14,7 +14,7 @@ export function MaybeProfileEdit({
   initial,
 }: {
   profileName: string;
-  initial: { title: string; bio: string; reddit: string; twitter: string; rankLabel: string };
+  initial: { title: string; bio: string; reddit: string; twitter: string };
 }) {
   const router = useRouter();
   const [isOwner, setIsOwner] = useState(false);
@@ -32,7 +32,7 @@ export function MaybeProfileEdit({
         .select("display_name")
         .eq("user_id", uid)
         .maybeSingle();
-       
+
       setIsOwner(profile?.display_name === profileName);
     });
   }, [profileName]);

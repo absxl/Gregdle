@@ -157,9 +157,7 @@ export function GameBoard({ datasetKey, difficulty, mode, initialSeed, pool, col
     const supabase = getSupabaseBrowser();
     if (!supabase) return;
     supabase.auth.getSession().then(({ data }) => {
-      if (!data.session)
-         
-        setGuest(true);
+      if (!data.session) setGuest(true);
     });
   }, []);
 
@@ -168,9 +166,7 @@ export function GameBoard({ datasetKey, difficulty, mode, initialSeed, pool, col
     void fetch("/api/stats")
       .then((r) => (r.ok ? r.json() : null))
       .then((d: { totalGaveUps?: number } | null) => {
-        if (d && typeof d.totalGaveUps === "number")
-           
-          setTotalGaveUps(d.totalGaveUps);
+        if (d && typeof d.totalGaveUps === "number") setTotalGaveUps(d.totalGaveUps);
       })
       .catch(() => undefined);
   }, []);
