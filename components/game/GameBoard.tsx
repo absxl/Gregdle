@@ -98,6 +98,8 @@ export function GameBoard({ datasetKey, difficulty, mode, initialSeed, pool, col
   const [copiedImage, setCopiedImage] = useState(false);
   const [lightbox, setLightbox] = useState<{ src: string; name: string } | null>(null);
   const [guest, setGuest] = useState(false);
+  const [sameGuessCount, setSameGuessCount] = useState<number | null>(null);
+  const [totalGaveUps, setTotalGaveUps] = useState<number | null>(null);
   const resumedRef = useRef(false);
 
   // ------------------------------------------------------------- persistence
@@ -159,6 +161,18 @@ export function GameBoard({ datasetKey, difficulty, mode, initialSeed, pool, col
         // eslint-disable-next-line react-hooks/set-state-in-effect
         setGuest(true);
     });
+  }, []);
+
+  // All-time give-up counter (D41) — shown next to the Give up button.
+  useEffect(() => {
+    void fetch("/api/stats")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d: { totalGaveUps?: number } | null) => {
+        if (d && typeof d.totalGaveUps === "number")
+          // eslint-disable-next-line react-hooks/set-state-in-effect
+          setTotalGaveUps(d.totalGaveUps);
+      })
+      .catch(() => undefined);
   }, []);
 
   const loginToSave = useCallback(async () => {
@@ -261,13 +275,20 @@ export function GameBoard({ datasetKey, difficulty, mode, initialSeed, pool, col
           setError(res.status === 429 ? "Slow down a moment." : "Guess failed — try again.");
           return;
         }
-        const data = (await res.json()) as { result?: GuessRow; answer?: typeof answer };
+        const data = (await res.json()) as {
+          result?: GuessRow;
+          answer?: typeof answer;
+          sameGuessCount?: number | null;
+        };
         if (!data.result) {
           setError("Guess failed — try again.");
           return;
         }
         const nextRows = [...rows, data.result];
         setRows(nextRows);
+        if (mode === "daily" && typeof data.sameGuessCount === "number") {
+          setSameGuessCount(data.sameGuessCount);
+        }
         if (data.result.won && data.answer) {
           setAnswer(data.answer);
           setStatus("won");
@@ -540,6 +561,12 @@ export function GameBoard({ datasetKey, difficulty, mode, initialSeed, pool, col
         </div>
       )}
 
+      {mode === "daily" && sameGuessCount !== null && (
+        <p className="font-mono text-xs text-muted">
+          {sameGuessCount} player{sameGuessCount === 1 ? "" : "s"} made this same guess today.
+        </p>
+      )}
+
       {/* Guess grid — sticky guess column, horizontally scrollable attributes */}
       <div className="panel w-full overflow-hidden p-2">
         <div className="grid-outer w-full">
@@ -609,9 +636,16 @@ export function GameBoard({ datasetKey, difficulty, mode, initialSeed, pool, col
 
       {/* Give up */}
       {status === "playing" && rows.length >= 3 && (
-        <button type="button" onClick={giveUp} disabled={loading} className="btn text-muted">
-          Give up
-        </button>
+        <div className="flex items-center gap-2">
+          <button type="button" onClick={giveUp} disabled={loading} className="btn text-muted">
+            Give up
+          </button>
+          {totalGaveUps !== null && totalGaveUps > 0 && (
+            <span className="font-mono text-xs text-muted">
+              {totalGaveUps} player{totalGaveUps === 1 ? " has" : "s have"} given up so far.
+            </span>
+          )}
+        </div>
       )}
 
       <AdSlot slot="play-bottom" className="w-full" label="ADVERTISEMENT" />

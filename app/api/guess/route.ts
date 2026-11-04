@@ -81,14 +81,46 @@ export async function POST(req: Request) {
   }
 
   const result = compareMachine(guess, answer);
+
+  // Same-guess counter (D41): record the daily guess anonymously and return
+  // how many players used it today (including this one).
+  let sameGuessCount: number | null = null;
+  if (mode === "daily") {
+    const svcUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const svcKey = process.env.SUPABASE_SECRET_KEY ?? process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (svcUrl && svcKey) {
+      try {
+        const H = {
+          apikey: svcKey,
+          Authorization: `Bearer ${svcKey}`,
+          "Content-Type": "application/json",
+        };
+        await fetch(`${svcUrl}/rest/v1/guess_events`, {
+          method: "POST",
+          headers: H,
+          body: JSON.stringify({ date, dataset: datasetKey, difficulty, guess_id: guessId }),
+        });
+        const cnt = await fetch(
+          `${svcUrl}/rest/v1/guess_events?select=guess_id&date=eq.${date}&dataset=eq.${datasetKey}&difficulty=eq.${difficulty}&guess_id=eq.${guessId}`,
+          { headers: { apikey: svcKey, Authorization: `Bearer ${svcKey}` } },
+        );
+        const rows = (await cnt.json()) as unknown[];
+        sameGuessCount = rows.length;
+      } catch {
+        sameGuessCount = null; // counter is cosmetic — never block a guess
+      }
+    }
+  }
+
   if (result.won) {
     // Game over: reveal the answer alongside the winning row.
     return Response.json({
       result,
+      sameGuessCount,
       answer: { id: answer.id, name: answer.name, image: answer.image },
     });
   }
 
   // Anti-spoiler: the comparison row only, nothing about the answer.
-  return Response.json({ result });
+  return Response.json({ result, sameGuessCount });
 }

@@ -20,6 +20,27 @@ const statEvent = z.object({
   guessCount: z.number().int().min(1).max(200),
 });
 
+/** GET /api/stats — all-time totals for the give-up counter (D41). */
+export async function GET() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SECRET_KEY ?? process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) {
+    return Response.json({ error: "stats_unavailable" }, { status: 503 });
+  }
+  const res = await fetch(`${url}/rest/v1/global_totals?select=*`, {
+    headers: { apikey: key, Authorization: `Bearer ${key}` },
+    next: { revalidate: 60 },
+  });
+  if (!res.ok) {
+    return Response.json({ error: "stats_unavailable" }, { status: 502 });
+  }
+  const rows = (await res.json()) as { total_plays: number; total_gave_ups: number }[];
+  return Response.json({
+    totalPlays: rows[0]?.total_plays ?? 0,
+    totalGaveUps: rows[0]?.total_gave_ups ?? 0,
+  });
+}
+
 export async function POST(req: Request) {
   if (!rateLimit(`stats:${clientIp(req)}`, 10, 60_000)) {
     return Response.json({ error: "rate_limited" }, { status: 429 });

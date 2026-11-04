@@ -45,9 +45,30 @@ async function topToday(difficulty: "easy" | "hard"): Promise<BoardRow[]> {
 
 const MEDALS = ["rank1", "rank2", "rank3"] as const;
 
+async function giveUpTotal(): Promise<number | null> {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
+  if (!url || !key) return null;
+  try {
+    const res = await fetch(`${url}/rest/v1/global_totals?select=*`, {
+      headers: { apikey: key, Authorization: `Bearer ${key}` },
+      next: { revalidate: 300 },
+    });
+    if (!res.ok) return null;
+    const rows = (await res.json()) as { total_gave_ups: number }[];
+    return rows[0]?.total_gave_ups ?? 0;
+  } catch {
+    return null;
+  }
+}
+
 export default async function Home() {
   const machines = getMachines();
-  const [easyTop, hardTop] = await Promise.all([topToday("easy"), topToday("hard")]);
+  const [easyTop, hardTop, gaveUps] = await Promise.all([
+    topToday("easy"),
+    topToday("hard"),
+    giveUpTotal(),
+  ]);
 
   const board = (rows: BoardRow[]) =>
     rows.length > 0 ? (
@@ -131,6 +152,19 @@ export default async function Home() {
           </div>
         ))}
       </section>
+
+      {gaveUps !== null && gaveUps > 0 && (
+        <section
+          aria-label="Give-up counter"
+          className="panel corners flex w-full items-center justify-between gap-3 px-5 py-3"
+        >
+          <p className="font-mono text-sm font-bold text-muted">
+            <span className="font-pixel text-2xl text-bad">{gaveUps}</span> player
+            {gaveUps === 1 ? " has" : "s have"} given up entirely.
+          </p>
+          <p className="label">WILL YOU?</p>
+        </section>
+      )}
 
       {/* Leaderboard — prominent preview */}
       <section aria-label="Leaderboard" className="panel w-full p-5">
