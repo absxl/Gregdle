@@ -289,7 +289,7 @@ export function BackgroundsPanel({ onClose }: { onClose: () => void }) {
             <p className="mt-3 text-xs text-muted">
               {pinned
                 ? "Pinned — opens with your favorite every time."
-                : "Carousel mode — a new background every 30 seconds."}
+                : "Carousel mode — a random background every 30 seconds."}
             </p>
           </div>
         )}

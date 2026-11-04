@@ -8,13 +8,25 @@ import {
 } from "@/lib/backgrounds";
 
 /**
- * Site-wide background carousel (D28): dimmed, slightly blurred images
- * behind every page, crossfading every 30 s. Users' pinned favorite wins;
- * reduced-motion users get a single static image. Renders nothing when the
- * gallery is empty (plain dark theme).
+ * Site-wide background carousel (D28/D35): dimmed, slightly blurred images
+ * behind every page. Fully random — the starting pick on each visit and every
+ * next pick are random (never the same image twice in a row). Users' pinned
+ * favorite wins; reduced-motion users get a single static image. Renders
+ * nothing when the gallery is empty (plain dark theme).
  */
 
 const SLIDE_MS = 30_000;
+
+/** Random item, avoiding a repeat of `avoidId` when there is a choice. */
+function pickRandom(items: Background[], avoidId?: string | null): Background {
+  if (items.length === 1) return items[0]!;
+  let pick = items[Math.floor(Math.random() * items.length)]!;
+  // Resample briefly rather than building exclusion lists (tiny N).
+  for (let i = 0; i < 8 && pick.id === avoidId; i++) {
+    pick = items[Math.floor(Math.random() * items.length)]!;
+  }
+  return pick;
+}
 
 export function BackgroundLayer() {
   const [items, setItems] = useState<Background[]>([]);
@@ -28,7 +40,7 @@ export function BackgroundLayer() {
       if (cancelled || list.length === 0) return;
       const pinnedId = getPinnedBackgroundId();
       const pinned = pinnedId ? list.find((b) => b.id === pinnedId) : undefined;
-      const chosen = pinned ?? list[0]!;
+      const chosen = pinned ?? pickRandom(list);
       setItems(list);
       setCurrent(chosen);
     })();
@@ -46,8 +58,7 @@ export function BackgroundLayer() {
 
     const timer = window.setInterval(() => {
       if (document.hidden) return;
-      const pos = items.findIndex((b) => b.id === current?.id);
-      const nextBg = items[(pos + 1) % items.length]!;
+      const nextBg = pickRandom(items, current?.id);
       if (nextBg.id === current?.id) return;
       setPrev(current);
       setCurrent(nextBg);
