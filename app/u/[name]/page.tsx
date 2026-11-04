@@ -47,7 +47,8 @@ async function loadProfile(name: string): Promise<Payload | null> {
       method: "POST",
       headers: { apikey: key, Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
       body: JSON.stringify({ p_display_name: name }),
-      next: { revalidate: 60 },
+      // Fresh every render: the wallpaper gallery and avatar sync update often.
+      cache: "no-store",
     });
     if (!res.ok) return null;
     return (await res.json()) as Payload;
@@ -245,6 +246,61 @@ export default async function ProfilePage(props: { params: Promise<{ name: strin
               ))}
             </tbody>
           </table>
+        </section>
+      )}
+
+      {/* Wallpapers by this user (D24/D33): approved gallery, or the empty state. */}
+      {data.backgrounds.length > 0 ? (
+        <section aria-label="Backgrounds by this player" className="panel w-full p-5">
+          <h2 className="text-base font-black">Backgrounds</h2>
+          <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3">
+            {data.backgrounds.map((bg) => (
+              <figure key={bg.id} className="flex flex-col gap-1">
+                <Lightbox
+                  src={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/backgrounds/${bg.path}`}
+                  caption={bg.title ?? `by ${displayName}`}
+                  className="rounded-lg"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/backgrounds/${bg.path}`}
+                    alt={bg.title ?? `Background by ${displayName}`}
+                    className="h-24 w-full rounded-lg border border-edge object-cover"
+                  />
+                </Lightbox>
+                <figcaption className="text-xs text-muted">
+                  <span className="block truncate font-bold text-foreground">
+                    {bg.title ?? "Untitled"}
+                  </span>
+                  {bg.author.toLowerCase() !== displayName.toLowerCase() ? (
+                    <span className="block truncate">
+                      original by <span className="font-bold">{bg.author}</span>
+                      {bg.source_url && (
+                        <>
+                          {" "}
+                          ·{" "}
+                          <a
+                            href={bg.source_url}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-accent hover:underline"
+                          >
+                            source
+                          </a>
+                        </>
+                      )}
+                    </span>
+                  ) : (
+                    bg.description && <span className="line-clamp-2">{bg.description}</span>
+                  )}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      ) : (
+        <section aria-label="Backgrounds" className="panel w-full p-5 text-sm text-muted">
+          This user has not uploaded any Wallpapers
         </section>
       )}
 

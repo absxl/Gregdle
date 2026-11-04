@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
 import { migrateGuestResults } from "@/lib/game/migrate";
 import { canonicalSiteUrl } from "@/lib/site";
@@ -16,6 +17,7 @@ type Phase = "loading" | "signed-out" | "provisioning" | "signed-in";
 
 export function AuthPanel({ compact = false }: { compact?: boolean }) {
   const supabase = getSupabaseBrowser();
+  const router = useRouter();
   const [phase, setPhase] = useState<Phase>("loading");
   const [displayName, setDisplayName] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -53,8 +55,18 @@ export function AuthPanel({ compact = false }: { compact?: boolean }) {
       if (!user) return setPhase("signed-out");
 
       const meta = (user.user_metadata ?? {}) as Record<string, string | undefined>;
-      if (meta.avatar_url) setAvatarUrl(meta.avatar_url);
-      if (meta.provider_id) setDiscordId(String(meta.provider_id));
+      // Discord's avatar/id may live in user_metadata OR identity_data
+      // depending on the Supabase auth version — check both.
+      const identity = user.identities?.find((i) => i.provider === "discord");
+      const idData = (identity?.identity_data ?? {}) as Record<string, string | undefined>;
+      const avatar = meta.avatar_url ?? idData.avatar_url;
+      const providerId = String(identity?.id ?? idData.provider_id ?? meta.provider_id ?? "");
+      if (avatar)
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setAvatarUrl(avatar);
+      if (providerId)
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setDiscordId(providerId);
 
       const { data: profile } = await supabase
         .from("profiles")
@@ -119,15 +131,19 @@ export function AuthPanel({ compact = false }: { compact?: boolean }) {
   // One-time guest -> account migration of locally-played dailies (D23),
   // plus keeping the Discord avatar in sync (D27).
   useEffect(() => {
-    if (phase !== "signed-in") return;
+    if (phase !== "signed-in" || !supabase) return;
     void migrateGuestResults();
-    if (avatarUrl && supabase) {
-      void supabase.rpc("set_my_avatar", {
+    if (!avatarUrl && !discordId) return;
+    void supabase
+      .rpc("set_my_avatar", {
         p_avatar_url: avatarUrl,
         p_discord_id: discordId,
+      })
+      .then(() => {
+        // The server-rendered profile picked up the new avatar — re-render it.
+        router.refresh();
       });
-    }
-  }, [phase, avatarUrl, discordId, supabase]);
+  }, [phase, avatarUrl, discordId, supabase, router]);
 
   const signOutAndClose = useCallback(async () => {
     setMenuOpen(false);
