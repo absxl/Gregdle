@@ -2,7 +2,7 @@
 
 A Loldle-style daily guessing game for GregTech players. Guess the hidden machine from its
 attributes — voltage tier, structure, size, function, and more. New dailies at 00:00 UTC,
-endless mode anytime. **Live:** <https://gregdle.stranger3012.workers.dev>
+endless mode anytime. **Live:** <https://gregdle.carletti.work>
 
 ## Stack
 
