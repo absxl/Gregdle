@@ -79,7 +79,11 @@ export async function renderSharePng(input: ShareImageInput): Promise<Blob> {
   ctx.font = "700 15px sans-serif";
   ctx.fillText(summary, PAD + 22, PAD + 98);
   ctx.fillStyle = MUTED;
-  ctx.fillText("colors and arrows only — no spoilers", PAD + 22 + ctx.measureText(summary).width + 18, PAD + 98);
+  ctx.fillText(
+    "colors and arrows only — no spoilers",
+    PAD + 22 + ctx.measureText(summary).width + 18,
+    PAD + 98,
+  );
 
   // Column headers
   const gridTop = PAD + headerH;
@@ -157,4 +161,3 @@ function roundRect(
   ctx.arcTo(x, y, x + w, y, r);
   ctx.closePath();
 }
-

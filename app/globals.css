@@ -481,3 +481,53 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ------------------------------------------------------- admin rainbow flair */
+
+.rainbow-name {
+  background: linear-gradient(90deg, #ff5f5f, #f5a623, #2fbf71, #4aa3df, #b57bee, #ff5f5f);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: rainbow-slide 6s linear infinite;
+}
+
+@keyframes rainbow-slide {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 300% 50%;
+  }
+}
+
+.rainbow-ring {
+  border-color: transparent !important;
+  background:
+    linear-gradient(var(--surface), var(--surface)) padding-box,
+    linear-gradient(135deg, #ff5f5f, #f5a623, #2fbf71, #4aa3df, #b57bee) border-box;
+  border: 2px solid transparent;
+  animation: rainbow-shift 6s linear infinite;
+}
+
+@keyframes rainbow-shift {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.admin-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  padding: 1px 7px;
+  border-radius: 999px;
+  color: #1a0d2b;
+  background: linear-gradient(90deg, #ff5f5f, #f5a623, #2fbf71, #4aa3df, #b57bee);
+  animation: rainbow-shift 6s linear infinite;
+}

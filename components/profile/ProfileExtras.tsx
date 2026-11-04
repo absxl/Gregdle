@@ -9,12 +9,20 @@ import { getSupabaseBrowser } from "@/lib/supabase/client";
  * when the viewer is the profile owner.
  */
 
+export interface ProfileEditData {
+  title: string;
+  bio: string;
+  reddit: string;
+  twitter: string;
+  rankLabel: string;
+}
+
 export function ProfileEditButton({
   initial,
   onSaved,
 }: {
-  initial: { title: string; bio: string; reddit: string; twitter: string };
-  onSaved: (next: { title: string; bio: string; reddit: string; twitter: string }) => void;
+  initial: ProfileEditData;
+  onSaved: (next: ProfileEditData) => void;
 }) {
   const [open, setOpen] = useState(false);
   const [form, setForm] = useState(initial);
@@ -48,6 +56,7 @@ export function ProfileEditButton({
       bio: form.bio.trim(),
       reddit: form.reddit.trim(),
       twitter: form.twitter.trim(),
+      rankLabel: form.rankLabel.trim().toUpperCase(),
     });
     setOpen(false);
   };
@@ -92,6 +101,15 @@ export function ProfileEditButton({
         rows={3}
         placeholder="Short bio"
         aria-label="Profile bio"
+        className={field}
+      />
+      <input
+        type="text"
+        value={form.rankLabel}
+        onChange={(e) => setForm({ ...form, rankLabel: e.target.value })}
+        maxLength={16}
+        placeholder="Profile label (default OPERATOR)"
+        aria-label="Profile label"
         className={field}
       />
       <div className="grid gap-2 sm:grid-cols-2">

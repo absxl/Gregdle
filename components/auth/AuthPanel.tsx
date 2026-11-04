@@ -24,6 +24,7 @@ export function AuthPanel({ compact = false }: { compact?: boolean }) {
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
   const [discordId, setDiscordId] = useState<string | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     if (!supabase) {
@@ -62,10 +63,10 @@ export function AuthPanel({ compact = false }: { compact?: boolean }) {
       const avatar = meta.avatar_url ?? idData.avatar_url;
       const providerId = String(identity?.id ?? idData.provider_id ?? meta.provider_id ?? "");
       if (avatar)
-        // eslint-disable-next-line react-hooks/set-state-in-effect
+         
         setAvatarUrl(avatar);
       if (providerId)
-        // eslint-disable-next-line react-hooks/set-state-in-effect
+         
         setDiscordId(providerId);
 
       const { data: profile } = await supabase
@@ -75,6 +76,9 @@ export function AuthPanel({ compact = false }: { compact?: boolean }) {
         .maybeSingle();
       if (profile?.display_name) {
         setDisplayName(profile.display_name);
+        const { data: admin } = await supabase.rpc("am_i_admin");
+         
+        setIsAdmin(Boolean(admin));
         setPhase("signed-in");
         return;
       }
@@ -196,7 +200,10 @@ export function AuthPanel({ compact = false }: { compact?: boolean }) {
             {displayName.slice(0, 2).toUpperCase()}
           </span>
         )}
-        <span className="truncate font-bold text-foreground">{displayName}</span>
+        <span className={`truncate font-bold ${isAdmin ? "rainbow-name" : "text-foreground"}`}>
+          {displayName}
+        </span>
+        {isAdmin && <span className="admin-badge">ADMIN</span>}
         <span className="online-dot" aria-hidden="true" />
       </button>
 

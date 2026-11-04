@@ -21,6 +21,8 @@ interface Payload {
     joined: string;
     avatar_url: string | null;
     discord_id: string | null;
+    rank_label: string | null;
+    is_admin: boolean;
     title: string | null;
     bio: string | null;
     reddit: string | null;
@@ -83,7 +85,9 @@ export default async function ProfilePage(props: { params: Promise<{ name: strin
                 target="_blank"
                 rel="noreferrer"
                 title={`${displayName} on Discord`}
-                className="rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent"
+                className={`rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent ${
+                  data.profile.is_admin ? "rainbow-ring" : ""
+                }`}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -101,17 +105,26 @@ export default async function ProfilePage(props: { params: Promise<{ name: strin
               />
             )
           ) : (
-            <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-edge bg-surface2 text-3xl font-black">
+            <div
+              className={`flex h-16 w-16 items-center justify-center border bg-surface2 text-3xl font-black ${
+                data.profile.is_admin ? "rainbow-ring" : "border-edge"
+              }`}
+            >
               {displayName.slice(0, 2).toUpperCase()}
             </div>
           )}
           <div>
-            <h1 className="text-2xl font-black">{displayName}</h1>
+            <h1 className={`text-2xl font-black ${data.profile.is_admin ? "rainbow-name" : ""}`}>
+              {displayName}
+            </h1>
+            {data.profile.is_admin && <span className="admin-badge">ADMIN</span>}
             {data.profile.title && (
               <p className="text-sm font-bold text-accent">{data.profile.title}</p>
             )}
             <div className="mt-1 flex flex-wrap items-center gap-2">
-              <p className="label">OPERATOR // SINCE {joined}</p>
+              <p className="label">
+                {data.profile.rank_label ?? "OPERATOR"} {"// SINCE"} {joined}
+              </p>
               <CopyTagButton tag={displayName} />
             </div>
             <div className="mt-1">
@@ -127,6 +140,7 @@ export default async function ProfilePage(props: { params: Promise<{ name: strin
               bio: data.profile.bio ?? "",
               reddit: data.profile.reddit ?? "",
               twitter: data.profile.twitter ?? "",
+              rankLabel: data.profile.rank_label ?? "OPERATOR",
             }}
           />
           <Link href="/" className="btn">
@@ -308,6 +322,8 @@ export default async function ProfilePage(props: { params: Promise<{ name: strin
         {total.played} dailies played · {total.wins} won
         {total.last ? ` · last played ${total.last}` : ""}
       </p>
+
+      <ProfileAllWallpapers profileName={displayName} />
     </main>
   );
 }
