@@ -11,6 +11,8 @@ export interface Background {
   author: string;
   title?: string | null;
   description?: string | null;
+  /** External source link (e.g. gtnewhorizons.com) — credit links here. */
+  sourceUrl?: string | null;
 }
 
 const CACHE_KEY = "gregdle:v1:bg-list";
@@ -56,7 +58,7 @@ export async function fetchApprovedBackgrounds(force = false): Promise<Backgroun
   if (!cfg) return [];
   try {
     const qs = new URLSearchParams({
-      select: "id,storage_path,author_name,title,description",
+      select: "id,storage_path,author_name,title,description,source_url",
       status: "eq.approved",
       order: "created_at.asc",
       limit: "100",
@@ -71,6 +73,7 @@ export async function fetchApprovedBackgrounds(force = false): Promise<Backgroun
       author_name: string;
       title: string | null;
       description: string | null;
+      source_url: string | null;
     }[];
     const items: Background[] = rows.map((r) => ({
       id: r.id,
@@ -78,6 +81,7 @@ export async function fetchApprovedBackgrounds(force = false): Promise<Backgroun
       author: r.author_name,
       title: r.title,
       description: r.description,
+      sourceUrl: r.source_url,
     }));
     try {
       window.localStorage.setItem(

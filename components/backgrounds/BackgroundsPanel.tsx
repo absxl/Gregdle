@@ -269,7 +269,10 @@ export function BackgroundsPanel({ onClose }: { onClose: () => void }) {
                     </Lightbox>
                     <figcaption className="flex items-center justify-between gap-1 text-xs">
                       <span className="truncate text-muted" title={bg.title ?? undefined}>
-                        {bg.title ?? `by ${bg.author}`}
+                        {bg.title ?? "Untitled"}{" "}
+                        <span className="opacity-60">
+                          · {bg.sourceUrl ? "via gtnewhorizons.com" : `by ${bg.author}`}
+                        </span>
                       </span>
                       <button
                         type="button"
@@ -302,9 +305,10 @@ export function BackgroundsPanel({ onClose }: { onClose: () => void }) {
               title={signedIn ? undefined : "Login to Discord to upload"}
             >
               <p className="text-sm text-muted">
-                Landscape 16:9 images fit best (at least {MIN_WIDTH}px wide, JPG/PNG/WebP up to 2 MB) — other proportions are center-cropped to 16:9 automatically.
-                Everything is compressed automatically before upload — roughly 500 KB is stored per
-                image. Credited as{" "}
+                Landscape 16:9 images fit best (at least {MIN_WIDTH}px wide, JPG/PNG/WebP up to 2
+                MB) — other proportions are center-cropped to 16:9 automatically. Everything is
+                compressed automatically before upload — roughly 500 KB is stored per image.
+                Credited as{" "}
                 <span className="font-bold text-foreground">
                   {signedIn ? displayName : "your Discord name"}
                 </span>

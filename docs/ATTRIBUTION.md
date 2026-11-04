@@ -14,6 +14,16 @@ GregTech CEu, or any mod author.
   (`static.wikitide.net`) and remain the property of the GTNH project / their authors.
 - Quality report: `data/gtnh/machines-quality.md`.
 
+## Starting wallpapers
+
+The seeded site wallpapers come from the [GTNH homepage showcase](https://www.gtnewhorizons.com/)
+(center-cropped to 16:9 and compressed for use here). Credits, in carousel order:
+Mountain — iLex · Steam Engineering — Li Muli · Rocket Museum — Audacter ·
+GoodVibes™ Stargate Base — Salsa, MimiKe & duck · Light of the New Age — Semetix, Bl1nkle, Tbone,
+lui993 & P_A_JN · Indescribable Tentacle — Suber · ZPM Base — Flaxo ·
+Forge Of The Gods — Qian Jia · Stargate — Repeating Cat.
+Their credit badges link back to gtnewhorizons.com.
+
 ## Fonts
 
 - [VT323](https://fonts.google.com/specimen/VT323) — SIL Open Font License 1.1, served

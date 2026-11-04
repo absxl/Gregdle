@@ -99,7 +99,9 @@ export function BackgroundLayer() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/10 to-black/55" />
       {/* Cycling credit for the artist — links to their profile. */}
       <a
-        href={`/u/${encodeURIComponent(current.author)}`}
+        href={current.sourceUrl ?? `/u/${encodeURIComponent(current.author)}`}
+        target={current.sourceUrl ? "_blank" : undefined}
+        rel={current.sourceUrl ? "noreferrer" : undefined}
         className="pointer-events-auto absolute bottom-1 left-2 z-0 text-[10px] font-semibold text-white/30 hover:text-white/70"
         title={current.title ? `${current.title} — by ${current.author}` : `by ${current.author}`}
       >
