@@ -42,8 +42,16 @@ function KoFiWidget() {
   return (
     <>
       <style>{`
-        #kofi-widget-container { bottom: 44px !important; right: 16px !important; left: auto !important; }
-        .kofi-floating-chat { bottom: 44px !important; right: 16px !important; left: auto !important; }
+        #kofi-widget-container,
+        .kofi-widget-overlay,
+        .kofi-floating-chat,
+        #kofi-overlay-widget,
+        [id^="kofi"] {
+          bottom: 24px !important;
+          right: 16px !important;
+          left: auto !important;
+          top: auto !important;
+        }
       `}</style>
       <Script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js" strategy="lazyOnload" />
       <Script id="kofi-overlay" strategy="lazyOnload">
