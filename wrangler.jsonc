@@ -1,0 +1,25 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "main": ".open-next/worker.js",
+  "name": "gregdle",
+  "compatibility_date": "2026-11-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS",
+  },
+  // Public-by-design values (Supabase publishable key). The server-only
+  // SUPABASE_SECRET_KEY lives exclusively as a dashboard Secret and must
+  // never be committed here.
+  "vars": {
+    "NEXT_PUBLIC_SUPABASE_URL": "https://qmpuabzpngewbhxwshzf.supabase.co",
+    "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY": "sb_publishable_zWVaKDqDOf9BIYJ8imFmhA_zMmoumNl",
+  },
+  "observability": {
+    "logs": {
+      "enabled": true,
+      "invocation_logs": true,
+      "persist": true,
+    },
+  },
+}

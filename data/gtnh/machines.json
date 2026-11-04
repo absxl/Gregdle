@@ -1,0 +1,5477 @@
+{
+  "dataset": "gtnh:machines",
+  "snapshotVersion": "GTNH 2.9 (wiki default render, 2026-11-03)",
+  "scrapedAt": "2026-11-04T09:02:39.416Z",
+  "source": "https://wiki.gtnewhorizons.com",
+  "entries": [
+    {
+      "id": "absolute-baryonic-perfection-purification-unit",
+      "name": "Absolute Baryonic Perfection Purification Unit",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/c/c7/BPU.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Absolute_Baryonic_Perfection_Purification_Unit",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UEV",
+        "structure": "multiblock",
+        "size": {
+          "l": 17,
+          "w": 17,
+          "h": 17
+        },
+        "functionCategory": "ore-processing",
+        "functionTypeRaw": "Purification Unit",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "active-transformer",
+      "name": "Active Transformer",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/8/8b/ActiveTransformer.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Active_Transformer",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "ZPM",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 3
+        },
+        "functionCategory": "power-infrastructure",
+        "functionTypeRaw": "Active Transformer",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "advanced-alchemical-furnace",
+      "name": "Advanced Alchemical Furnace",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/5/56/AAF.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Advanced_Alchemical_Furnace",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "HV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 2
+        },
+        "functionCategory": "smelting-alloying",
+        "functionTypeRaw": "Essentia Smeltery",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "advanced-assembly-line",
+      "name": "Advanced Assembly Line",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/c/c7/AssemblyLine.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Advanced_Assembly_Line",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 5,
+          "h": 4
+        },
+        "functionCategory": "assembly-crafting",
+        "functionTypeRaw": "Assembly Line",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: unique",
+          "papercraft model"
+        ],
+        "pollution": null
+      },
+      "flagged": true,
+      "flagReason": "approximate size (wiki states a range, minimum used: 3 x 5-16 x 4)"
+    },
+    {
+      "id": "advanced-coke-oven",
+      "name": "Advanced Coke Oven",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/0/09/ACO.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Advanced_Coke_Oven",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "MV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 4
+        },
+        "functionCategory": "smelting-alloying",
+        "functionTypeRaw": "Coke Oven",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": 80
+      },
+      "flagged": false
+    },
+    {
+      "id": "algae-farm",
+      "name": "Algae Farm",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/1/12/AlgaeFarm2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Algae_Farm",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "MV",
+        "structure": "multiblock",
+        "size": {
+          "l": 10,
+          "w": 3,
+          "h": 6
+        },
+        "functionCategory": "farming-breeding",
+        "functionTypeRaw": "Algae Farm",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: unique"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "alloy-blast-smelter",
+      "name": "Alloy Blast Smelter",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/4/4c/ABS.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Alloy_Blast_Smelter",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 4
+        },
+        "functionCategory": "smelting-alloying",
+        "functionTypeRaw": "Fluid Alloy Cooker",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 200
+      },
+      "flagged": false
+    },
+    {
+      "id": "alveary",
+      "name": "Alveary",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/f/f5/2025-05-26_10.08.53.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Alveary",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "MV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 4,
+          "h": 3
+        },
+        "functionCategory": "farming-breeding",
+        "functionTypeRaw": "Bee Housing",
+        "energyHatches": "Optional Alveary Transmission",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "amazon-warehousing-depot",
+      "name": "Amazon Warehousing Depot",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/e/e7/AWD2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Amazon_Warehousing_Depot",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 5,
+          "h": 3
+        },
+        "functionCategory": "assembly-crafting",
+        "functionTypeRaw": "Packager, Unpackager",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 40
+      },
+      "flagged": false
+    },
+    {
+      "id": "assembly-line",
+      "name": "Assembly Line",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/c/c7/AssemblyLine.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Assembly_Line",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 5,
+          "h": 4
+        },
+        "functionCategory": "assembly-crafting",
+        "functionTypeRaw": "Assembly Line",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect",
+          "papercraft model"
+        ],
+        "pollution": null
+      },
+      "flagged": true,
+      "flagReason": "approximate size (wiki states a range, minimum used: 3 x 5-16 x 4)"
+    },
+    {
+      "id": "bacterial-vat",
+      "name": "Bacterial Vat",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/b/b8/BacterialVat.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Bacterial_Vat",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "HV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 5,
+          "h": 4
+        },
+        "functionCategory": "farming-breeding",
+        "functionTypeRaw": "Bacterial Vat",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "beam-crafter",
+      "name": "Beam Crafter",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/0/09/BeamCrafter.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Beam_Crafter",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UV",
+        "structure": "multiblock",
+        "size": {
+          "l": 11,
+          "w": 17,
+          "h": 5
+        },
+        "functionCategory": "assembly-crafting",
+        "functionTypeRaw": "Beam Crafter",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "beam-splitter",
+      "name": "Beam Splitter",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/3/33/BeamSplitter.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Beam_Splitter",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UV",
+        "structure": "multiblock",
+        "size": {
+          "l": 9,
+          "w": 9,
+          "h": 3
+        },
+        "functionCategory": "utility-special",
+        "functionTypeRaw": "Beam Splitter",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "beam-stabilizer",
+      "name": "Beam Stabilizer",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/4/45/BeamStabilizer.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Beam_Stabilizer",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UV",
+        "structure": "multiblock",
+        "size": {
+          "l": 11,
+          "w": 7,
+          "h": 7
+        },
+        "functionCategory": "utility-special",
+        "functionTypeRaw": "Beam Stabilizer",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "big-barrel-brewery",
+      "name": "Big Barrel Brewery",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/f/fa/BBB.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Big_Barrel_Brewery",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "HV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 5
+        },
+        "functionCategory": "fluid-chemical",
+        "functionTypeRaw": "Brewery",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "boldarnator",
+      "name": "Boldarnator",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/8/87/Boldarnator2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Boldarnator",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 7,
+          "h": 5
+        },
+        "functionCategory": "extraction",
+        "functionTypeRaw": "Rock Breaker",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 100
+      },
+      "flagged": false
+    },
+    {
+      "id": "bose-einstein-condensate-containment-field",
+      "name": "Bose-Einstein Condensate Containment Field",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/5/5b/BEC-Storage.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Bose-Einstein_Condensate_Containment_Field",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UIV",
+        "structure": "multiblock",
+        "size": {
+          "l": 45,
+          "w": 45,
+          "h": 17
+        },
+        "functionCategory": "storage-logistics",
+        "functionTypeRaw": "Entangled Condensate Storage",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "bose-einstein-condensate-entanglement-apparatus",
+      "name": "Bose-Einstein Condensate Entanglement Apparatus",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/a/a0/BEC-Generator.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Bose-Einstein_Condensate_Entanglement_Apparatus",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UIV",
+        "structure": "multiblock",
+        "size": {
+          "l": 34,
+          "w": 19,
+          "h": 19
+        },
+        "functionCategory": "storage-logistics",
+        "functionTypeRaw": "Condensate Entangler, Input Hatch",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "bose-einstein-condensate-maxwell-gate",
+      "name": "Bose-Einstein Condensate Maxwell Gate",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/b/b6/BEC-Diode.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Bose-Einstein_Condensate_Maxwell_Gate",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UIV",
+        "structure": "multiblock",
+        "size": {
+          "l": 11,
+          "w": 17,
+          "h": 11
+        },
+        "functionCategory": "storage-logistics",
+        "functionTypeRaw": "Storage Bus",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "bose-einstein-condensate-observation-array",
+      "name": "Bose-Einstein Condensate Observation Array",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/3/3c/BEC-Assembler.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Bose-Einstein_Condensate_Observation_Array",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UIV",
+        "structure": "multiblock",
+        "size": {
+          "l": 31,
+          "w": 61,
+          "h": 31
+        },
+        "functionCategory": "utility-special",
+        "functionTypeRaw": "Observation Array",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "bose-einstein-condensate-teleportation-node",
+      "name": "Bose-Einstein Condensate Teleportation Node",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/8/8e/BEC-IONode.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Bose-Einstein_Condensate_Teleportation_Node",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UIV",
+        "structure": "multiblock",
+        "size": {
+          "l": 13,
+          "w": 7,
+          "h": 23
+        },
+        "functionCategory": "storage-logistics",
+        "functionTypeRaw": "Input Bus, Output Bus",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "bricked-blast-furnace",
+      "name": "Bricked Blast Furnace",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/d/de/BBF.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Bricked_Blast_Furnace",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "Steam",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 4
+        },
+        "functionCategory": "smelting-alloying",
+        "functionTypeRaw": "Blast Furnace",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": 200
+      },
+      "flagged": false
+    },
+    {
+      "id": "charcoal-pile-igniter",
+      "name": "Charcoal Pile Igniter",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/1/13/CPI.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Charcoal_Pile_Igniter",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "Steam",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 3
+        },
+        "functionCategory": "extraction",
+        "functionTypeRaw": "Charcoal Pile Igniter",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": 100
+      },
+      "flagged": true,
+      "flagReason": "approximate size (wiki states a range, minimum used: 3-13 x 3-13 x 3-7)"
+    },
+    {
+      "id": "circuit-assembly-line",
+      "name": "Circuit Assembly Line",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/8/83/CAL.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Circuit_Assembly_Line",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "LuV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 2,
+          "h": 3
+        },
+        "functionCategory": "assembly-crafting",
+        "functionTypeRaw": "Circuit Assembler",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: perfect"
+        ],
+        "pollution": null
+      },
+      "flagged": true,
+      "flagReason": "approximate size (wiki states a range, minimum used: 3 x 2-7 x 3)"
+    },
+    {
+      "id": "clarifier-purification-unit",
+      "name": "Clarifier Purification Unit",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/f/f3/CPU.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Clarifier_Purification_Unit",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "LuV",
+        "structure": "multiblock",
+        "size": {
+          "l": 11,
+          "w": 11,
+          "h": 4
+        },
+        "functionCategory": "ore-processing",
+        "functionTypeRaw": "Purification Unit",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "cleanroom",
+      "name": "Cleanroom",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/3/36/Cleanroom.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Cleanroom",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "HV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 4
+        },
+        "functionCategory": "utility-special",
+        "functionTypeRaw": "Cleanroom",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": true,
+      "flagReason": "approximate size (wiki states a range, minimum used: 3-15 x 3-15 x 4-15)"
+    },
+    {
+      "id": "coke-oven",
+      "name": "Coke Oven",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/f/ff/CokeOven2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Coke_Oven",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "Stone",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 3
+        },
+        "functionCategory": "smelting-alloying",
+        "functionTypeRaw": "Coke Oven",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": 10
+      },
+      "flagged": false
+    },
+    {
+      "id": "compact-fusion-reactor",
+      "name": "Compact Fusion Reactor",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/8/81/Compact-T1.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Compact_Fusion_Reactor",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "LuV",
+        "structure": "multiblock",
+        "size": {
+          "l": 47,
+          "w": 47,
+          "h": 7
+        },
+        "functionCategory": "power-generation",
+        "functionTypeRaw": "Fusion Reactor",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: perfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "component-assembly-line",
+      "name": "Component Assembly Line",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/7/78/CoAL.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Component_Assembly_Line",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UV",
+        "structure": "multiblock",
+        "size": {
+          "l": 33,
+          "w": 9,
+          "h": 10
+        },
+        "functionCategory": "assembly-crafting",
+        "functionTypeRaw": "High-Capacity Component Assembler",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: mixed"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "concrete-backfiller",
+      "name": "Concrete Backfiller",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/4/47/ConcreteBackfiller-T1.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Concrete_Backfiller",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "MV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 7
+        },
+        "functionCategory": "solid-processing",
+        "functionTypeRaw": "Concrete Backfiller",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "coolant-tower",
+      "name": "Coolant Tower",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/a/a4/CoolantTower.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Coolant_Tower",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "EV",
+        "structure": "multiblock",
+        "size": {
+          "l": 11,
+          "w": 11,
+          "h": 13
+        },
+        "functionCategory": "power-infrastructure",
+        "functionTypeRaw": "Coolant Tower",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "cryogenic-freezer",
+      "name": "Cryogenic Freezer",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/3/3f/CryogenicFreezer2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Cryogenic_Freezer",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 7,
+          "w": 5,
+          "h": 4
+        },
+        "functionCategory": "smelting-alloying",
+        "functionTypeRaw": "Vacuum Freezer",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 500
+      },
+      "flagged": false
+    },
+    {
+      "id": "cyclotron",
+      "name": "Cyclotron",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/e/e9/Cyclotron.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Cyclotron",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "LuV",
+        "structure": "multiblock",
+        "size": {
+          "l": 15,
+          "w": 15,
+          "h": 3
+        },
+        "functionCategory": "utility-special",
+        "functionTypeRaw": "Particle Accelerator",
+        "energyHatches": "Standard",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "dangote-distillus",
+      "name": "Dangote Distillus",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/f/f4/Dangote.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Dangote_Distillus",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 3
+        },
+        "functionCategory": "fluid-chemical",
+        "functionTypeRaw": "Distillery",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 480
+      },
+      "flagged": true,
+      "flagReason": "approximate size (wiki states a range, minimum used: 3 x 3 x 3-12)"
+    },
+    {
+      "id": "data-bank",
+      "name": "Data Bank",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/5/5a/DataBank.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Data_Bank",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "ZPM",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 5,
+          "h": 3
+        },
+        "functionCategory": "utility-special",
+        "functionTypeRaw": "Data Bank",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "decay-warehouse",
+      "name": "Decay Warehouse",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/1/10/DecayWarehouse.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Decay_Warehouse",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 5,
+          "h": 3
+        },
+        "functionCategory": "storage-logistics",
+        "functionTypeRaw": "Decay Warehouse",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "deep-earth-heating-pump",
+      "name": "Deep Earth Heating Pump",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/4/49/DEHP.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Deep_Earth_Heating_Pump",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 7
+        },
+        "functionCategory": "extraction",
+        "functionTypeRaw": "Geothermal Heat Pump",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "density-2",
+      "name": "Density^2",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/d/d8/Density2%5E2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Density_2",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 7,
+          "w": 7,
+          "h": 9
+        },
+        "functionCategory": "part-fabrication",
+        "functionTypeRaw": "Implosion Compressor",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 5000
+      },
+      "flagged": false
+    },
+    {
+      "id": "digester",
+      "name": "Digester",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/3/31/Digester.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Digester",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 7,
+          "w": 7,
+          "h": 4
+        },
+        "functionCategory": "fluid-chemical",
+        "functionTypeRaw": "Digester",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: perfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "dimensionally-transcendent-plasma-forge",
+      "name": "Dimensionally Transcendent Plasma Forge",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/f/f2/DTPF.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Dimensionally_Transcendent_Plasma_Forge",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UEV",
+        "structure": "multiblock",
+        "size": {
+          "l": 33,
+          "w": 33,
+          "h": 24
+        },
+        "functionCategory": "smelting-alloying",
+        "functionTypeRaw": "Plasma Forge",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: mixed"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "dissection-apparatus",
+      "name": "Dissection Apparatus",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/1/15/DissectionApparatus.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Dissection_Apparatus",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "HV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 5,
+          "h": 5
+        },
+        "functionCategory": "solid-processing",
+        "functionTypeRaw": "Extractor",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "dissolution-tank",
+      "name": "Dissolution Tank",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/0/0f/Dissolution_Tank.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Dissolution_Tank",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "EV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 5,
+          "h": 5
+        },
+        "functionCategory": "storage-logistics",
+        "functionTypeRaw": "Dissolution Tank",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "distillation-tower",
+      "name": "Distillation Tower",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/a/a8/DistillationTower.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Distillation_Tower",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "HV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 3
+        },
+        "functionCategory": "fluid-chemical",
+        "functionTypeRaw": "Distillery",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect",
+          "papercraft model"
+        ],
+        "pollution": null
+      },
+      "flagged": true,
+      "flagReason": "approximate size (wiki states a range, minimum used: 3 x 3 x 3-12)"
+    },
+    {
+      "id": "draconic-evolution-fusion-crafter",
+      "name": "Draconic Evolution Fusion Crafter",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/a/a9/DEFC-T1.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Draconic_Evolution_Fusion_Crafter",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UHV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 5,
+          "h": 10
+        },
+        "functionCategory": "assembly-crafting",
+        "functionTypeRaw": "Fusion Crafter",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: mixed"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "draconic-reactor",
+      "name": "Draconic Reactor",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/3/3b/DraconicReactor.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Draconic_Reactor",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UIV",
+        "structure": "multiblock",
+        "size": {
+          "l": 9,
+          "w": 9,
+          "h": 9
+        },
+        "functionCategory": "power-generation",
+        "functionTypeRaw": "Chaos Reactor",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": true,
+      "flagReason": "approximate size (wiki states a range, minimum used: 9-17 x 9-17 x 9-17)"
+    },
+    {
+      "id": "drone-centre",
+      "name": "Drone Centre",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/e/e9/DroneCentre2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Drone_Centre",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 11,
+          "w": 11,
+          "h": 4
+        },
+        "functionCategory": "utility-special",
+        "functionTypeRaw": "Drone Centre",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "dyson-swarm-ground-unit",
+      "name": "Dyson Swarm Ground Unit",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/9/92/Dyson.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Dyson_Swarm_Ground_Unit",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UIV",
+        "structure": "multiblock",
+        "size": {
+          "l": 16,
+          "w": 16,
+          "h": 20
+        },
+        "functionCategory": "utility-special",
+        "functionTypeRaw": "Dyson Swarm",
+        "energyHatches": null,
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "electric-air-filter",
+      "name": "Electric Air Filter",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/d/d8/EAFT1.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Electric_Air_Filter",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "LV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 4
+        },
+        "functionCategory": "utility-special",
+        "functionTypeRaw": "Air Filter",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "electric-blast-furnace",
+      "name": "Electric Blast Furnace",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/4/4c/EBF.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Electric_Blast_Furnace",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "LV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 4
+        },
+        "functionCategory": "smelting-alloying",
+        "functionTypeRaw": "Blast Furnace",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect",
+          "papercraft model"
+        ],
+        "pollution": 400
+      },
+      "flagged": false
+    },
+    {
+      "id": "electric-implosion-compressor",
+      "name": "Electric Implosion Compressor",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/4/43/EIC.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Electric_Implosion_Compressor",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UHV",
+        "structure": "multiblock",
+        "size": {
+          "l": 7,
+          "w": 15,
+          "h": 7
+        },
+        "functionCategory": "part-fabrication",
+        "functionTypeRaw": "Implosion Compressor",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "elemental-duplicator",
+      "name": "Elemental Duplicator",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/a/a0/ElementalDuplicator.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Elemental_Duplicator",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "ZPM",
+        "structure": "multiblock",
+        "size": {
+          "l": 9,
+          "w": 9,
+          "h": 6
+        },
+        "functionCategory": "utility-special",
+        "functionTypeRaw": "Replicator",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: perfect"
+        ],
+        "pollution": 1000
+      },
+      "flagged": false
+    },
+    {
+      "id": "ender-quarry",
+      "name": "Ender Quarry",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/3/3c/EQ.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Ender_Quarry",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "LuV",
+        "structure": "single",
+        "size": {
+          "l": 1,
+          "w": 1,
+          "h": 1
+        },
+        "functionCategory": "extraction",
+        "functionTypeRaw": "Miner",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": true,
+      "flagReason": "approximate size (wiki states a range, minimum used: 1-3 x 1-3 x 1-3)"
+    },
+    {
+      "id": "endothermic-fridge",
+      "name": "Endothermic Fridge",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/d/d4/EnF-T1.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Endothermic_Fridge",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "ZPM",
+        "structure": "multiblock",
+        "size": {
+          "l": 23,
+          "w": 23,
+          "h": 16
+        },
+        "functionCategory": "smelting-alloying",
+        "functionTypeRaw": "Vacuum Freezer",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "energy-infuser",
+      "name": "Energy Infuser",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/2/29/EnergyInfuser.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Energy_Infuser",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "ZPM",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 5
+        },
+        "functionCategory": "utility-special",
+        "functionTypeRaw": "Restorer",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "example-multiblock",
+      "name": "Example Multiblock",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/6/61/LPF.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Example_Multiblock",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 3
+        },
+        "functionCategory": "utility-special",
+        "functionTypeRaw": "Wiki Fabricator",
+        "energyHatches": "Standard",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 400
+      },
+      "flagged": false
+    },
+    {
+      "id": "exo-foundry",
+      "name": "Exo-Foundry",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/2/2b/ExoFoundry-T1.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Exo-Foundry",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UEV",
+        "structure": "multiblock",
+        "size": {
+          "l": 15,
+          "w": 15,
+          "h": 55
+        },
+        "functionCategory": "fluid-chemical",
+        "functionTypeRaw": "Fluid Solidifier",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: unique"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "exothermic-hearth",
+      "name": "Exothermic Hearth",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/1/1e/ExH.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Exothermic_Hearth",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "ZPM",
+        "structure": "multiblock",
+        "size": {
+          "l": 23,
+          "w": 23,
+          "h": 43
+        },
+        "functionCategory": "smelting-alloying",
+        "functionTypeRaw": "Blast Furnace",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: mixed"
+        ],
+        "pollution": 102400
+      },
+      "flagged": false
+    },
+    {
+      "id": "extreme-combustion-engine",
+      "name": "Extreme Combustion Engine",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/3/3b/ECE2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Extreme_Combustion_Engine",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 10,
+          "h": 5
+        },
+        "functionCategory": "power-generation",
+        "functionTypeRaw": "Combustion Generator",
+        "energyHatches": null,
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": 3840
+      },
+      "flagged": false
+    },
+    {
+      "id": "extreme-entity-crusher",
+      "name": "Extreme Entity Crusher",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/a/a2/EEC.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Extreme_Entity_Crusher",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "EV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 5,
+          "h": 7
+        },
+        "functionCategory": "farming-breeding",
+        "functionTypeRaw": "Powered Spawner",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: perfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "extreme-heat-exchanger",
+      "name": "Extreme Heat Exchanger",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/1/16/EHE.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Extreme_Heat_Exchanger",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "LuV",
+        "structure": "multiblock",
+        "size": {
+          "l": 11,
+          "w": 5,
+          "h": 6
+        },
+        "functionCategory": "fluid-chemical",
+        "functionTypeRaw": "Heat Exchanger",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "extreme-industrial-greenhouse",
+      "name": "Extreme Industrial Greenhouse",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/e/ec/EIG2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Extreme_Industrial_Greenhouse",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 9,
+          "w": 7,
+          "h": 7
+        },
+        "functionCategory": "farming-breeding",
+        "functionTypeRaw": "Crop Farm",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "extreme-temperature-fluctuation-purification-unit",
+      "name": "Extreme Temperature Fluctuation Purification Unit",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/8/8b/ETFPU.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Extreme_Temperature_Fluctuation_Purification_Unit",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UV",
+        "structure": "multiblock",
+        "size": {
+          "l": 15,
+          "w": 23,
+          "h": 15
+        },
+        "functionCategory": "ore-processing",
+        "functionTypeRaw": "Purification Unit",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "exxonmobil-chemical-plant",
+      "name": "ExxonMobil Chemical Plant",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/6/6b/ChemPlant.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/ExxonMobil_Chemical_Plant",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "MV",
+        "structure": "multiblock",
+        "size": {
+          "l": 7,
+          "w": 7,
+          "h": 7
+        },
+        "functionCategory": "fluid-chemical",
+        "functionTypeRaw": "Chemical Plant",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "eye-of-harmony",
+      "name": "Eye of Harmony",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/8/8f/EOH.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Eye_of_Harmony",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UMV",
+        "structure": "multiblock",
+        "size": {
+          "l": 33,
+          "w": 33,
+          "h": 33
+        },
+        "functionCategory": "utility-special",
+        "functionTypeRaw": "Spacetime Manipulator",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: unique"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "flocculation-purification-unit",
+      "name": "Flocculation Purification Unit",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/9/92/FPU.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Flocculation_Purification_Unit",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "ZPM",
+        "structure": "multiblock",
+        "size": {
+          "l": 8,
+          "w": 9,
+          "h": 5
+        },
+        "functionCategory": "ore-processing",
+        "functionTypeRaw": "Purification Unit",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "flotation-cell-regulator",
+      "name": "Flotation Cell Regulator",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/3/3c/FCR2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Flotation_Cell_Regulator",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "LuV",
+        "structure": "multiblock",
+        "size": {
+          "l": 11,
+          "w": 11,
+          "h": 5
+        },
+        "functionCategory": "ore-processing",
+        "functionTypeRaw": "Flotation Cell",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: perfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "fluid-reactor",
+      "name": "Fluid Reactor",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/6/68/FluidReactor-Exterior.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Fluid_Reactor",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "EV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 5,
+          "h": 5
+        },
+        "functionCategory": "power-generation",
+        "functionTypeRaw": "Nuclear Reactor",
+        "energyHatches": null,
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "fluid-shaper",
+      "name": "Fluid Shaper",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/f/f6/FluidShaper.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Fluid_Shaper",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 9,
+          "h": 5
+        },
+        "functionCategory": "fluid-chemical",
+        "functionTypeRaw": "Fluid Solidifier",
+        "energyHatches": "Standard",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": true,
+      "flagReason": "approximate size (wiki states a range, minimum used: 5 x 9-33 x 5)"
+    },
+    {
+      "id": "forge-of-the-gods",
+      "name": "Forge of the Gods",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/d/da/Forge_of_the_Gods.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Forge_of_the_Gods",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UIV",
+        "structure": "multiblock",
+        "size": {
+          "l": 186,
+          "w": 127,
+          "h": 29
+        },
+        "functionCategory": "utility-special",
+        "functionTypeRaw": "Stellar Forge",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "fountain-of-alchemy",
+      "name": "Fountain of Alchemy",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/9/97/AlchemyFountain.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Fountain_of_Alchemy",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "EV",
+        "structure": "multiblock",
+        "size": {
+          "l": 7,
+          "w": 5,
+          "h": 3
+        },
+        "functionCategory": "utility-special",
+        "functionTypeRaw": "Alchemy Catalyst mana pool",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "fountain-of-conjuration",
+      "name": "Fountain of Conjuration",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/c/cd/ConjurationFountain.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Fountain_of_Conjuration",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 7,
+          "w": 5,
+          "h": 3
+        },
+        "functionCategory": "utility-special",
+        "functionTypeRaw": "Conjuration Catalyst mana pool",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "fusion-reactor",
+      "name": "Fusion Reactor",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/a/ab/FusionReactorT1.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Fusion_Reactor",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "LuV",
+        "structure": "multiblock",
+        "size": {
+          "l": 15,
+          "w": 15,
+          "h": 3
+        },
+        "functionCategory": "power-generation",
+        "functionTypeRaw": "Fusion Reactor",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: perfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "high-energy-laser-purification-unit",
+      "name": "High Energy Laser Purification Unit",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/6/65/LPU.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/High_Energy_Laser_Purification_Unit",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UV",
+        "structure": "multiblock",
+        "size": {
+          "l": 9,
+          "w": 13,
+          "h": 9
+        },
+        "functionCategory": "ore-processing",
+        "functionTypeRaw": "Purification Unit",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "high-temperature-gas-cooled-reactor",
+      "name": "High Temperature Gas-Cooled Reactor",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/c/c4/HTGR.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/High_Temperature_Gas-Cooled_Reactor",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 16,
+          "w": 27,
+          "h": 15
+        },
+        "functionCategory": "power-generation",
+        "functionTypeRaw": "Breeder Reactor",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "hot-isostatic-pressurization-unit",
+      "name": "Hot Isostatic Pressurization Unit",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/a/a2/HIP.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Hot_Isostatic_Pressurization_Unit",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "ZPM",
+        "structure": "multiblock",
+        "size": {
+          "l": 7,
+          "w": 15,
+          "h": 10
+        },
+        "functionCategory": "solid-processing",
+        "functionTypeRaw": "Compressor",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "hyper-intensity-laser-engraver",
+      "name": "Hyper-Intensity Laser Engraver",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/d/d7/HILE.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Hyper-Intensity_Laser_Engraver",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 5,
+          "h": 5
+        },
+        "functionCategory": "assembly-crafting",
+        "functionTypeRaw": "Laser Engraver",
+        "energyHatches": "Regular, Multi-Amp",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "implosion-compressor",
+      "name": "Implosion Compressor",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/5/54/ImplosionCompressor.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Implosion_Compressor",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "HV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 3
+        },
+        "functionCategory": "part-fabrication",
+        "functionTypeRaw": "Implosion Compressor",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 10000
+      },
+      "flagged": false
+    },
+    {
+      "id": "industrial-3d-copying-machine",
+      "name": "Industrial 3D Copying Machine",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/8/80/IndustrialChisel.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Industrial_3D_Copying_Machine",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "EV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 7,
+          "h": 5
+        },
+        "functionCategory": "solid-processing",
+        "functionTypeRaw": "Chisel",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 50
+      },
+      "flagged": false
+    },
+    {
+      "id": "industrial-apicultural-acclimatiser-and-drone-domestication-station",
+      "name": "Industrial Apicultural Acclimatiser and Drone Domestication Station",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/f/f2/MegaApiary.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Industrial_Apicultural_Acclimatiser_and_Drone_Domestication_Station",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UV",
+        "structure": "multiblock",
+        "size": {
+          "l": 15,
+          "w": 15,
+          "h": 17
+        },
+        "functionCategory": "farming-breeding",
+        "functionTypeRaw": "Apiary",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "industrial-arc-furnace",
+      "name": "Industrial Arc Furnace",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/5/5c/IAF2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Industrial_Arc_Furnace",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "LuV",
+        "structure": "multiblock",
+        "size": {
+          "l": 19,
+          "w": 17,
+          "h": 11
+        },
+        "functionCategory": "smelting-alloying",
+        "functionTypeRaw": "Arc Furnace",
+        "energyHatches": "Regular, Multi-Amp",
+        "extras": [
+          "overclocks: unique"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "industrial-autoclave",
+      "name": "Industrial Autoclave",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/d/da/IndustrialAutoclave.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Industrial_Autoclave",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "LuV",
+        "structure": "multiblock",
+        "size": {
+          "l": 9,
+          "w": 7,
+          "h": 7
+        },
+        "functionCategory": "solid-processing",
+        "functionTypeRaw": "Autoclave",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "industrial-bending-machine",
+      "name": "Industrial Bending Machine",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/e/ed/IndustrialBendingMachine.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Industrial_Bending_Machine",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "EV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 6,
+          "h": 3
+        },
+        "functionCategory": "part-fabrication",
+        "functionTypeRaw": "Bending Machine",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 480
+      },
+      "flagged": false
+    },
+    {
+      "id": "industrial-centrifuge",
+      "name": "Industrial Centrifuge",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/c/c2/IndustrialCentrifuge2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Industrial_Centrifuge",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "EV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 5,
+          "h": 5
+        },
+        "functionCategory": "ore-processing",
+        "functionTypeRaw": "Centrifuge",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 300
+      },
+      "flagged": false
+    },
+    {
+      "id": "industrial-chemical-bath",
+      "name": "Industrial Chemical Bath",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/c/c2/ICB.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Industrial_Chemical_Bath",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 5,
+          "h": 4
+        },
+        "functionCategory": "fluid-chemical",
+        "functionTypeRaw": "Chemical Bath",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 400
+      },
+      "flagged": false
+    },
+    {
+      "id": "industrial-coke-oven",
+      "name": "Industrial Coke Oven",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/2/23/ICO2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Industrial_Coke_Oven",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "EV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 6,
+          "h": 7
+        },
+        "functionCategory": "smelting-alloying",
+        "functionTypeRaw": "Coke Oven",
+        "energyHatches": "Regular, Multi-Amp",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 80
+      },
+      "flagged": true,
+      "flagReason": "approximate size (wiki states a range, minimum used: 5 x 6-36 x 7)"
+    },
+    {
+      "id": "industrial-cutting-factory",
+      "name": "Industrial Cutting Factory",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/f/fa/ICF-T1.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Industrial_Cutting_Factory",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 9,
+          "h": 4
+        },
+        "functionCategory": "part-fabrication",
+        "functionTypeRaw": "Cutting Machine",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 160
+      },
+      "flagged": false
+    },
+    {
+      "id": "industrial-electrolyzer",
+      "name": "Industrial Electrolyzer",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/2/21/IndustrialElectrolyzer2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Industrial_Electrolyzer",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 5,
+          "h": 5
+        },
+        "functionCategory": "fluid-chemical",
+        "functionTypeRaw": "Electrolyzer",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 300
+      },
+      "flagged": false
+    },
+    {
+      "id": "industrial-extrusion-machine",
+      "name": "Industrial Extrusion Machine",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/9/94/IEM2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Industrial_Extrusion_Machine",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 4,
+          "w": 9,
+          "h": 4
+        },
+        "functionCategory": "part-fabrication",
+        "functionTypeRaw": "Extruder",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 1000
+      },
+      "flagged": false
+    },
+    {
+      "id": "industrial-farm",
+      "name": "Industrial Farm",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/6/61/IndustrialFarm.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Industrial_Farm",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "MV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 5,
+          "h": 4
+        },
+        "functionCategory": "farming-breeding",
+        "functionTypeRaw": "Industrial Crop Cultivator",
+        "energyHatches": "Regular, Multi-Amp",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": true,
+      "flagReason": "approximate size (wiki states a range, minimum used: 3-14 x 5 x 4)"
+    },
+    {
+      "id": "industrial-forming-press",
+      "name": "Industrial Forming Press",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/d/d8/IndustrialFormingPress.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Industrial_Forming_Press",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "EV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 5,
+          "h": 5
+        },
+        "functionCategory": "part-fabrication",
+        "functionTypeRaw": "Forming Press",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 240
+      },
+      "flagged": false
+    },
+    {
+      "id": "industrial-material-press",
+      "name": "Industrial Material Press",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/4/44/IMP.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Industrial_Material_Press",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "EV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 3
+        },
+        "functionCategory": "part-fabrication",
+        "functionTypeRaw": "Bending Machine, Forming Press",
+        "energyHatches": "Standard",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 480240
+      },
+      "flagged": false
+    },
+    {
+      "id": "industrial-mixing-machine",
+      "name": "Industrial Mixing Machine",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/6/66/IMM2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Industrial_Mixing_Machine",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 5,
+          "h": 7
+        },
+        "functionCategory": "fluid-chemical",
+        "functionTypeRaw": "Mixer",
+        "energyHatches": "Regular, Multi-Amp",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 800
+      },
+      "flagged": false
+    },
+    {
+      "id": "industrial-precision-lathe",
+      "name": "Industrial Precision Lathe",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/3/35/IPL.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Industrial_Precision_Lathe",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "EV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 7,
+          "h": 5
+        },
+        "functionCategory": "part-fabrication",
+        "functionTypeRaw": "Lathe",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "industrial-sledgehammer",
+      "name": "Industrial Sledgehammer",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/a/af/IndustrialSledgeHammer2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Industrial_Sledgehammer",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 5,
+          "h": 9
+        },
+        "functionCategory": "solid-processing",
+        "functionTypeRaw": "Forge Hammer",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 250
+      },
+      "flagged": false
+    },
+    {
+      "id": "industrial-wire-factory",
+      "name": "Industrial Wire Factory",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/1/1f/IWF2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Industrial_Wire_Factory",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 7,
+          "h": 3
+        },
+        "functionCategory": "part-fabrication",
+        "functionTypeRaw": "Wiremill",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 100
+      },
+      "flagged": false
+    },
+    {
+      "id": "integrated-ore-factory",
+      "name": "Integrated Ore Factory",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/6/64/IOF2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Integrated_Ore_Factory",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UHV",
+        "structure": "multiblock",
+        "size": {
+          "l": 13,
+          "w": 15,
+          "h": 9
+        },
+        "functionCategory": "ore-processing",
+        "functionTypeRaw": "Ore Processor",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "isamill-grinding-machine",
+      "name": "IsaMill Grinding Machine",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/d/d6/IGM.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/IsaMill_Grinding_Machine",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "LuV",
+        "structure": "multiblock",
+        "size": {
+          "l": 7,
+          "w": 3,
+          "h": 3
+        },
+        "functionCategory": "part-fabrication",
+        "functionTypeRaw": "Grinding Machine",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: perfect"
+        ],
+        "pollution": 1280
+      },
+      "flagged": false
+    },
+    {
+      "id": "lapotronic-supercapacitor",
+      "name": "Lapotronic Supercapacitor",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/b/b9/LSC.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Lapotronic_Supercapacitor",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "EV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 5,
+          "h": 4
+        },
+        "functionCategory": "storage-logistics",
+        "functionTypeRaw": "Energy Storage",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": true,
+      "flagReason": "approximate size (wiki states a range, minimum used: 5 x 5 x 4-50)"
+    },
+    {
+      "id": "large-boiler",
+      "name": "Large Boiler",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/4/47/LargeBoiler2-T1.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Large_Boiler",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "MV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 5,
+          "h": 6
+        },
+        "functionCategory": "power-generation",
+        "functionTypeRaw": "Boiler",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": 2004008001600
+      },
+      "flagged": false
+    },
+    {
+      "id": "large-chemical-reactor",
+      "name": "Large Chemical Reactor",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/6/6e/LCR.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Large_Chemical_Reactor",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "HV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 3
+        },
+        "functionCategory": "fluid-chemical",
+        "functionTypeRaw": "Chemical Reactor",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: perfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "large-combustion-engine",
+      "name": "Large Combustion Engine",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/d/de/LCE2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Large_Combustion_Engine",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "EV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 8,
+          "h": 3
+        },
+        "functionCategory": "power-generation",
+        "functionTypeRaw": "Combustion Generator",
+        "energyHatches": null,
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": 480
+      },
+      "flagged": false
+    },
+    {
+      "id": "large-electric-compressor",
+      "name": "Large Electric Compressor",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/8/80/LEC.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Large_Electric_Compressor",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "EV",
+        "structure": "multiblock",
+        "size": {
+          "l": 7,
+          "w": 7,
+          "h": 8
+        },
+        "functionCategory": "solid-processing",
+        "functionTypeRaw": "Compressor",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "large-essentia-smeltery",
+      "name": "Large Essentia Smeltery",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/b/bc/LES.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Large_Essentia_Smeltery",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 5,
+          "h": 5
+        },
+        "functionCategory": "smelting-alloying",
+        "functionTypeRaw": "Essentia Smeltery",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: perfect"
+        ],
+        "pollution": 2200
+      },
+      "flagged": true,
+      "flagReason": "approximate size (wiki states a range, minimum used: 5-9 x 5 x 5)"
+    },
+    {
+      "id": "large-fluid-extractor",
+      "name": "Large Fluid Extractor",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/6/69/LFE.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Large_Fluid_Extractor",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "EV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 5,
+          "h": 9
+        },
+        "functionCategory": "solid-processing",
+        "functionTypeRaw": "Fluid Extractor",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "large-gas-turbine",
+      "name": "Large Gas Turbine",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/f/ff/LGT2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Large_Gas_Turbine",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "EV",
+        "structure": "multiblock",
+        "size": {
+          "l": 6,
+          "w": 3,
+          "h": 3
+        },
+        "functionCategory": "power-generation",
+        "functionTypeRaw": "Gas Turbine",
+        "energyHatches": null,
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": 300
+      },
+      "flagged": false
+    },
+    {
+      "id": "large-hadron-collider",
+      "name": "Large Hadron Collider",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/e/e4/LHC.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Large_Hadron_Collider",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UV",
+        "structure": "multiblock",
+        "size": {
+          "l": 122,
+          "w": 109,
+          "h": 13
+        },
+        "functionCategory": "utility-special",
+        "functionTypeRaw": "Particle Accelerator, Particle Collider",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: unique"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "large-heat-exchanger",
+      "name": "Large Heat Exchanger",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/6/6e/LHE.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Large_Heat_Exchanger",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "EV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 4
+        },
+        "functionCategory": "fluid-chemical",
+        "functionTypeRaw": "Heat Exchanger",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "large-molecular-assembler",
+      "name": "Large Molecular Assembler",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/b/bf/LMA.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Large_Molecular_Assembler",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 5,
+          "h": 5
+        },
+        "functionCategory": "assembly-crafting",
+        "functionTypeRaw": "Molecular Assembler",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "large-naquadah-reactor",
+      "name": "Large Naquadah Reactor",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/6/6e/LNR2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Large_Naquadah_Reactor",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "ZPM",
+        "structure": "multiblock",
+        "size": {
+          "l": 7,
+          "w": 7,
+          "h": 11
+        },
+        "functionCategory": "power-generation",
+        "functionTypeRaw": "Naquadah Reactor",
+        "energyHatches": null,
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "large-neutralization-engine",
+      "name": "Large Neutralization Engine",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/3/3f/LNE-T1.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Large_Neutralization_Engine",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "EV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 11,
+          "h": 7
+        },
+        "functionCategory": "power-generation",
+        "functionTypeRaw": "Acid Generator",
+        "energyHatches": null,
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "large-plasma-turbine",
+      "name": "Large Plasma Turbine",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/e/ee/LPT2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Large_Plasma_Turbine",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "LuV",
+        "structure": "multiblock",
+        "size": {
+          "l": 6,
+          "w": 3,
+          "h": 3
+        },
+        "functionCategory": "power-generation",
+        "functionTypeRaw": "Plasma Turbine",
+        "energyHatches": null,
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "large-scale-auto-assembler-v1-01",
+      "name": "Large Scale Auto-Assembler v1.01",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/2/24/LSAA.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Large_Scale_Auto-Assembler_v1.01",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "ZPM",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 3
+        },
+        "functionCategory": "assembly-crafting",
+        "functionTypeRaw": "Assembler",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 500
+      },
+      "flagged": false
+    },
+    {
+      "id": "large-semifluid-burner",
+      "name": "Large Semifluid Burner",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/d/d3/LSB.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Large_Semifluid_Burner",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "EV",
+        "structure": "multiblock",
+        "size": {
+          "l": 4,
+          "w": 3,
+          "h": 3
+        },
+        "functionCategory": "power-generation",
+        "functionTypeRaw": "Semifluid Generator",
+        "energyHatches": null,
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": 1280
+      },
+      "flagged": false
+    },
+    {
+      "id": "large-sifter",
+      "name": "Large Sifter",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/6/6c/LargeSifter2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Large_Sifter",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "HV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 5,
+          "h": 6
+        },
+        "functionCategory": "ore-processing",
+        "functionTypeRaw": "Sifter",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 40
+      },
+      "flagged": false
+    },
+    {
+      "id": "large-steam-turbine",
+      "name": "Large Steam Turbine",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/6/6f/LST2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Large_Steam_Turbine",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "HV",
+        "structure": "multiblock",
+        "size": {
+          "l": 6,
+          "w": 3,
+          "h": 3
+        },
+        "functionCategory": "power-generation",
+        "functionTypeRaw": "Steam Turbine",
+        "energyHatches": null,
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "large-thermal-refinery",
+      "name": "Large Thermal Refinery",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/1/19/LTR2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Large_Thermal_Refinery",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "EV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 5,
+          "h": 8
+        },
+        "functionCategory": "ore-processing",
+        "functionTypeRaw": "Thermal Centrifuge",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 1000
+      },
+      "flagged": false
+    },
+    {
+      "id": "latex",
+      "name": "LATEX",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/b/b1/LATEX.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/LATEX",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "HV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 5,
+          "h": 8
+        },
+        "functionCategory": "part-fabrication",
+        "functionTypeRaw": "Cable Coater",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "linear-accelerator",
+      "name": "Linear Accelerator",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/e/eb/LINAC.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Linear_Accelerator",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "ZPM",
+        "structure": "multiblock",
+        "size": {
+          "l": 19,
+          "w": 7,
+          "h": 7
+        },
+        "functionCategory": "utility-special",
+        "functionTypeRaw": "Particle Accelerator",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": true,
+      "flagReason": "approximate size (wiki states a range, minimum used: 19-83 x 7 x 7)"
+    },
+    {
+      "id": "liquid-fluoride-thorium-reactor",
+      "name": "Liquid Fluoride Thorium Reactor",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/2/2f/LFTR.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Liquid_Fluoride_Thorium_Reactor",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 7,
+          "w": 7,
+          "h": 4
+        },
+        "functionCategory": "power-generation",
+        "functionTypeRaw": "Reactor",
+        "energyHatches": null,
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": 4000
+      },
+      "flagged": false
+    },
+    {
+      "id": "magnetic-flux-exhibitor",
+      "name": "Magnetic Flux Exhibitor",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/8/8a/MFE.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Magnetic_Flux_Exhibitor",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 7,
+          "w": 7,
+          "h": 6
+        },
+        "functionCategory": "ore-processing",
+        "functionTypeRaw": "Electromagnetic Separator, Polarizer",
+        "energyHatches": "Regular, Multi-Amp",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "mana-fountain",
+      "name": "Mana Fountain",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/2/20/ManaFountain.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Mana_Fountain",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "HV",
+        "structure": "multiblock",
+        "size": {
+          "l": 7,
+          "w": 5,
+          "h": 3
+        },
+        "functionCategory": "utility-special",
+        "functionTypeRaw": "Mana Pool",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "mass-solidifier",
+      "name": "Mass Solidifier",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/5/51/MassSolidifier.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Mass_Solidifier",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 9,
+          "w": 5,
+          "h": 6
+        },
+        "functionCategory": "fluid-chemical",
+        "functionTypeRaw": "Fluid Solidifier",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "matter-fabrication-cpu",
+      "name": "Matter Fabrication CPU",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/f/f9/MatterFabricationCPU.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Matter_Fabrication_CPU",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 5,
+          "h": 4
+        },
+        "functionCategory": "solid-processing",
+        "functionTypeRaw": "Mass Fabricator, Recycler",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: perfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "matter-manipulator-quantum-uplink",
+      "name": "Matter Manipulator Quantum Uplink",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/3/3e/MMQuantumUplink.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Matter_Manipulator_Quantum_Uplink",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UV",
+        "structure": "multiblock",
+        "size": {
+          "l": 9,
+          "w": 9,
+          "h": 9
+        },
+        "functionCategory": "storage-logistics",
+        "functionTypeRaw": "Quantum Uplink",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "mega-alloy-blast-smelter",
+      "name": "Mega Alloy Blast Smelter",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/8/83/MABS.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Mega_Alloy_Blast_Smelter",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UV",
+        "structure": "multiblock",
+        "size": {
+          "l": 11,
+          "w": 11,
+          "h": 20
+        },
+        "functionCategory": "smelting-alloying",
+        "functionTypeRaw": "Alloy Blast Smelter",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 102400
+      },
+      "flagged": false
+    },
+    {
+      "id": "mega-chemical-reactor",
+      "name": "Mega Chemical Reactor",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/9/9d/MCR2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Mega_Chemical_Reactor",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "LuV",
+        "structure": "multiblock",
+        "size": {
+          "l": 9,
+          "w": 5,
+          "h": 5
+        },
+        "functionCategory": "fluid-chemical",
+        "functionTypeRaw": "Chemical Reactor",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: perfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "mega-distillation-tower",
+      "name": "Mega Distillation Tower",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/0/0e/MDT2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Mega_Distillation_Tower",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "LuV",
+        "structure": "multiblock",
+        "size": {
+          "l": 9,
+          "w": 15,
+          "h": 30
+        },
+        "functionCategory": "fluid-chemical",
+        "functionTypeRaw": "Distillery",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": true,
+      "flagReason": "approximate size (wiki states a range, minimum used: 9 x 15 x 30-54)"
+    },
+    {
+      "id": "mega-electric-blast-furnace",
+      "name": "Mega Electric Blast Furnace",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/f/f3/MEBF.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Mega_Electric_Blast_Furnace",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "HV",
+        "structure": "multiblock",
+        "size": {
+          "l": 15,
+          "w": 15,
+          "h": 20
+        },
+        "functionCategory": "smelting-alloying",
+        "functionTypeRaw": "Electric Blast Furnace",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: mixed"
+        ],
+        "pollution": 102400
+      },
+      "flagged": false
+    },
+    {
+      "id": "mega-oil-cracker",
+      "name": "Mega Oil Cracker",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/6/64/MOC2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Mega_Oil_Cracker",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "LuV",
+        "structure": "multiblock",
+        "size": {
+          "l": 9,
+          "w": 13,
+          "h": 8
+        },
+        "functionCategory": "fluid-chemical",
+        "functionTypeRaw": "Cracker",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "mega-vacuum-freezer",
+      "name": "Mega Vacuum Freezer",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/d/db/MVF-T1.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Mega_Vacuum_Freezer",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "HV",
+        "structure": "multiblock",
+        "size": {
+          "l": 15,
+          "w": 15,
+          "h": 15
+        },
+        "functionCategory": "smelting-alloying",
+        "functionTypeRaw": "Vacuum Freezer",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: mixed"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "microwave-grinder",
+      "name": "Microwave Grinder",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/b/b1/MicrowaveGrinder.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Microwave_Grinder",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "HV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 5,
+          "h": 4
+        },
+        "functionCategory": "smelting-alloying",
+        "functionTypeRaw": "Microwave Grinder",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "miniature-wormhole-generator",
+      "name": "Miniature Wormhole Generator",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/b/b6/MWG.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Miniature_Wormhole_Generator",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UHV",
+        "structure": "multiblock",
+        "size": {
+          "l": 7,
+          "w": 7,
+          "h": 7
+        },
+        "functionCategory": "power-generation",
+        "functionTypeRaw": "Wormhole Generator",
+        "energyHatches": "Laser",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "molecular-transformer",
+      "name": "Molecular Transformer",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/8/80/MolecularTransformer2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Molecular_Transformer",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "LuV",
+        "structure": "multiblock",
+        "size": {
+          "l": 7,
+          "w": 7,
+          "h": 9
+        },
+        "functionCategory": "power-infrastructure",
+        "functionTypeRaw": "Molecular Transformer",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 1000
+      },
+      "flagged": false
+    },
+    {
+      "id": "multifarm",
+      "name": "Multifarm",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/5/50/Multifarm.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Multifarm",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "LV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 4
+        },
+        "functionCategory": "farming-breeding",
+        "functionTypeRaw": "Crop Farm",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": true,
+      "flagReason": "approximate size (wiki states a range, minimum used: 3-5 x 3-5 x 4)"
+    },
+    {
+      "id": "multi-smelter",
+      "name": "Multi Smelter",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/f/f0/MultiSmelter.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Multi_Smelter",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "MV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 3
+        },
+        "functionCategory": "smelting-alloying",
+        "functionTypeRaw": "Furnace",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 400
+      },
+      "flagged": false
+    },
+    {
+      "id": "nanochip-assembly-complex",
+      "name": "Nanochip Assembly Complex",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/3/31/NAC.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Nanochip_Assembly_Complex",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UEV",
+        "structure": "multiblock",
+        "size": {
+          "l": 63,
+          "w": 63,
+          "h": 49
+        },
+        "functionCategory": "assembly-crafting",
+        "functionTypeRaw": "Nanochip Assembly Complex",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: perfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "nanosteam-assembly-complex",
+      "name": "Nanosteam Assembly Complex",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/a/a0/NAC-Steam.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Nanosteam_Assembly_Complex",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "Steam",
+        "structure": "multiblock",
+        "size": {
+          "l": 63,
+          "w": 63,
+          "h": 49
+        },
+        "functionCategory": "assembly-crafting",
+        "functionTypeRaw": "Nanosteam Assembly Complex",
+        "energyHatches": "Steam",
+        "extras": [
+          "overclocks: perfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "nano-forge",
+      "name": "Nano Forge",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/b/b8/NanoForgeT1.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Nano_Forge",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UV",
+        "structure": "multiblock",
+        "size": {
+          "l": 41,
+          "w": 41,
+          "h": 52
+        },
+        "functionCategory": "utility-special",
+        "functionTypeRaw": "Nanite Fabricator",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: mixed"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "naquadah-fuel-refinery",
+      "name": "Naquadah Fuel Refinery",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/e/e3/NFR2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Naquadah_Fuel_Refinery",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UHV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 27,
+          "h": 27
+        },
+        "functionCategory": "fluid-chemical",
+        "functionTypeRaw": "Naquadah Fuel Refinery",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: perfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "network-switch-with-qos",
+      "name": "Network Switch with QoS",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/4/46/NetworkSwitch.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Network_Switch_With_QoS",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 3
+        },
+        "functionCategory": "utility-special",
+        "functionTypeRaw": "Network Switch",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "neutronium-compressor",
+      "name": "Neutronium Compressor",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/5/50/NeutroniumCompressor.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Neutronium_Compressor",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UV",
+        "structure": "multiblock",
+        "size": {
+          "l": 11,
+          "w": 11,
+          "h": 11
+        },
+        "functionCategory": "solid-processing",
+        "functionTypeRaw": "Neutronium Compressor",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "nuclear-reactor",
+      "name": "Nuclear Reactor",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/6/64/NuclearReactor.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Nuclear_Reactors",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "EV",
+        "structure": "single",
+        "size": {
+          "l": 1,
+          "w": 1,
+          "h": 1
+        },
+        "functionCategory": "power-generation",
+        "functionTypeRaw": "Nuclear Reactor",
+        "energyHatches": null,
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": true,
+      "flagReason": "approximate size (wiki states a range, minimum used: 1-3 x 1-3 x 1-3)"
+    },
+    {
+      "id": "nuclear-salt-processing-plant",
+      "name": "Nuclear Salt Processing Plant",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/2/2b/NSPP.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Nuclear_Salt_Processing_Plant",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 9,
+          "h": 5
+        },
+        "functionCategory": "power-generation",
+        "functionTypeRaw": "Reactor Processing Unit, Cold Trap",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 500
+      },
+      "flagged": false
+    },
+    {
+      "id": "oil-cracking-unit",
+      "name": "Oil Cracking Unit",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/d/da/OCU.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Oil_Cracking_Unit",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "HV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 5,
+          "h": 3
+        },
+        "functionCategory": "fluid-chemical",
+        "functionTypeRaw": "Cracker",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "ore-drilling-plant",
+      "name": "Ore Drilling Plant",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/7/78/MBM-T1.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Ore_Drilling_Plant",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "EV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 7
+        },
+        "functionCategory": "extraction",
+        "functionTypeRaw": "Miner",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "ore-washing-plant",
+      "name": "Ore Washing Plant",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/9/99/OWP2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Ore_Washing_Plant",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "EV",
+        "structure": "multiblock",
+        "size": {
+          "l": 9,
+          "w": 5,
+          "h": 4
+        },
+        "functionCategory": "ore-processing",
+        "functionTypeRaw": "Ore Washer, Simple Washer",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 100
+      },
+      "flagged": false
+    },
+    {
+      "id": "ozonation-purification-unit",
+      "name": "Ozonation Purification Unit",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/2/20/OPU.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Ozonation_Purification_Unit",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "LuV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 9,
+          "h": 10
+        },
+        "functionCategory": "ore-processing",
+        "functionTypeRaw": "Purification Unit",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "pcb-factory",
+      "name": "PCB Factory",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/0/03/PCB_T1-3.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/PCB_Factory",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UV",
+        "structure": "multiblock",
+        "size": {
+          "l": 7,
+          "w": 7,
+          "h": 6
+        },
+        "functionCategory": "assembly-crafting",
+        "functionTypeRaw": "Circuit Board Fabricator",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: mixed"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "ph-neutralization-purification-unit",
+      "name": "pH Neutralization Purification Unit",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/1/18/PH-Neutralization-Purification-Unit.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/PH_Neutralization_Purification_Unit",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "ZPM",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 15,
+          "h": 6
+        },
+        "functionCategory": "ore-processing",
+        "functionTypeRaw": "Purification Unit",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "planetary-gas-siphon",
+      "name": "Planetary Gas Siphon",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/0/07/PGS2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Planetary_Gas_Siphon",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "LuV",
+        "structure": "multiblock",
+        "size": {
+          "l": 13,
+          "w": 13,
+          "h": 23
+        },
+        "functionCategory": "extraction",
+        "functionTypeRaw": "Pump",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "precise-auto-assembler-mt-3662",
+      "name": "Precise Auto-Assembler MT-3662",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/c/ce/PrASS-T1.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Precise_Auto-Assembler_MT-3662",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 9,
+          "h": 5
+        },
+        "functionCategory": "assembly-crafting",
+        "functionTypeRaw": "Precise Assembler, Assembler",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 780
+      },
+      "flagged": false
+    },
+    {
+      "id": "pseudostable-black-hole-containment-field",
+      "name": "Pseudostable Black Hole Containment Field",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/d/dd/BHC.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Pseudostable_Black_Hole_Containment_Field",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UIV",
+        "structure": "multiblock",
+        "size": {
+          "l": 35,
+          "w": 35,
+          "h": 33
+        },
+        "functionCategory": "solid-processing",
+        "functionTypeRaw": "Compressor, Neutronium Compressor",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "pyrolyse-oven",
+      "name": "Pyrolyse Oven",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/1/1c/PyrolyseOven2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Pyrolyse_Oven",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "MV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 7,
+          "h": 6
+        },
+        "functionCategory": "smelting-alloying",
+        "functionTypeRaw": "Coke Oven",
+        "energyHatches": "Standard",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 300
+      },
+      "flagged": false
+    },
+    {
+      "id": "quantum-computer",
+      "name": "Quantum Computer",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/1/17/QC.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Quantum_Computer",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 2,
+          "h": 4
+        },
+        "functionCategory": "storage-logistics",
+        "functionTypeRaw": "Quantum Computer",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": true,
+      "flagReason": "approximate size (wiki states a range, minimum used: 5-16 x 2 x 4)"
+    },
+    {
+      "id": "quantum-force-transformer",
+      "name": "Quantum Force Transformer",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/1/1c/QFT-T1.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Quantum_Force_Transformer",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UEV",
+        "structure": "multiblock",
+        "size": {
+          "l": 15,
+          "w": 15,
+          "h": 21
+        },
+        "functionCategory": "power-infrastructure",
+        "functionTypeRaw": "Quantum Force Transformer",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "rc-boiler",
+      "name": "RC Boiler",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/5/54/RCBoiler.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Railcraft_Boiler",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "Steam",
+        "structure": "multiblock",
+        "size": {
+          "l": 1,
+          "w": 1,
+          "h": 2
+        },
+        "functionCategory": "power-generation",
+        "functionTypeRaw": "Boiler",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": 20
+      },
+      "flagged": true,
+      "flagReason": "approximate size (wiki states a range, minimum used: 1-3 x 1-3 x 2-5)"
+    },
+    {
+      "id": "rc-tank",
+      "name": "RC Tank",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/0/07/RCTank.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Railcraft_Tank",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "Steam",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 4
+        },
+        "functionCategory": "storage-logistics",
+        "functionTypeRaw": "Fluid Tank",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": true,
+      "flagReason": "approximate size (wiki states a range, minimum used: 3-9 x 3-9 x 4-8)"
+    },
+    {
+      "id": "reactor-fuel-processing-plant",
+      "name": "Reactor Fuel Processing Plant",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/0/08/RFPP.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Reactor_Fuel_Processing_Plant",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 9
+        },
+        "functionCategory": "fluid-chemical",
+        "functionTypeRaw": "Fuel Refinery",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 4000
+      },
+      "flagged": false
+    },
+    {
+      "id": "research-completer",
+      "name": "Research Completer",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/e/e4/ResearchCompleter.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Research_Completer",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "MV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 3
+        },
+        "functionCategory": "smelting-alloying",
+        "functionTypeRaw": "Research Completer",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": true,
+      "flagReason": "approximate size (wiki states a range, minimum used: 3-13 x 3 x 3)"
+    },
+    {
+      "id": "research-station",
+      "name": "Research Station",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/1/14/ResearchStation.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Research_Station",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UV",
+        "structure": "multiblock",
+        "size": {
+          "l": 7,
+          "w": 3,
+          "h": 7
+        },
+        "functionCategory": "solid-processing",
+        "functionTypeRaw": "Scanner",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "residual-decontaminant-degasser-purification-unit",
+      "name": "Residual Decontaminant Degasser Purification Unit",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/3/34/DPU.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Residual_Decontaminant_Degasser_Purification_Unit",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UEV",
+        "structure": "multiblock",
+        "size": {
+          "l": 17,
+          "w": 17,
+          "h": 25
+        },
+        "functionCategory": "ore-processing",
+        "functionTypeRaw": "Purification Unit",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "rocketdyne-f-1a-engine",
+      "name": "Rocketdyne F-1A Engine",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/7/7f/Rocketdyne.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Rocketdyne_F-1A_Engine",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 10,
+          "w": 3,
+          "h": 3
+        },
+        "functionCategory": "power-generation",
+        "functionTypeRaw": "Rocket Engine",
+        "energyHatches": null,
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": 1
+      },
+      "flagged": false
+    },
+    {
+      "id": "semi-stable-antimatter-stabilization-sequencer",
+      "name": "Semi-Stable Antimatter Stabilization Sequencer",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/3/32/SSASS.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Semi-Stable_Antimatter_Stabilization_Sequencer",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UIV",
+        "structure": "multiblock",
+        "size": {
+          "l": 47,
+          "w": 53,
+          "h": 53
+        },
+        "functionCategory": "utility-special",
+        "functionTypeRaw": "Antimatter Forge",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "shielded-lagrangian-annihilation-matrix",
+      "name": "Shielded Lagrangian Annihilation Matrix",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/4/47/SLAM.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Shielded_Lagrangian_Annihilation_Matrix",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UIV",
+        "structure": "multiblock",
+        "size": {
+          "l": 35,
+          "w": 35,
+          "h": 43
+        },
+        "functionCategory": "power-generation",
+        "functionTypeRaw": "Antimatter Generator",
+        "energyHatches": null,
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "smeltery",
+      "name": "Smeltery",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/c/c9/Smeltery.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Smeltery",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "Stone",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 2
+        },
+        "functionCategory": "smelting-alloying",
+        "functionTypeRaw": "Smeltery",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": true,
+      "flagReason": "approximate size (wiki states a range, minimum used: 3-11 x 3-11 x 2-11)"
+    },
+    {
+      "id": "solar-tower",
+      "name": "Solar Tower",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/1/1e/SolarTower.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Solar_Tower",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 28,
+          "w": 15,
+          "h": 15
+        },
+        "functionCategory": "power-generation",
+        "functionTypeRaw": "Solar Tower",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": true,
+      "flagReason": "approximate size (wiki states a range, minimum used: 28 x 15-31 x 15-31)"
+    },
+    {
+      "id": "solid-oxide-fuel-cell",
+      "name": "Solid-Oxide Fuel Cell",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/0/03/SOFC-T1.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Solid-Oxide_Fuel_Cell",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "EV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 3,
+          "h": 3
+        },
+        "functionCategory": "power-generation",
+        "functionTypeRaw": "Gas Turbine",
+        "energyHatches": null,
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "source-chamber",
+      "name": "Source Chamber",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/a/a8/SourceChamber.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Source_Chamber",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "ZPM",
+        "structure": "multiblock",
+        "size": {
+          "l": 6,
+          "w": 5,
+          "h": 5
+        },
+        "functionCategory": "utility-special",
+        "functionTypeRaw": "Particle Source",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "space-elevator",
+      "name": "Space Elevator",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/5/5b/SpaceElevator.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Space_Elevator",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UV",
+        "structure": "multiblock",
+        "size": {
+          "l": 35,
+          "w": 35,
+          "h": 48
+        },
+        "functionCategory": "utility-special",
+        "functionTypeRaw": "Space Elevator",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": true,
+      "flagReason": "approximate size (wiki states a range, minimum used: 35-47 x 35-47 x 48)"
+    },
+    {
+      "id": "sparge-tower",
+      "name": "Sparge Tower",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/4/4a/SpargeTower.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Sparge_Tower",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "LuV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 8
+        },
+        "functionCategory": "fluid-chemical",
+        "functionTypeRaw": "Gas Sparge Tower",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "spinmatron-2737",
+      "name": "Spinmatron-2737",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/b/bf/Spinmatron.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Spinmatron-2737",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "ZPM",
+        "structure": "multiblock",
+        "size": {
+          "l": 17,
+          "w": 17,
+          "h": 17
+        },
+        "functionCategory": "ore-processing",
+        "functionTypeRaw": "Centrifuge",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 500
+      },
+      "flagged": false
+    },
+    {
+      "id": "stargate",
+      "name": "Stargate",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/5/50/Stargate.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Stargate",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UXV",
+        "structure": "multiblock",
+        "size": {
+          "l": 1,
+          "w": 5,
+          "h": 5
+        },
+        "functionCategory": "utility-special",
+        "functionTypeRaw": "Interdimensional Teleporter",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "steam-blender",
+      "name": "Steam Blender",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/8/88/SteamBlender2-T1.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Steam_Blender",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "Steam",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 5,
+          "h": 4
+        },
+        "functionCategory": "fluid-chemical",
+        "functionTypeRaw": "Mixer",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "steam-fuser",
+      "name": "Steam Fuser",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/2/22/SteamFuserT1.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Steam_Fuser",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "Steam",
+        "structure": "multiblock",
+        "size": {
+          "l": 4,
+          "w": 3,
+          "h": 3
+        },
+        "functionCategory": "smelting-alloying",
+        "functionTypeRaw": "Alloy Smelter",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "steam-grinder",
+      "name": "Steam Grinder",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/b/b0/SteamGrinder-T1.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Steam_Grinder",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "Steam",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 4
+        },
+        "functionCategory": "ore-processing",
+        "functionTypeRaw": "Macerator",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a",
+          "papercraft model"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "steam-hearth",
+      "name": "Steam Hearth",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/4/47/SteamHearthT1.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Steam_Hearth",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "Steam",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 3
+        },
+        "functionCategory": "smelting-alloying",
+        "functionTypeRaw": "Furnace",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "steam-oven",
+      "name": "Steam Oven",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/3/30/SteamOven.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Steam_Oven",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "Steam",
+        "structure": "multiblock",
+        "size": {
+          "l": 2,
+          "w": 2,
+          "h": 2
+        },
+        "functionCategory": "smelting-alloying",
+        "functionTypeRaw": "Furnace",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "steam-presser",
+      "name": "Steam Presser",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/2/2a/SteamPresserT1.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Steam_Presser",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "Steam",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 5,
+          "h": 7
+        },
+        "functionCategory": "solid-processing",
+        "functionTypeRaw": "Forge Hammer",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a",
+          "papercraft model"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "steam-purifier",
+      "name": "Steam Purifier",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/e/ee/SteamPurifierT1.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Steam_Purifier",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "Steam",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 9,
+          "h": 6
+        },
+        "functionCategory": "ore-processing",
+        "functionTypeRaw": "Ore Washer, Simple Washer",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "steam-separator",
+      "name": "Steam Separator",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/7/7d/SteamSeparatorT1.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Steam_Separator",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "Steam",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 5,
+          "h": 5
+        },
+        "functionCategory": "ore-processing",
+        "functionTypeRaw": "Centrifuge",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "steam-squasher",
+      "name": "Steam Squasher",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/d/d7/SteamSquasher-T1.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Steam_Squasher",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "Steam",
+        "structure": "multiblock",
+        "size": {
+          "l": 7,
+          "w": 3,
+          "h": 3
+        },
+        "functionCategory": "solid-processing",
+        "functionTypeRaw": "Compressor",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "synchrotron",
+      "name": "Synchrotron",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/9/90/Synchrotron.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Synchrotron",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "ZPM",
+        "structure": "multiblock",
+        "size": {
+          "l": 34,
+          "w": 36,
+          "h": 7
+        },
+        "functionCategory": "utility-special",
+        "functionTypeRaw": "Particle Accelerator",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: unique"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "target-chamber",
+      "name": "Target Chamber",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/e/ee/TargetChamber.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Target_Chamber",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "ZPM",
+        "structure": "multiblock",
+        "size": {
+          "l": 6,
+          "w": 5,
+          "h": 5
+        },
+        "functionCategory": "utility-special",
+        "functionTypeRaw": "Collision Chamber",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: unique"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "tesla-tower",
+      "name": "Tesla Tower",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/8/80/TeslaTower.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Tesla_Tower",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "EV",
+        "structure": "multiblock",
+        "size": {
+          "l": 7,
+          "w": 7,
+          "h": 17
+        },
+        "functionCategory": "utility-special",
+        "functionTypeRaw": "Tesla Tower",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "tfft",
+      "name": "TFFT",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/7/7e/TFFT.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/TFFT",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "HV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 5,
+          "h": 5
+        },
+        "functionCategory": "storage-logistics",
+        "functionTypeRaw": "Fluid Tank",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": true,
+      "flagReason": "approximate size (wiki states a range, minimum used: 5-15 x 5 x 5)"
+    },
+    {
+      "id": "thermal-boiler",
+      "name": "Thermal Boiler",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/3/36/ThermalBoiler2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Thermal_Boiler",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 5,
+          "h": 5
+        },
+        "functionCategory": "fluid-chemical",
+        "functionTypeRaw": "Heat Exchanger",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "thermic-heating-device",
+      "name": "Thermic Heating Device",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/c/c8/THD.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Thermic_Heating_Device",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 5,
+          "h": 6
+        },
+        "functionCategory": "fluid-chemical",
+        "functionTypeRaw": "Fluid Heater",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 1000
+      },
+      "flagged": false
+    },
+    {
+      "id": "thorium-high-temperature-reactor",
+      "name": "Thorium High Temperature Reactor",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/7/76/THTR.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Thorium_High_Temperature_Reactor",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 11,
+          "w": 11,
+          "h": 12
+        },
+        "functionCategory": "power-generation",
+        "functionTypeRaw": "High Temperature Reactor",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "transcendent-plasma-mixer",
+      "name": "Transcendent Plasma Mixer",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/2/26/TPM.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Transcendent_Plasma_Mixer",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "UIV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 5,
+          "h": 7
+        },
+        "functionCategory": "fluid-chemical",
+        "functionTypeRaw": "Transcendent Mixer",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "tree-growth-simulator",
+      "name": "Tree Growth Simulator",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/e/e1/TGS2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Tree_Growth_Simulator",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 7,
+          "w": 7,
+          "h": 7
+        },
+        "functionCategory": "farming-breeding",
+        "functionTypeRaw": "Tree Farm",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: unique"
+        ],
+        "pollution": 100
+      },
+      "flagged": false
+    },
+    {
+      "id": "turbocan-pro",
+      "name": "TurboCan Pro",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/0/08/TCP.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/TurboCan_Pro",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "HV",
+        "structure": "multiblock",
+        "size": {
+          "l": 7,
+          "w": 7,
+          "h": 5
+        },
+        "functionCategory": "solid-processing",
+        "functionTypeRaw": "Canner",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "universal-chemical-fuel-engine",
+      "name": "Universal Chemical Fuel Engine",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/7/73/UCFE2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Universal_Chemical_Fuel_Engine",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 13,
+          "w": 7,
+          "h": 7
+        },
+        "functionCategory": "power-generation",
+        "functionTypeRaw": "Chemical Engine",
+        "energyHatches": null,
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "utupu-tanuri",
+      "name": "Utupu-Tanuri",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/3/34/UtupuTanuri.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Utupu-Tanuri",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "LuV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 5
+        },
+        "functionCategory": "smelting-alloying",
+        "functionTypeRaw": "Vacuum Furnace, Dehydrator",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 500
+      },
+      "flagged": false
+    },
+    {
+      "id": "vacuum-freezer",
+      "name": "Vacuum Freezer",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/5/5c/VF.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Vacuum_Freezer",
+      "difficulty": "easy",
+      "aliases": [],
+      "attributes": {
+        "tier": "HV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 3
+        },
+        "functionCategory": "smelting-alloying",
+        "functionTypeRaw": "Vacuum Freezer",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "vacuum-reactor",
+      "name": "Vacuum Reactor",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/0/0a/VacuumReactor.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Vacuum_Reactor",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "EV",
+        "structure": "single",
+        "size": {
+          "l": 1,
+          "w": 1,
+          "h": 1
+        },
+        "functionCategory": "power-generation",
+        "functionTypeRaw": "Nuclear Reactor",
+        "energyHatches": null,
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": true,
+      "flagReason": "approximate size (wiki states a range, minimum used: 1-3 x 1-3 x 1-3)"
+    },
+    {
+      "id": "vending-machine",
+      "name": "Vending Machine",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/6/64/VendingMachine.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Vending_Machine",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "Stone",
+        "structure": "multiblock",
+        "size": {
+          "l": 1,
+          "w": 2,
+          "h": 3
+        },
+        "functionCategory": "utility-special",
+        "functionTypeRaw": "Vending Machine",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "void-miner",
+      "name": "Void Miner",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/9/93/VM-T1.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Void_Miner",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "ZPM",
+        "structure": "multiblock",
+        "size": {
+          "l": 7,
+          "w": 7,
+          "h": 9
+        },
+        "functionCategory": "extraction",
+        "functionTypeRaw": "Miner",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": true,
+      "flagReason": "approximate size (wiki states a range, minimum used: 7-9 x 7-9 x 9-16)"
+    },
+    {
+      "id": "volcanus",
+      "name": "Volcanus",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/e/ec/Volcanus.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Volcanus",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 4
+        },
+        "functionCategory": "smelting-alloying",
+        "functionTypeRaw": "Blast Furnace",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: mixed"
+        ],
+        "pollution": 500
+      },
+      "flagged": false
+    },
+    {
+      "id": "water-pump",
+      "name": "Water Pump",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/4/44/WaterPumpT1.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Water_Pump",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "Steam",
+        "structure": "multiblock",
+        "size": {
+          "l": 4,
+          "w": 3,
+          "h": 3
+        },
+        "functionCategory": "extraction",
+        "functionTypeRaw": "Water Pump",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "water-purification-plant",
+      "name": "Water Purification Plant",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/4/43/WPP.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Water_Purification_Plant",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "LuV",
+        "structure": "multiblock",
+        "size": {
+          "l": 8,
+          "w": 7,
+          "h": 9
+        },
+        "functionCategory": "ore-processing",
+        "functionTypeRaw": "Purification Unit",
+        "energyHatches": "Any",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "water-tank",
+      "name": "Water Tank",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/e/e3/WaterTank.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Water_Tank",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "Stone",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 3
+        },
+        "functionCategory": "storage-logistics",
+        "functionTypeRaw": "Water Tank",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "whakawhiti-wera-xl",
+      "name": "Whakawhiti Wera XL",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/2/2b/WWXL.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Whakawhiti_Wera_XL",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "LuV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 5,
+          "h": 9
+        },
+        "functionCategory": "fluid-chemical",
+        "functionTypeRaw": "Heat Exchanger",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "windmill",
+      "name": "Windmill",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/6/68/Windmill.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Windmill",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "Stone",
+        "structure": "multiblock",
+        "size": {
+          "l": 7,
+          "w": 7,
+          "h": 12
+        },
+        "functionCategory": "ore-processing",
+        "functionTypeRaw": "Macerator",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "xl-turbo-gas-turbine",
+      "name": "XL Turbo Gas Turbine",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/3/35/XLGT2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/XL_Turbo_Gas_Turbine",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "LuV",
+        "structure": "multiblock",
+        "size": {
+          "l": 26,
+          "w": 9,
+          "h": 9
+        },
+        "functionCategory": "power-generation",
+        "functionTypeRaw": "Large Gas Turbine",
+        "energyHatches": null,
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": 4000
+      },
+      "flagged": false
+    },
+    {
+      "id": "xl-turbo-plasma-turbine",
+      "name": "XL Turbo Plasma Turbine",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/3/3a/XLPT2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/XL_Turbo_Plasma_Turbine",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "ZPM",
+        "structure": "multiblock",
+        "size": {
+          "l": 26,
+          "w": 9,
+          "h": 9
+        },
+        "functionCategory": "power-generation",
+        "functionTypeRaw": "Large Plasma Turbine",
+        "energyHatches": null,
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "xl-turbo-steam-turbine",
+      "name": "XL Turbo Steam Turbine",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/b/b2/XLST2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/XL_Turbo_Steam_Turbine",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 29,
+          "w": 9,
+          "h": 9
+        },
+        "functionCategory": "power-generation",
+        "functionTypeRaw": "Large Steam Turbine",
+        "energyHatches": null,
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": false
+    },
+    {
+      "id": "yottank",
+      "name": "YOTTank",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/b/b4/YOTTank.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/YOTTank",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 5,
+          "w": 5,
+          "h": 5
+        },
+        "functionCategory": "storage-logistics",
+        "functionTypeRaw": "Fluid Tank",
+        "energyHatches": "N/A",
+        "extras": [
+          "overclocks: n/a"
+        ],
+        "pollution": null
+      },
+      "flagged": true,
+      "flagReason": "approximate size (wiki states a range, minimum used: 5 x 5 x 5-19)"
+    },
+    {
+      "id": "zhuhai-fishing-port",
+      "name": "Zhuhai Fishing Port",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/6/61/Zhuhai2.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Zhuhai_Fishing_Port",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 11,
+          "w": 11,
+          "h": 4
+        },
+        "functionCategory": "farming-breeding",
+        "functionTypeRaw": "Fish Trap",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: imperfect"
+        ],
+        "pollution": 20
+      },
+      "flagged": false
+    },
+    {
+      "id": "zyngen",
+      "name": "Zyngen",
+      "dataset": "gtnh:machines",
+      "image": "//static.wikitide.net/gtnhwiki/2/22/Zyngen.png",
+      "source_url": "https://wiki.gtnewhorizons.com/wiki/Zyngen",
+      "difficulty": "hard",
+      "aliases": [],
+      "attributes": {
+        "tier": "IV",
+        "structure": "multiblock",
+        "size": {
+          "l": 3,
+          "w": 3,
+          "h": 5
+        },
+        "functionCategory": "smelting-alloying",
+        "functionTypeRaw": "Alloy Smelter",
+        "energyHatches": "Regular",
+        "extras": [
+          "overclocks: mixed"
+        ],
+        "pollution": 300
+      },
+      "flagged": false
+    }
+  ]
+}

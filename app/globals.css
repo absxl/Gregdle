@@ -1,0 +1,346 @@
+@import "tailwindcss";
+
+/*
+ * Gregdle design system v2 (2026-11-04 revamp).
+ * Direction: dark industrial, calm and readable. VT323 stays as the display
+ * voice (headings, numbers, countdown); data text is a clean bold sans.
+ * No bevels, no hazard stripes, one amber accent.
+ */
+
+:root {
+  --bg: #10151b;
+  --surface: #1a222c;
+  --surface-2: #222d3a;
+  --border: #2d3a49;
+  --text: #e8eef5;
+  --muted: #93a1b1;
+  --accent: #f5a623;
+  --good: #2fbf71;
+  --good-ink: #06281a;
+  --partial: #d9a426;
+  --partial-ink: #2b2005;
+  --bad: #e2554f;
+  --bad-ink: #2b0806;
+  --direction: #4aa3df;
+  --direction-ink: #06202f;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface2: var(--surface-2);
+  --color-edge: var(--border);
+  --color-foreground: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --font-pixel: var(--font-vt323), "Courier New", monospace;
+  --font-sans: ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+}
+
+.font-pixel {
+  font-family: var(--font-pixel);
+}
+
+/* ---------------------------------------------------------------- surfaces */
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.55rem 1rem;
+  cursor: pointer;
+  transition:
+    background 120ms ease,
+    border-color 120ms ease;
+}
+
+.btn:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #221604;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #ffb838;
+  border-color: #ffb838;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.15rem 0.7rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+/* ------------------------------------------------------------------ cells */
+
+/*
+ * Cell states. Color + icon + pattern together (color-blind safe):
+ *   correct  green  solid   ✓
+ *   partial  amber  stripes ◐
+ *   wrong    red    solid   ✕
+ *   higher   blue   up-arrow ▲
+ *   lower    blue   down-arrow ▼
+ * High-contrast fills with dark ink for readability on small screens.
+ */
+
+.cell {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 3.4rem;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  line-height: 1.15;
+  padding: 0.45rem 0.55rem;
+  animation: cell-pop 200ms ease-out both;
+}
+
+.cell .cell-icon {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.cell-correct {
+  background: var(--good);
+  color: var(--good-ink);
+}
+
+.cell-partial {
+  background: repeating-linear-gradient(-45deg, var(--partial) 0 10px, #c2901f 10px 20px);
+  color: var(--partial-ink);
+}
+
+.cell-wrong {
+  background: var(--bad);
+  color: var(--bad-ink);
+}
+
+.cell-higher,
+.cell-lower {
+  background: var(--direction);
+  color: var(--direction-ink);
+}
+
+@keyframes cell-pop {
+  from {
+    transform: scale(0.86);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ------------------------------------------------------------------ grid */
+
+/*
+ * Attribute grid: horizontally scrollable on phones, guess column (and its
+ * header) stick to the left edge while scrolling through attributes.
+ */
+
+.grid-outer {
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.grid-grid {
+  display: grid;
+  gap: 6px;
+  min-width: min-content;
+}
+
+.grid-head {
+  position: sticky;
+  top: 0;
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-align: center;
+  padding: 0.55rem 0.4rem;
+  border-radius: 8px;
+}
+
+.grid-head-name {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  text-align: left;
+  padding-left: 0.5rem;
+}
+
+.grid-name {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--surface);
+  border-radius: 6px;
+  padding: 0.3rem 0.5rem 0.3rem 0.3rem;
+  min-width: 0;
+}
+
+/* Legend swatches reuse .cell at a smaller size. */
+.legend-cell {
+  min-height: 0;
+  padding: 0.15rem 0.4rem;
+  font-size: 11px;
+}
+
+.legend-cell .cell-icon {
+  font-size: 11px;
+}
+
+/* ------------------------------------------------------------ win animation */
+
+.win-badge {
+  animation: win-pop 500ms cubic-bezier(0.22, 1.4, 0.36, 1) both;
+}
+
+.win-row {
+  animation: win-glow 1.1s ease-out 2 both;
+}
+
+.win-cell {
+  animation: win-cell-wave 600ms ease-out both;
+}
+
+@keyframes win-pop {
+  0% {
+    transform: scale(0.2) rotate(-14deg);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.15) rotate(3deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+  }
+}
+
+@keyframes win-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+  50% {
+    box-shadow: 0 0 0 3px var(--good);
+  }
+}
+
+@keyframes win-cell-wave {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.14);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -12px;
+  border-radius: 2px;
+  opacity: 0;
+  animation-name: confetti-fall;
+  animation-timing-function: ease-in;
+  animation-fill-mode: both;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(340px) rotate(540deg);
+    opacity: 0;
+  }
+}
+
+/* ---------------------------------------------------------------- ad slots */
+
+.ad-slot {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  padding: 6px;
+}
+
+.ad-slot-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  color: var(--muted);
+}
+
+.ad-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

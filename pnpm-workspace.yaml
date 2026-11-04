@@ -1,0 +1,13 @@
+# OpenNext (Cloudflare) worker builds on Windows cannot traverse pnpm's
+# symlinked virtual store (esbuild "Access is denied" on junctions) — a flat
+# hoisted layout avoids them (docs/DECISIONS.md, D10).
+nodeLinker: hoisted
+# Approve esbuild/workerd postinstalls: Cloudflare Workers Builds fails the
+# install step on ERR_PNPM_IGNORED_BUILDS if they are left unapproved.
+allowBuilds:
+  sharp: false
+  unrs-resolver: false
+  esbuild: true
+  workerd: true
+minimumReleaseAgeExclude:
+  - "@tailwindcss/oxide-wasm32-wasi@4.3.4"
