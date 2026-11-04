@@ -15,8 +15,8 @@ export function BackgroundsButton() {
         type="button"
         onClick={() => setOpen(true)}
         className="btn shrink-0"
-        aria-label="Backgrounds"
-        title="Community backgrounds"
+        aria-label="Wallpapers"
+        title="Community wallpapers"
       >
         <svg
           width="18"
@@ -31,6 +31,7 @@ export function BackgroundsButton() {
           <circle cx="8.5" cy="8.5" r="1.5" />
           <path d="m21 15-5-5L5 21" />
         </svg>
+        Wallpapers
       </button>
       {open && <BackgroundsPanel onClose={() => setOpen(false)} />}
     </>

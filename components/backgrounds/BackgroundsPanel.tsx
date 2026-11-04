@@ -286,53 +286,63 @@ export function BackgroundsPanel({ onClose }: { onClose: () => void }) {
 
         {tab === "submit" && (
           <div className="flex flex-col gap-3">
-            {signedIn ? (
-              <>
-                <p className="text-sm text-muted">
-                  Landscape images work best (at least {MIN_WIDTH}px wide, JPG/PNG/WebP up to 2 MB).
-                  Everything is compressed automatically before upload — roughly 500 KB is stored
-                  per image. Credited as{" "}
-                  <span className="font-bold text-foreground">{displayName}</span>. Submitted
-                  backgrounds appear after approval.
-                </p>
-                <input
-                  type="text"
-                  value={bgTitle}
-                  onChange={(e) => setBgTitle(e.target.value)}
-                  maxLength={80}
-                  placeholder="Title (e.g. Distant Fusion Sunset)"
-                  aria-label="Background title"
-                  className="rounded-lg border border-edge bg-surface2 px-3 py-2 text-sm font-semibold focus:border-accent focus:outline-none"
-                />
-                <textarea
-                  value={bgDesc}
-                  onChange={(e) => setBgDesc(e.target.value)}
-                  maxLength={280}
-                  rows={2}
-                  placeholder="Description (optional, shown on your profile gallery)"
-                  aria-label="Background description"
-                  className="rounded-lg border border-edge bg-surface2 px-3 py-2 text-sm focus:border-accent focus:outline-none"
-                />
-                <input
-                  ref={fileRef}
-                  type="file"
-                  accept="image/jpeg,image/png,image/webp"
-                  aria-label="Background image file"
-                  className="rounded-lg border border-edge bg-surface2 px-3 py-2 text-sm file:mr-3 file:rounded file:border-0 file:bg-accent/20 file:px-2 file:py-1 file:font-bold"
-                />
-                <button
-                  type="button"
-                  className="btn btn-primary self-start"
-                  disabled={busy}
-                  onClick={submit}
-                >
-                  {busy ? "Uploading…" : "Submit for approval"}
-                </button>
-              </>
-            ) : (
+            <div
+              className={
+                signedIn
+                  ? "flex flex-col gap-3"
+                  : "flex cursor-not-allowed flex-col gap-3 opacity-40"
+              }
+              title={signedIn ? undefined : "Login to Discord to upload"}
+            >
               <p className="text-sm text-muted">
-                Sign in with Discord (top right) to submit a background — submissions are credited
-                with your Discord name.
+                Landscape images work best (at least {MIN_WIDTH}px wide, JPG/PNG/WebP up to 2 MB).
+                Everything is compressed automatically before upload — roughly 500 KB is stored
+                per image. Credited as{" "}
+                <span className="font-bold text-foreground">
+                  {signedIn ? displayName : "your Discord name"}
+                </span>
+                . Submitted backgrounds appear after approval.
+              </p>
+              <input
+                type="text"
+                value={bgTitle}
+                onChange={(e) => setBgTitle(e.target.value)}
+                maxLength={80}
+                placeholder="Title (e.g. Distant Fusion Sunset)"
+                aria-label="Background title"
+                disabled={!signedIn}
+                className="rounded-lg border border-edge bg-surface2 px-3 py-2 text-sm font-semibold focus:border-accent focus:outline-none"
+              />
+              <textarea
+                value={bgDesc}
+                onChange={(e) => setBgDesc(e.target.value)}
+                maxLength={280}
+                rows={2}
+                placeholder="Description (optional, shown on your profile gallery)"
+                aria-label="Background description"
+                disabled={!signedIn}
+                className="rounded-lg border border-edge bg-surface2 px-3 py-2 text-sm focus:border-accent focus:outline-none"
+              />
+              <input
+                ref={fileRef}
+                type="file"
+                accept="image/jpeg,image/png,image/webp"
+                aria-label="Background image file"
+                disabled={!signedIn}
+                className="rounded-lg border border-edge bg-surface2 px-3 py-2 text-sm file:mr-3 file:rounded file:border-0 file:bg-accent/20 file:px-2 file:py-1 file:font-bold"
+              />
+              <button
+                type="button"
+                className="btn btn-primary self-start"
+                disabled={busy || !signedIn}
+                onClick={submit}
+              >
+                {busy ? "Uploading…" : "Submit for approval"}
+              </button>
+            </div>
+            {!signedIn && (
+              <p className="text-sm font-semibold text-muted">
+                Login to Discord (top right) to upload.
               </p>
             )}
           </div>
