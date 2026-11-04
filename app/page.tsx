@@ -6,6 +6,7 @@ import { DailyStatus } from "@/components/game/DailyStatus";
 import { AuthPanel } from "@/components/auth/AuthPanel";
 import { BackgroundsButton } from "@/components/backgrounds/BackgroundsButton";
 import { AdSlot } from "@/components/ads/AdSlot";
+import { LinkGrid } from "@/components/ui/LinkGrid";
 import { ItemIcon } from "@/components/ui/ItemIcon";
 
 /**
@@ -203,6 +204,8 @@ export default async function Home() {
           </div>
         ))}
       </section>
+
+      <LinkGrid />
 
       <AdSlot slot="home" className="w-full" />
     </main>
