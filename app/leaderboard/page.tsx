@@ -123,7 +123,7 @@ export default async function LeaderboardPage(props: {
                     <GlobalStat label="Games played" value={String(g.plays)} />
                     <GlobalStat
                       label="Win rate"
-                      value={`${Math.round((g.wins / g.plays) * 100)}%`}
+                      value={g.wins > 0 ? `${Math.round((g.wins / g.plays) * 100)}%` : "—"}
                     />
                     <GlobalStat
                       label="Gave up"
