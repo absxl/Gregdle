@@ -29,7 +29,10 @@ export default async function LeaderboardPage(props: {
   const active = difficulty === "hard" ? "hard" : "easy";
   const today = new Date().toISOString().slice(0, 10);
 
-  let globalStats: GlobalStatRow | null = null;
+  let globalStats: { easy: GlobalStatRow | null; hard: GlobalStatRow | null } = {
+    easy: null,
+    hard: null,
+  };
   let rows: {
     display_name: string;
     guess_count: number | null;
@@ -57,9 +60,8 @@ export default async function LeaderboardPage(props: {
       else error = `Leaderboard unavailable (HTTP ${res.status}).`;
 
       const gqs = new URLSearchParams({
-        select: "plays,wins,gave_ups,hinted,avg_guesses",
+        select: "difficulty,plays,wins,gave_ups,hinted,avg_guesses",
         dataset: "eq.gtnh:machines",
-        difficulty: `eq.${active}`,
         date: `eq.${today}`,
       });
       const gres = await fetch(`${url}/rest/v1/global_daily_stats?${gqs}`, {
@@ -67,8 +69,11 @@ export default async function LeaderboardPage(props: {
         next: { revalidate: 60 },
       });
       if (gres.ok) {
-        const g = (await gres.json()) as GlobalStatRow[];
-        globalStats = g[0] ?? null;
+        const g = (await gres.json()) as (GlobalStatRow & { difficulty: string })[];
+        globalStats = {
+          easy: g.find((x) => x.difficulty === "easy") ?? null,
+          hard: g.find((x) => x.difficulty === "hard") ?? null,
+        };
       }
     } else {
       error = "Leaderboard not configured.";
@@ -91,26 +96,48 @@ export default async function LeaderboardPage(props: {
         </Link>
       </header>
 
-      {globalStats && globalStats.plays > 0 && (
+      {(globalStats.easy || globalStats.hard) && (
         <section aria-label="Global stats" className="panel corners w-full p-5">
           <p className="label label-accent mb-3">
             GLOBAL STATS // TODAY · ALL PLAYERS (GUESTS INCLUDED)
           </p>
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
-            <GlobalStat label="Games played" value={String(globalStats.plays)} />
-            <GlobalStat
-              label="Win rate"
-              value={`${Math.round((globalStats.wins / globalStats.plays) * 100)}%`}
-            />
-            <GlobalStat
-              label="Gave up"
-              value={`${Math.round((globalStats.gave_ups / globalStats.plays) * 100)}%`}
-            />
-            <GlobalStat
-              label="Used hints"
-              value={`${Math.round((globalStats.hinted / globalStats.plays) * 100)}%`}
-            />
-            <GlobalStat label="Avg guesses" value={globalStats.avg_guesses.toFixed(1)} />
+          <div className="grid gap-4 sm:grid-cols-2">
+            {(["easy", "hard"] as const).map((difficulty) => {
+              const g = globalStats[difficulty];
+              if (!g || g.plays === 0) {
+                return (
+                  <div key={difficulty}>
+                    <h3 className="mb-2 text-xs font-bold uppercase tracking-wider text-muted">
+                      {difficulty.toUpperCase()}
+                    </h3>
+                    <p className="text-sm text-muted">No games recorded yet today.</p>
+                  </div>
+                );
+              }
+              return (
+                <div key={difficulty}>
+                  <h3 className="mb-2 text-xs font-bold uppercase tracking-wider text-muted">
+                    {difficulty.toUpperCase()}
+                  </h3>
+                  <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+                    <GlobalStat label="Games played" value={String(g.plays)} />
+                    <GlobalStat
+                      label="Win rate"
+                      value={`${Math.round((g.wins / g.plays) * 100)}%`}
+                    />
+                    <GlobalStat
+                      label="Gave up"
+                      value={`${Math.round((g.gave_ups / g.plays) * 100)}%`}
+                    />
+                    <GlobalStat
+                      label="Used hints"
+                      value={`${Math.round((g.hinted / g.plays) * 100)}%`}
+                    />
+                    <GlobalStat label="Avg guesses" value={g.avg_guesses.toFixed(1)} />
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </section>
       )}
