@@ -122,9 +122,7 @@ export default async function ProfilePage(props: { params: Promise<{ name: strin
               <p className="text-sm font-bold text-accent">{data.profile.title}</p>
             )}
             <div className="mt-1 flex flex-wrap items-center gap-2">
-              <p className="label">
-                {data.profile.rank_label ?? "OPERATOR"} {"// SINCE"} {joined}
-              </p>
+              <p className="label">SINCE {joined}</p>
               <CopyTagButton tag={displayName} />
             </div>
             <div className="mt-1">
