@@ -1,14 +1,14 @@
 /**
- * Generic function categories for machines (D19).
+ * Generic function categories for machines (D19, audited in D39).
  *
  * The wiki's "Machine Type" is hyper-specific free text (155 distinct values
- * across 209 machines) — useless as a guessing column. This table maps every
- * raw type onto one of 12 generic categories via ordered regex rules
- * (first match wins). The raw string is kept alongside for tooltips.
+ * across 209 machines) — useless as a guessing column. Classification:
+ * 1. EXPLICIT_MAP — curated exact raw-type -> category, verified against the
+ *    wiki page text (D39 audit; wins over everything).
+ * 2. Ordered regex rules — fallback for anything not mapped explicitly.
+ * The raw string is kept alongside for tooltips.
  *
- * Add/refine rules here; re-run `pnpm tsx pipeline/normalize-gtnh-machines.ts`
- * — values that match no rule land in utility-special and appear in the
- * quality report for review.
+ * Re-run `pnpm tsx pipeline/normalize-gtnh-machines.ts` after changes.
  */
 
 export const FUNCTION_CATEGORIES = [
@@ -42,6 +42,35 @@ export const FUNCTION_CATEGORY_LABELS: Record<FunctionCategory, string> = {
   "farming-breeding": "FARMING",
   "storage-logistics": "STORAGE",
   "utility-special": "UTILITY",
+};
+
+/**
+ * D39 audit — every raw type verified against its wiki page text.
+ * Keyed by normalized raw type (see normalize()). Overrides the rules.
+ */
+const EXPLICIT_MAP: Record<string, FunctionCategory> = {
+  // user corrections (D39)
+  "molecular transformer": "solid-processing",
+  "quantum force transformer": "solid-processing", // transforms matter like the MT
+  "geothermal heat pump": "power-generation", // DEHP: geothermal power (user)
+  // wiki-verified (D39)
+  "stellar forge": "smelting-alloying", // Forge of the Gods: "smelting-related operations"
+  "collision chamber": "assembly-crafting", // Target Chamber: engraves doped wafers
+  "energy storage": "power-infrastructure", // Lapotronic Supercapacitor: stores power
+  "reactor processing unit cold trap": "fluid-chemical", // Nuclear Salt Plant: UF6 condensing
+  "packager unpackager": "storage-logistics", // Amazon Warehousing Depot
+  "research completer": "utility-special", // Thaumcraft research
+  "microwave grinder": "farming-breeding", // grinds mobs
+  "dissolution tank": "fluid-chemical", // dilutes rare earth solutions
+  "tesla tower": "power-infrastructure", // wireless power transmission
+  "quantum computer": "utility-special", // generates computation
+  "antimatter forge": "extraction", // SSASS: creates antimatter from protomatter
+  "chisel": "utility-special", // cosmetic block editing
+  "scanner": "utility-special", // scanning
+  "dyson swarm": "power-generation", // ultimate power project
+  "fluid extractor": "fluid-chemical", // squeezes fluids from items
+  "grinding machine": "ore-processing", // grinds items to dust
+  "bacterial vat": "fluid-chemical", // fermentation vat
 };
 
 interface Rule {
@@ -124,7 +153,13 @@ const RULES: Rule[] = [
   },
 ];
 
+function normalizeType(raw: string): string {
+  return raw.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+}
+
 export function mapFunctionType(raw: string): { category: FunctionCategory; matched: boolean } {
+  const explicit = EXPLICIT_MAP[normalizeType(raw)];
+  if (explicit) return { category: explicit, matched: true };
   for (const rule of RULES) {
     if (rule.pattern.test(raw)) return { category: rule.category, matched: true };
   }

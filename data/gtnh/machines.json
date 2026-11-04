@@ -1,7 +1,7 @@
 {
   "dataset": "gtnh:machines",
   "snapshotVersion": "GTNH 2.9 (wiki default render, 2026-11-03)",
-  "scrapedAt": "2026-11-04T09:02:39.416Z",
+  "scrapedAt": "2026-11-04T16:44:58.205Z",
   "source": "https://wiki.gtnewhorizons.com",
   "entries": [
     {
@@ -230,7 +230,7 @@
           "w": 5,
           "h": 3
         },
-        "functionCategory": "assembly-crafting",
+        "functionCategory": "storage-logistics",
         "functionTypeRaw": "Packager, Unpackager",
         "energyHatches": "Regular",
         "extras": [
@@ -284,7 +284,7 @@
           "w": 5,
           "h": 4
         },
-        "functionCategory": "farming-breeding",
+        "functionCategory": "fluid-chemical",
         "functionTypeRaw": "Bacterial Vat",
         "energyHatches": "Regular",
         "extras": [
@@ -964,7 +964,7 @@
           "w": 3,
           "h": 7
         },
-        "functionCategory": "extraction",
+        "functionCategory": "power-generation",
         "functionTypeRaw": "Geothermal Heat Pump",
         "energyHatches": "Regular",
         "extras": [
@@ -1094,7 +1094,7 @@
           "w": 5,
           "h": 5
         },
-        "functionCategory": "storage-logistics",
+        "functionCategory": "fluid-chemical",
         "functionTypeRaw": "Dissolution Tank",
         "energyHatches": "Regular",
         "extras": [
@@ -1227,7 +1227,7 @@
           "w": 16,
           "h": 20
         },
-        "functionCategory": "utility-special",
+        "functionCategory": "power-generation",
         "functionTypeRaw": "Dyson Swarm",
         "energyHatches": null,
         "extras": [
@@ -1802,7 +1802,7 @@
           "w": 127,
           "h": 29
         },
-        "functionCategory": "utility-special",
+        "functionCategory": "smelting-alloying",
         "functionTypeRaw": "Stellar Forge",
         "energyHatches": "N/A",
         "extras": [
@@ -2036,7 +2036,7 @@
           "w": 7,
           "h": 5
         },
-        "functionCategory": "solid-processing",
+        "functionCategory": "utility-special",
         "functionTypeRaw": "Chisel",
         "energyHatches": "Regular",
         "extras": [
@@ -2532,7 +2532,7 @@
           "w": 3,
           "h": 3
         },
-        "functionCategory": "part-fabrication",
+        "functionCategory": "ore-processing",
         "functionTypeRaw": "Grinding Machine",
         "energyHatches": "Regular",
         "extras": [
@@ -2558,7 +2558,7 @@
           "w": 5,
           "h": 4
         },
-        "functionCategory": "storage-logistics",
+        "functionCategory": "power-infrastructure",
         "functionTypeRaw": "Energy Storage",
         "energyHatches": "Any",
         "extras": [
@@ -2716,7 +2716,7 @@
           "w": 5,
           "h": 9
         },
-        "functionCategory": "solid-processing",
+        "functionCategory": "fluid-chemical",
         "functionTypeRaw": "Fluid Extractor",
         "energyHatches": "Regular",
         "extras": [
@@ -3420,7 +3420,7 @@
           "w": 5,
           "h": 4
         },
-        "functionCategory": "smelting-alloying",
+        "functionCategory": "farming-breeding",
         "functionTypeRaw": "Microwave Grinder",
         "energyHatches": "Regular",
         "extras": [
@@ -3472,7 +3472,7 @@
           "w": 7,
           "h": 9
         },
-        "functionCategory": "power-infrastructure",
+        "functionCategory": "solid-processing",
         "functionTypeRaw": "Molecular Transformer",
         "energyHatches": "Regular",
         "extras": [
@@ -3734,7 +3734,7 @@
           "w": 9,
           "h": 5
         },
-        "functionCategory": "power-generation",
+        "functionCategory": "fluid-chemical",
         "functionTypeRaw": "Reactor Processing Unit, Cold Trap",
         "energyHatches": "Regular",
         "extras": [
@@ -4020,7 +4020,7 @@
           "w": 2,
           "h": 4
         },
-        "functionCategory": "storage-logistics",
+        "functionCategory": "utility-special",
         "functionTypeRaw": "Quantum Computer",
         "energyHatches": "Any",
         "extras": [
@@ -4047,7 +4047,7 @@
           "w": 15,
           "h": 21
         },
-        "functionCategory": "power-infrastructure",
+        "functionCategory": "solid-processing",
         "functionTypeRaw": "Quantum Force Transformer",
         "energyHatches": "Any",
         "extras": [
@@ -4153,7 +4153,7 @@
           "w": 3,
           "h": 3
         },
-        "functionCategory": "smelting-alloying",
+        "functionCategory": "utility-special",
         "functionTypeRaw": "Research Completer",
         "energyHatches": "Regular",
         "extras": [
@@ -4180,7 +4180,7 @@
           "w": 3,
           "h": 7
         },
-        "functionCategory": "solid-processing",
+        "functionCategory": "utility-special",
         "functionTypeRaw": "Scanner",
         "energyHatches": "Any",
         "extras": [
@@ -4258,7 +4258,7 @@
           "w": 53,
           "h": 53
         },
-        "functionCategory": "utility-special",
+        "functionCategory": "extraction",
         "functionTypeRaw": "Antimatter Forge",
         "energyHatches": "Any",
         "extras": [
@@ -4783,7 +4783,7 @@
           "w": 5,
           "h": 5
         },
-        "functionCategory": "utility-special",
+        "functionCategory": "assembly-crafting",
         "functionTypeRaw": "Collision Chamber",
         "energyHatches": "Regular",
         "extras": [
@@ -4809,7 +4809,7 @@
           "w": 7,
           "h": 17
         },
-        "functionCategory": "utility-special",
+        "functionCategory": "power-infrastructure",
         "functionTypeRaw": "Tesla Tower",
         "energyHatches": "Any",
         "extras": [

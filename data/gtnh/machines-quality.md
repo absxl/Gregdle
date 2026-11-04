@@ -1,7 +1,7 @@
 # GTNH machines — dataset quality report
 
-Generated 2026-11-04T09:02:40.309Z by `pipeline/report-gtnh-machines.ts`.
-Source: https://wiki.gtnewhorizons.com (GTNH 2.9 (wiki default render, 2026-11-03)); scraped 2026-11-04T09:02:39.416Z.
+Generated 2026-11-04T16:45:52.409Z by `pipeline/report-gtnh-machines.ts`.
+Source: https://wiki.gtnewhorizons.com (GTNH 2.9 (wiki default render, 2026-11-03)); scraped 2026-11-04T16:44:58.205Z.
 Wiki pages parsed: 645 cached; pages with a machine infobox: 229; entries: **209**.
 
 ## Attribute coverage
