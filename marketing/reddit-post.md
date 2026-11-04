@@ -1,24 +1,22 @@
-# Gregdle — Reddit launch post (v2, remade 2026-11-04)
+# Gregdle — Reddit launch post (v3, updated 2026-11-04)
 
-Screenshots (retaken with the current UI):
+Screenshots (current UI): `marketing/reddit-play.png` (game board — POST IMAGE),
+`marketing/reddit-home.png` (home + top-10 leaderboard).
 
-- `marketing/reddit-play.png` — the game board mid-guess (ATTACH AS THE POST IMAGE)
-- `marketing/reddit-home.png` — home with the top-10 leaderboard + streak fire
-
-Site: https://gregdle.stranger3012.workers.dev (custom domain gregdle.carletti.work coming)
+Site: https://gregdle.carletti.work
 Repo: https://github.com/absxl/Gregdle (must be public before posting)
 
 ## Title options
 
 1. I made a daily guessing game for GregTech — guess the machine from its attributes (like Loldle, but multiblocks)
 2. Gregdle — Wordle for GTNH. 209 machines, daily puzzles, streaks with actual Minecraft fire
-3. After too many hours in GTNH I built a Loldle for it — free, no ads, open source
+3. After too many hours in GTNH I built a Loldle for it — free, no ads, community wallpapers
 
 ## Post body (r/feedthebeast)
 
-Hi r/feedthebeast — long-time GTNH player here. I kept seeing Loldle/Wordle clones for every game
-except the one that actually deserved one, so I built **Gregdle**: a daily GregTech machine
-guessing game.
+Hi r/feedthebeast — long-time GTNH player here. I kept seeing Loldle/Wordle clones for every
+game except the one that actually deserved one, so I built **Gregdle**: a daily GregTech
+machine guessing game.
 
 **How a round works:** every day at 00:00 UTC one machine is hidden. Type a guess and the grid
 tells you how close you are:
@@ -28,40 +26,37 @@ tells you how close you are:
 - **Function** — 12 buckets (power gen, ore processing, smelting/alloying, fluid/chem…)
 - **Energy & extras** — hatches, overclocks and friends
 
-The search helps without spoiling: as you type, every suggestion shows its tier, structure,
-size and function (Minedle-style), so you can play from knowledge instead of alt-tabbing to
-the wiki.
+The search helps without spoiling: every suggestion shows its tier, structure, size and
+function, so you can play from knowledge instead of alt-tabbing to the wiki.
 
 **What's in it:**
 
-- Daily in **Easy** (everyday machines) and **Hard** (all 209 from the GTNH wiki)
-- **Endless mode** for practice
-- Hints at 4 and 8 wrong guesses — the second one literally shows you the machine's texture
-- Sign in with **Discord** → daily leaderboard (top 10 on the home page), public profiles,
-  streaks with a Minecraft fire animation, win distributions
-- Share your run as an **emoji grid or a rendered PNG** — spoiler-free either way
-- Guess rows show the machine's actual texture from the wiki; tap to enlarge
+- Daily in **Easy** and **Hard**, endless mode for practice, hints at 4 and 8 wrong guesses
+  (the second one literally shows you the machine's texture)
+- Sign in with **Discord** → daily leaderboard, public profiles with Minecraft-fire streak
+  animations, win distributions and full guess history
+- **Community wallpapers**: anyone signed in can submit a background (auto-compressed, cropped
+  to 16:9) — the site rotates the approved ones every 30 seconds with the artist credited and
+  linked
+- Share your run as an emoji grid or a rendered PNG — spoiler-free either way
+- Free, **no ads**, no pop-ups, mobile-friendly, works on a potato
 
-**The boring-but-nice part:** it's free, there are **no ads**, no pop-ups, no install — it's a
-Next.js app on Cloudflare with a Supabase backend, and the whole thing is open source (MIT),
-including the scraper and the 209-machine dataset with per-entry links back to the wiki pages:
-https://github.com/absxl/Gregdle
+All 209 machines and attributes were scraped from the GTNH wiki (2.9 snapshot) — every result
+links back to the machine's wiki page, so losing also teaches you something. The whole thing
+is open source (MIT), scraper and dataset included: https://github.com/absxl/Gregdle
 
-All 209 machines and their attributes were scraped from the GTNH wiki (GTNH 2.9 snapshot) —
-every result links back to the wiki page of the machine, so losing also teaches you something.
-
-GTCEu datasets are next (the pipeline is already built, it's mostly wiki-formatting work).
+GTCEu datasets are next — the data pipeline is already built.
 
 Difficulty feedback very welcome — Easy is tuned for people who just reached LV, Hard is
 honestly hard. If you win, post your grid.
 
-## Shorter variant (for r/GTNH or Discord)
+## Shorter variant (r/GTNH or Discord)
 
 Made a Loldle-style daily for GTNH: **Gregdle** — one hidden machine per day, guess from
 tier/structure/size/function with ▲▼ hints, Easy & Hard dailies, endless mode, Discord login
-with leaderboard + profiles, Minecraft-fire streaks, spoiler-free sharing. Free, no ads, open
-source (MIT). 209 machines scraped from the wiki, every result links back to its wiki page.
-https://gregdle.stranger3012.workers.dev
+with leaderboard + profiles, Minecraft-fire streaks, community wallpapers with approval,
+spoiler-free sharing. Free, no ads, open source (MIT). 209 machines scraped from the wiki,
+every result links back to its wiki page. https://gregdle.carletti.work
 
 ## Posting checklist
 
