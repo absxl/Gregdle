@@ -5,6 +5,7 @@ import Script from "next/script";
 import "./globals.css";
 import { SITE_URL } from "@/lib/site";
 import { BackgroundLayer } from "@/components/backgrounds/BackgroundLayer";
+import { ReleaseBanner } from "@/components/ui/ReleaseBanner";
 
 const pixel = VT323({
   variable: "--font-vt323",
@@ -96,6 +97,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <Link href="/stats" className="hover:text-accent">
               STATS
             </Link>
+            <Link href="/changelog" className="hover:text-accent">
+              CHANGELOG
+            </Link>
             <Link href="/faq" className="hover:text-accent">
               FAQ
             </Link>
@@ -139,6 +143,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             </a>
           </div>
         </footer>
+        <ReleaseBanner />
         <AdSenseScript />
       </body>
     </html>

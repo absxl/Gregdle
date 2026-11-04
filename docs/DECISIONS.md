@@ -174,3 +174,11 @@ approval only flips status, files never move. Site-wide dimmed carousel (30 s cr
 dark veil; reduced-motion = static; pin-a-favorite via localStorage). Header button top-left on
 home + play opens the panel (gallery / submit / approve). Rejected files remain in storage but are
 never listed — acceptable at this scale.
+
+## D44 — Versioning scheme: "one" in many languages (2026-11-05, user decision)
+
+Releases are codenamed "one" in different languages: v0.0 One (EN), v0.1 Unus (LA),
+v0.2 Éna (EL), v0.3 Eins (DE), v0.4 Un (FR), v0.5 Uno (ES), v0.6 Jeden (PL), v0.7 Egy (HU),
+and the first stable **v1.0 Uno (ES)**. The changelog page (/changelog) is the public record;
+a dismissible bottom-right announcement pill advertises the newest release per localStorage
+version key. Bump `CURRENT_VERSION` in `lib/changelog.ts` and add a Release entry per launch.
