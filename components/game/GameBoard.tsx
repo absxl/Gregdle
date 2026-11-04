@@ -86,7 +86,12 @@ export function GameBoard({ datasetKey, difficulty, mode, initialSeed, pool, col
   const [seed, setSeed] = useState<string | null>(initialSeed);
   const [rows, setRows] = useState<GuessRow[]>([]);
   const [status, setStatus] = useState<"playing" | "won" | "gave_up">("playing");
-  const [answer, setAnswer] = useState<{ id: string; name: string; image: string | null } | null>(
+  const [answer, setAnswer] = useState<{
+    id: string;
+    name: string;
+    image: string | null;
+    sourceUrl?: string;
+  } | null>(
     null,
   );
   const [hints, setHints] = useState<Hint[]>([]);
@@ -698,7 +703,19 @@ export function GameBoard({ datasetKey, difficulty, mode, initialSeed, pool, col
                       />
                     </button>
                   )}
-                  <p className="text-lg font-bold">{answer.name}</p>
+                  {answer.sourceUrl ? (
+                    <a
+                      href={answer.sourceUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-lg font-bold underline decoration-accent decoration-2 underline-offset-4 hover:text-accent"
+                      title={`Open the ${answer.name} wiki page`}
+                    >
+                      {answer.name}
+                    </a>
+                  ) : (
+                    <p className="text-lg font-bold">{answer.name}</p>
+                  )}
                 </div>
               )}
               <p className="text-sm font-semibold text-muted">

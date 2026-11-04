@@ -71,7 +71,12 @@ export async function POST(req: Request) {
   if (giveUp) {
     return Response.json({
       gaveUp: true,
-      answer: { id: answer.id, name: answer.name, image: answer.image },
+      answer: {
+        id: answer.id,
+        name: answer.name,
+        image: answer.image,
+        sourceUrl: answer.source_url,
+      },
     });
   }
 
@@ -117,7 +122,12 @@ export async function POST(req: Request) {
     return Response.json({
       result,
       sameGuessCount,
-      answer: { id: answer.id, name: answer.name, image: answer.image },
+      answer: {
+        id: answer.id,
+        name: answer.name,
+        image: answer.image,
+        sourceUrl: answer.source_url,
+      },
     });
   }
 
