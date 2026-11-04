@@ -126,23 +126,23 @@ export function getEndlessAnswerId(
 // ------------------------------------------------------------------- hints --
 
 export interface HintPayload {
-  /** Human-readable hint text (hint 0). */
-  text?: string;
   /** Machine image URL (hint 1 — a picture is the whole hint). */
   image?: string;
+  /** Human-readable hint text (hint 2). */
+  text?: string;
 }
 
 function httpsUrl(url: string): string {
   return url.startsWith("//") ? `https:${url}` : url;
 }
 
-/** Hint 0: first letter + length. Hint 1: the machine's image only. */
+/** Hint 1 (index 0): the machine's image only. Hint 2 (index 1): first letter + length. */
 export function machineHint(entry: MachineEntry, index: 0 | 1): HintPayload {
   if (index === 0) {
-    const first = entry.name[0]?.toUpperCase() ?? "?";
-    return { text: `Starts with "${first}" — ${entry.name.replace(/\s/g, "").length} characters.` };
+    return entry.image
+      ? { image: httpsUrl(entry.image) }
+      : { text: "No image on the wiki for this one." };
   }
-  return entry.image
-    ? { image: httpsUrl(entry.image) }
-    : { text: "No image on the wiki for this one." };
+  const first = entry.name[0]?.toUpperCase() ?? "?";
+  return { text: `Starts with "${first}" — ${entry.name.replace(/\s/g, "").length} characters.` };
 }

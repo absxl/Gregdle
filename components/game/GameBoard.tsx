@@ -20,8 +20,8 @@ import { BackgroundsButton } from "@/components/backgrounds/BackgroundsButton";
 
 /**
  * The game screen (PRD §6): autocomplete guess box with images, attribute
- * grid with a sticky guess column, hints (4/8 wrong guesses — hint 2 is the
- * machine's image), win animation, spoiler-free share, UTC-midnight countdown.
+ * grid with a sticky guess column, hints (4/8 wrong guesses — hint 1 is the
+ * machine's image, hint 2 the first letter), win animation, spoiler-free share, UTC-midnight countdown.
  * Comparisons always come from /api/guess; state persists to localStorage.
  */
 

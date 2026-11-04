@@ -156,8 +156,8 @@ distinguish, game too hard. Changes:
 - **Cell semantics**: green ✓ / amber-striped ◐ / red ✕ / blue ▲▼ with dark ink text for
   contrast; icons and aria labels on every cell (color never the only signal).
 - **Difficulty**: hints unlock at **4 / 8** wrong guesses (was 6/10, PRD §6.5 amended by
-  owner); hint 1 = first letter + length; **hint 2 = the machine's image only** (fetched
-  server-side, answer stays hidden).
+  owner); hint 1 = the machine's image, hint 2 = first letter + length (swapped on
+  2026-11-04 per user request — the image is now the early hint).
 - **Images**: wiki textures in the autocomplete dropdown, guess rows, results modal, hint 2,
   and the home hero.
 - **Win animation**: badge pop + cell wave + row glow + CSS confetti in the results modal
