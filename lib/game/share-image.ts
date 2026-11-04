@@ -6,6 +6,7 @@
  */
 
 import type { GuessRow } from "./local-state";
+import { originOrFallback } from "@/lib/site";
 
 const W = 900;
 const NAME_W = 230;
@@ -128,7 +129,8 @@ export async function renderSharePng(input: ShareImageInput): Promise<Blob> {
   ctx.font = "700 14px sans-serif";
   ctx.fillStyle = MUTED;
   ctx.textAlign = "center";
-  ctx.fillText("gregdle.stranger3012.workers.dev — a daily GregTech guessing game", W / 2, H - 28);
+  const host = originOrFallback().replace(/^https?:\/\//, "");
+  ctx.fillText(`${host} — a daily GregTech guessing game`, W / 2, H - 28);
 
   return new Promise((resolve, reject) => {
     canvas.toBlob(

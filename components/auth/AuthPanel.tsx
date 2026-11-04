@@ -1,16 +1,18 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import Link from "next/link";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
 import { migrateGuestResults } from "@/lib/game/migrate";
 
 /**
- * Email magic-link sign in (Supabase Auth). On first login the player picks
- * a display name; the profile row is created client-side (RLS: owner insert).
- * Auth is optional — guests keep playing with local stats only.
+ * Sign-in panel (D22/D25): Discord OAuth is the default; email magic link is
+ * the fallback. Display names are taken from the Discord tag (or email
+ * prefix) and are NEVER editable — the profile row is provisioned
+ * automatically on first login, with numeric suffixes resolving collisions.
  */
 
-type Phase = "loading" | "signed-out" | "email-form" | "sent" | "naming" | "signed-in";
+type Phase = "loading" | "signed-out" | "email-form" | "sent" | "provisioning" | "signed-in";
 
 export function AuthPanel({ compact = false }: { compact?: boolean }) {
   const supabase = getSupabaseBrowser();
@@ -19,7 +21,6 @@ export function AuthPanel({ compact = false }: { compact?: boolean }) {
   const [displayName, setDisplayName] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
-  const [renaming, setRenaming] = useState(false);
 
   useEffect(() => {
     if (!supabase) {
@@ -30,23 +31,26 @@ export function AuthPanel({ compact = false }: { compact?: boolean }) {
       return;
     }
     supabase.auth.getSession().then(({ data }) => {
-      if (data.session) setPhase("naming");
+      if (data.session) setPhase("provisioning");
       else setPhase("signed-out");
     });
     const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
-      if (session) setPhase((p) => (p === "signed-in" ? p : "naming"));
+      if (session) setPhase((p) => (p === "signed-in" ? p : "provisioning"));
       else setPhase("signed-out");
     });
     return () => sub.subscription.unsubscribe();
   }, [supabase]);
 
-  // Ensure a profile exists; load the existing display name when it does.
+  // Provision the profile automatically from the Discord tag (D25):
+  // name = preferred_username | full_name | email prefix; collisions get
+  // _2, _3… then a short id suffix. Never asks the user, never editable.
   useEffect(() => {
-    if (phase !== "naming" || !supabase) return;
+    if (phase !== "provisioning" || !supabase) return;
     (async () => {
       const { data: userData } = await supabase.auth.getUser();
       const user = userData.user;
       if (!user) return setPhase("signed-out");
+
       const { data: profile } = await supabase
         .from("profiles")
         .select("display_name")
@@ -55,13 +59,38 @@ export function AuthPanel({ compact = false }: { compact?: boolean }) {
       if (profile?.display_name) {
         setDisplayName(profile.display_name);
         setPhase("signed-in");
-      } else {
-        // Suggest the Discord username (or email prefix) for the display name.
-        const meta = (user.user_metadata ?? {}) as Record<string, string | undefined>;
-        const suggestion =
-          meta.preferred_username ?? meta.full_name ?? meta.name ?? user.email?.split("@")[0];
-        if (suggestion) setDisplayName(suggestion.slice(0, 24));
+        return;
       }
+
+      const meta = (user.user_metadata ?? {}) as Record<string, string | undefined>;
+      const base =
+        (
+          meta.preferred_username ??
+          meta.full_name ??
+          meta.name ??
+          user.email?.split("@")[0] ??
+          "player"
+        )
+          .replace(/[^\w.-]+/g, "")
+          .slice(0, 20) || "player";
+
+      const candidates = [
+        base,
+        ...[2, 3, 4, 5, 6, 7, 8, 9].map((n) => `${base}_${n}`),
+        `${base}${user.id.slice(0, 4)}`,
+      ];
+      for (const name of candidates) {
+        const { error: err } = await supabase
+          .from("profiles")
+          .insert({ user_id: user.id, display_name: name });
+        if (!err) {
+          setDisplayName(name);
+          setPhase("signed-in");
+          return;
+        }
+        if (err.code !== "23505") break; // collision -> next candidate; other error -> bail
+      }
+      setPhase("signed-in");
     })();
   }, [phase, supabase]);
 
@@ -78,28 +107,6 @@ export function AuthPanel({ compact = false }: { compact?: boolean }) {
     else setPhase("sent");
   }, [email, supabase]);
 
-  const createProfile = useCallback(async () => {
-    if (!supabase) return;
-    const name = displayName.trim().slice(0, 24);
-    if (name.length < 2) return setError("Pick a name (2–24 characters).");
-    setBusy(true);
-    const { data: userData } = await supabase.auth.getUser();
-    if (!userData.user) {
-      setBusy(false);
-      return setPhase("signed-out");
-    }
-    const { error: err } = await supabase
-      .from("profiles")
-      .insert({ user_id: userData.user.id, display_name: name });
-    setBusy(false);
-    if (err) {
-      if (err.code === "23505") setError("That name is taken — try another.");
-      else setError(err.message);
-      return;
-    }
-    setPhase("signed-in");
-  }, [displayName, supabase]);
-
   const signOut = useCallback(async () => {
     if (!supabase) return;
     await supabase.auth.signOut();
@@ -107,8 +114,7 @@ export function AuthPanel({ compact = false }: { compact?: boolean }) {
     setPhase("signed-out");
   }, [supabase]);
 
-  // Discord OAuth is the default sign-in (user decision D22); if the
-  // provider isn't enabled in Supabase yet, surface Discord's error clearly.
+  // Discord OAuth is the default sign-in (D22).
   const signInWithDiscord = useCallback(async () => {
     if (!supabase) return;
     setError(null);
@@ -118,32 +124,6 @@ export function AuthPanel({ compact = false }: { compact?: boolean }) {
     });
     if (err) setError(err.message);
   }, [supabase]);
-
-  // Rename (account settings, D23): updates profiles.display_name; RLS
-  // restricts updates to the owner's own row.
-  const rename = useCallback(async () => {
-    if (!supabase) return;
-    const name = displayName.trim().slice(0, 24);
-    if (name.length < 2) return setError("Pick a name (2–24 characters).");
-    setBusy(true);
-    setError(null);
-    const { data: userData } = await supabase.auth.getUser();
-    if (!userData.user) {
-      setBusy(false);
-      return setPhase("signed-out");
-    }
-    const { error: err } = await supabase
-      .from("profiles")
-      .update({ display_name: name })
-      .eq("user_id", userData.user.id);
-    setBusy(false);
-    if (err) {
-      if (err.code === "23505") setError("That name is taken — try another.");
-      else setError(err.message);
-      return;
-    }
-    setRenaming(false);
-  }, [displayName, supabase]);
 
   // One-time guest -> account migration of locally-played dailies (D23).
   useEffect(() => {
@@ -155,7 +135,13 @@ export function AuthPanel({ compact = false }: { compact?: boolean }) {
 
   const shell = compact ? "inline-flex items-center gap-2" : "flex flex-col gap-2";
 
-  if (phase === "loading") return <div className={shell} aria-hidden="true" />;
+  if (phase === "loading" || phase === "provisioning") {
+    return (
+      <span className="chip" aria-busy="true">
+        Signing in…
+      </span>
+    );
+  }
 
   if (phase === "signed-out") {
     return (
@@ -199,70 +185,15 @@ export function AuthPanel({ compact = false }: { compact?: boolean }) {
     );
   }
 
-  if (phase === "naming") {
-    return (
-      <div className={shell}>
-        <input
-          type="text"
-          value={displayName}
-          onChange={(e) => setDisplayName(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && createProfile()}
-          placeholder="Pick a display name"
-          aria-label="Display name"
-          maxLength={24}
-          className="rounded-lg border border-edge bg-surface2 px-3 py-2 text-sm font-semibold focus:border-accent focus:outline-none"
-        />
-        <button type="button" className="btn btn-primary" disabled={busy} onClick={createProfile}>
-          Save name
-        </button>
-        <button type="button" className="btn" onClick={signOut}>
-          Cancel
-        </button>
-        {error && <p className="text-xs font-bold text-bad">{error}</p>}
-      </div>
-    );
-  }
-
-  if (renaming) {
-    return (
-      <div className={shell}>
-        <input
-          type="text"
-          value={displayName}
-          onChange={(e) => setDisplayName(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && rename()}
-          placeholder="New display name"
-          aria-label="New display name"
-          maxLength={24}
-          className="rounded-lg border border-edge bg-surface2 px-3 py-2 text-sm font-semibold focus:border-accent focus:outline-none"
-        />
-        <button type="button" className="btn btn-primary" disabled={busy} onClick={rename}>
-          Save
-        </button>
-        <button type="button" className="btn" onClick={() => setRenaming(false)}>
-          Cancel
-        </button>
-        {error && <p className="text-xs font-bold text-bad">{error}</p>}
-      </div>
-    );
-  }
-
   return (
     <div className={shell}>
-      <span
-        className="chip border-good/60 text-good"
-        title="Signed in — your results count on the leaderboard"
+      <Link
+        href={`/u/${encodeURIComponent(displayName)}`}
+        className="chip border-good/60 text-good hover:border-accent"
+        title="Your profile"
       >
         ● {displayName}
-      </span>
-      <button
-        type="button"
-        className="btn"
-        onClick={() => setRenaming(true)}
-        aria-label="Change display name"
-      >
-        ✎
-      </button>
+      </Link>
       <button type="button" className="btn" onClick={signOut}>
         Sign out
       </button>

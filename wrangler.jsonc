@@ -13,6 +13,7 @@
   // never be committed here.
   "vars": {
     "NEXT_PUBLIC_SUPABASE_URL": "https://qmpuabzpngewbhxwshzf.supabase.co",
+    "NEXT_PUBLIC_SITE_URL": "https://gregdle.carletti.work",
     "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY": "sb_publishable_zWVaKDqDOf9BIYJ8imFmhA_zMmoumNl",
   },
   "observability": {

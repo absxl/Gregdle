@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export interface LeaderboardRow {
   display_name: string;
   guess_count: number | null;
@@ -50,7 +52,15 @@ export function LeaderboardTable({
               className="border-b border-edge/50 last:border-0"
             >
               <td className="px-4 py-3 font-black tabular-nums">{medal(r.rank) ?? r.rank}</td>
-              <td className="px-4 py-3 font-bold">{r.display_name}</td>
+              <td className="px-4 py-3 font-bold">
+                <Link
+                  href={`/u/${encodeURIComponent(r.display_name)}`}
+                  className="hover:text-accent"
+                  title="View profile"
+                >
+                  {r.display_name}
+                </Link>
+              </td>
               <td className="px-4 py-3 text-right font-bold tabular-nums">
                 {r.guess_count ?? "—"}
               </td>

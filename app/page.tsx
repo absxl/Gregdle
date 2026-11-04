@@ -29,7 +29,7 @@ async function topToday(difficulty: "easy" | "hard"): Promise<BoardRow[]> {
       difficulty: `eq.${difficulty}`,
       date: `eq.${new Date().toISOString().slice(0, 10)}`,
       order: "rank.asc",
-      limit: "3",
+      limit: "10",
     });
     const res = await fetch(`${url}/rest/v1/leaderboard_daily?${qs}`, {
       headers: { apikey: key, Authorization: `Bearer ${key}` },
@@ -51,16 +51,19 @@ export default async function Home() {
     rows.length > 0 ? (
       <ul className="flex flex-col gap-1 text-sm">
         {rows.map((r, i) => (
-          <li
-            key={`${r.rank}-${r.display_name}`}
-            className="flex items-center justify-between gap-2"
-          >
-            <span className="truncate font-bold">
-              <span aria-hidden="true">{MEDALS[i] ?? `${r.rank}.`}</span> {r.display_name}
-            </span>
-            <span className="shrink-0 text-muted tabular-nums">
-              {r.guess_count ?? "—"} guesses{r.hints_used > 0 ? ` · ${r.hints_used} hints` : ""}
-            </span>
+          <li key={`${r.rank}-${r.display_name}`}>
+            <Link
+              href={`/u/${encodeURIComponent(r.display_name)}`}
+              className="flex items-center justify-between gap-2 rounded-lg px-2 py-1.5 hover:bg-surface2"
+              title={`View ${r.display_name}'s profile`}
+            >
+              <span className="truncate font-bold">
+                <span aria-hidden="true">{MEDALS[i] ?? `${r.rank}.`}</span> {r.display_name}
+              </span>
+              <span className="shrink-0 text-muted tabular-nums">
+                {r.guess_count ?? "—"} g{r.hints_used > 0 ? ` · ${r.hints_used} hints` : ""}
+              </span>
+            </Link>
           </li>
         ))}
       </ul>

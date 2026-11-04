@@ -7,6 +7,7 @@ import type { DatasetKey } from "@/lib/datasets";
 import { datasetLabel } from "@/lib/datasets";
 import { AdSlot } from "@/components/ads/AdSlot";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
+import { StreakFire } from "@/components/game/StreakFire";
 
 /**
  * Stats: local (localStorage) always; when signed in, the synced account
@@ -118,15 +119,18 @@ export default function StatsPage() {
                 <h2 className="text-base font-black">
                   {datasetLabel(datasetKey)} · Daily {difficulty.toUpperCase()}
                 </h2>
-                <div className="mt-3 grid grid-cols-3 gap-2 sm:grid-cols-5">
-                  <Stat label="Played" value={s.played} />
-                  <Stat label="Won" value={s.wins} />
-                  <Stat
-                    label="Win %"
-                    value={s.played ? `${Math.round((s.wins / s.played) * 100)}%` : "—"}
-                  />
-                  <Stat label="Streak" value={s.currentStreak} />
-                  <Stat label="Best" value={s.maxStreak} />
+                <div className="mt-3 flex items-center gap-3">
+                  <StreakFire n={s.currentStreak} size={56} />
+                  <div className="grid flex-1 grid-cols-3 gap-2 sm:grid-cols-5">
+                    <Stat label="Played" value={s.played} />
+                    <Stat label="Won" value={s.wins} />
+                    <Stat
+                      label="Win %"
+                      value={s.played ? `${Math.round((s.wins / s.played) * 100)}%` : "—"}
+                    />
+                    <Stat label="Streak" value={s.currentStreak} />
+                    <Stat label="Best" value={s.maxStreak} />
+                  </div>
                 </div>
                 {Object.keys(s.distribution).length > 0 && (
                   <div className="mt-4">

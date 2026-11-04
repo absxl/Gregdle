@@ -41,7 +41,9 @@ for (const project of ["desktop-chromium", "mobile-chromium"]) {
     // (Options carry attribute chips, so match on the name PREFIX.)
     const search = page.getByRole("textbox", { name: "Search a machine to guess" });
     await search.fill(wrong.name);
-    await page.locator('[role="option"] button').first().click();
+    // force: the absolutely-positioned listbox occasionally fails Playwright's
+    // pointer-interception actionability check (works fine in real browsers).
+    await page.locator('[role="option"] button').first().click({ force: true });
     await expect(
       page.getByRole("table", { name: "Guess grid" }).getByText(wrong.name),
     ).toBeVisible();
@@ -52,7 +54,9 @@ for (const project of ["desktop-chromium", "mobile-chromium"]) {
     // Winning guess — result modal with the answer + share actions.
     await search.fill(answer.name);
     await expect(page.locator('[role="option"]', { hasText: answer.name })).toBeVisible();
-    await page.locator('[role="option"] button').first().click();
+    // force: the absolutely-positioned listbox occasionally fails Playwright's
+    // pointer-interception actionability check (works fine in real browsers).
+    await page.locator('[role="option"] button').first().click({ force: true });
     await expect(page.getByRole("dialog", { name: "Game result" })).toBeVisible();
     await expect(page.getByRole("dialog").getByText("CORRECT!")).toBeVisible();
     await expect(page.getByRole("dialog").getByText(answer.name, { exact: true })).toBeVisible();

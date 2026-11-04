@@ -344,3 +344,16 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ------------------------------------------------------- streak fire badge */
+
+.streak-number {
+  font-family: var(--font-silkscreen), var(--font-vt323), monospace;
+  color: #ffffff;
+  text-shadow:
+    2px 2px 0 #3f1400,
+    -1px -1px 0 #3f1400,
+    1px -1px 0 #3f1400,
+    -1px 1px 0 #3f1400;
+  margin-bottom: 10%;
+}

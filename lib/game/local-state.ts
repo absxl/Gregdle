@@ -4,6 +4,8 @@
  * migration (records carry everything the server needs to replay them).
  */
 
+import { originOrFallback } from "@/lib/site";
+
 const PREFIX = "gregdle:v1";
 
 export interface GuessRow {
