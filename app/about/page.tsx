@@ -5,7 +5,31 @@ export const metadata = {
   description: "What Gregdle is, where the data comes from, and who to thank.",
 };
 
-export default function AboutPage() {
+async function backgroundArtists(): Promise<string[]> {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key =
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  if (!url || !key) return [];
+  try {
+    const qs = new URLSearchParams({
+      select: "author_name",
+      status: "eq.approved",
+      order: "author_name.asc",
+    });
+    const res = await fetch(`${url}/rest/v1/background_submissions?${qs}`, {
+      headers: { apikey: key, Authorization: `Bearer ${key}` },
+      next: { revalidate: 300 },
+    });
+    if (!res.ok) return [];
+    const rows = (await res.json()) as { author_name: string }[];
+    return [...new Set(rows.map((r) => r.author_name))];
+  } catch {
+    return [];
+  }
+}
+
+export default async function AboutPage() {
+  const artists = await backgroundArtists();
   return (
     <main className="mx-auto flex w-full max-w-3xl flex-col gap-5 p-4 pb-12">
       <header className="mt-2 flex w-full items-baseline justify-between">
@@ -26,12 +50,27 @@ export default function AboutPage() {
         </p>
       </section>
 
+      {artists.length > 0 && (
+        <section className="panel p-5 text-sm leading-relaxed">
+          <h2 className="mb-2 text-base font-black text-accent">Background artists</h2>
+          <p>
+            The rotating site backgrounds were submitted by the community — thanks to{" "}
+            {artists.map((a, i) => (
+              <span key={a}>
+                {i > 0 && ", "}
+                <span className="font-bold">{a}</span>
+              </span>
+            ))}
+            . Submit yours with the backgrounds button (top left).
+          </p>
+        </section>
+      )}
+
       <section className="panel p-5 text-sm leading-relaxed">
         <h2 className="mb-2 text-base font-black text-accent">Contact</h2>
         <p className="flex flex-wrap gap-x-6 gap-y-2">
           <span>
-            Discord:{" "}
-            <span className="font-bold text-foreground">@amidnightgospel</span>
+            Discord: <span className="font-bold text-foreground">@amidnightgospel</span>
           </span>
           <span>
             GitHub:{" "}
@@ -46,7 +85,10 @@ export default function AboutPage() {
           </span>
           <span>
             Email:{" "}
-            <a href="mailto:marcello@carletti.work" className="font-semibold text-accent hover:underline">
+            <a
+              href="mailto:marcello@carletti.work"
+              className="font-semibold text-accent hover:underline"
+            >
               marcello@carletti.work
             </a>
           </span>

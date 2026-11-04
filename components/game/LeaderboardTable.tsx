@@ -32,8 +32,8 @@ export function LeaderboardTable({
     );
   }
 
-  const medal = (rank: number) =>
-    rank === 1 ? "🥇" : rank === 2 ? "🥈" : rank === 3 ? "🥉" : null;
+  const medal = (rank: number): "rank1" | "rank2" | "rank3" | null =>
+    rank === 1 ? "rank1" : rank === 2 ? "rank2" : rank === 3 ? "rank3" : null;
 
   return (
     <div className="panel w-full overflow-hidden">
@@ -52,7 +52,13 @@ export function LeaderboardTable({
               key={`${r.rank}-${r.display_name}`}
               className="border-b border-edge/50 last:border-0"
             >
-              <td className="px-4 py-3 font-black tabular-nums">{medal(r.rank) ?? r.rank}</td>
+              <td className="px-4 py-3 font-black tabular-nums">
+                {medal(r.rank) ? (
+                  <ItemIcon name={medal(r.rank)!} size={18} title={`Rank ${r.rank}`} />
+                ) : (
+                  r.rank
+                )}
+              </td>
               <td className="px-4 py-3 font-bold">
                 <Link
                   href={`/u/${encodeURIComponent(r.display_name)}`}

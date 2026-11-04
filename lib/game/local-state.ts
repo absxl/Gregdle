@@ -209,5 +209,5 @@ export function shareText(game: DailyGame): string {
     game.status === "won"
       ? `${game.rows.length} guess${game.rows.length === 1 ? "" : "es"}${game.hintsUsed > 0 ? ` (+${game.hintsUsed} hint${game.hintsUsed === 1 ? "" : "s"})` : ""}`
       : "X";
-  return `${head}\n${grid}\n${tail}\nhttps://gregdle.stranger3012.workers.dev`;
+  return `${head}\n${grid}\n${tail}\n${originOrFallback()}`;
 }

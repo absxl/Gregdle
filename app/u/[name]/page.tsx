@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { computeProfileStats, emptyProfileStats, type ProfileResultRow } from "@/lib/game/profile";
+import { computeProfileStats, type ProfileResultRow } from "@/lib/game/profile";
 import { StreakFire } from "@/components/game/StreakFire";
+import { CopyTagButton, SocialLinks } from "@/components/profile/ProfileIdentity";
+import { MaybeProfileEdit } from "@/components/profile/MaybeProfileEdit";
 
 /**
  * Public profile (D24): /u/<displayName>. Sourced from the profile_page RPC —
@@ -12,8 +14,17 @@ import { StreakFire } from "@/components/game/StreakFire";
 export const dynamic = "force-dynamic";
 
 interface Payload {
-  profile: { display_name: string; joined: string; avatar_url: string | null } | null;
+  profile: {
+    display_name: string;
+    joined: string;
+    avatar_url: string | null;
+    title: string | null;
+    bio: string | null;
+    reddit: string | null;
+    twitter: string | null;
+  } | null;
   results: ProfileResultRow[];
+  backgrounds: { id: string; path: string; title: string | null; description: string | null }[];
 }
 
 async function loadProfile(name: string): Promise<Payload | null> {
@@ -68,13 +79,39 @@ export default async function ProfilePage(props: { params: Promise<{ name: strin
           )}
           <div>
             <h1 className="text-2xl font-black">{displayName}</h1>
-            <p className="text-xs font-semibold text-muted">playing since {joined}</p>
+            {data.profile.title && (
+              <p className="text-sm font-bold text-accent">{data.profile.title}</p>
+            )}
+            <div className="mt-1 flex flex-wrap items-center gap-2">
+              <p className="text-xs font-semibold text-muted">playing since {joined}</p>
+              <CopyTagButton tag={displayName} />
+            </div>
+            <div className="mt-1">
+              <SocialLinks reddit={data.profile.reddit} twitter={data.profile.twitter} />
+            </div>
           </div>
         </div>
-        <Link href="/" className="btn">
-          Home
-        </Link>
+        <div className="flex items-center gap-2">
+          <MaybeProfileEdit
+            profileName={displayName}
+            initial={{
+              title: data.profile.title ?? "",
+              bio: data.profile.bio ?? "",
+              reddit: data.profile.reddit ?? "",
+              twitter: data.profile.twitter ?? "",
+            }}
+          />
+          <Link href="/" className="btn">
+            Home
+          </Link>
+        </div>
       </header>
+
+      {data.profile.bio && (
+        <section aria-label="Bio" className="panel w-full p-4 text-sm leading-relaxed">
+          {data.profile.bio}
+        </section>
+      )}
 
       {/* Streaks — Minecraft fire badges */}
       <section

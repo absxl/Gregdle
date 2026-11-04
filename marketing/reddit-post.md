@@ -1,6 +1,7 @@
 # Gregdle — Reddit launch post (v2, remade 2026-11-04)
 
 Screenshots (retaken with the current UI):
+
 - `marketing/reddit-play.png` — the game board mid-guess (ATTACH AS THE POST IMAGE)
 - `marketing/reddit-home.png` — home with the top-10 leaderboard + streak fire
 

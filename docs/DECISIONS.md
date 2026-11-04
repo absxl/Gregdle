@@ -164,3 +164,13 @@ distinguish, game too hard. Changes:
   (disabled under prefers-reduced-motion).
 - **Home**: Loldle-style mode directory — hero + one card per mode (Easy/Hard daily with
   status chip, Endless), future datasets as dimmed "coming soon" cards.
+
+## D28 — Community backgrounds: rotating carousel, Discord-gated submissions, owner approval (2026-11-04, user decision)
+
+Free + in-site (no external drive): Supabase Storage public bucket `backgrounds` under
+`submissions/{user_id}/` (unguessable paths). Discord login required to submit (credit = immutable
+profile name). Owner (app_admins, seeded from the amidnightgospel profile) approves via RPCs —
+approval only flips status, files never move. Site-wide dimmed carousel (30 s crossfade, blur,
+dark veil; reduced-motion = static; pin-a-favorite via localStorage). Header button top-left on
+home + play opens the panel (gallery / submit / approve). Rejected files remain in storage but are
+never listed — acceptable at this scale.

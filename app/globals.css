@@ -381,3 +381,18 @@ body {
     box-shadow: 0 0 0 0 rgba(35, 165, 90, 0);
   }
 }
+
+/* ------------------------------------------------- background carousel */
+
+.bg-fade {
+  animation: bg-fade-in 1500ms ease-in-out both;
+}
+
+@keyframes bg-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

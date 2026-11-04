@@ -10,10 +10,6 @@ import { getMachines } from "@/lib/game/dataset";
  */
 
 const SEED = "gregdle-e2e-fixed-seed";
-
-function escapeRegExp(s: string): string {
-  return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
 const URL = `/play/gtnh-machines/easy?mode=endless&seed=${SEED}`;
 
 test.describe.configure({ mode: "serial" });

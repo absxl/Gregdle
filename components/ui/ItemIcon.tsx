@@ -3,9 +3,7 @@
  * docs/ATTRIBUTION.md). Rendered pixelated at any size.
  */
 
-const ICONS = ["rank1", "rank2", "rank3", "trophy", "synced", "gold"] as const;
-
-export type ItemIconName = (typeof ICONS)[number];
+export type ItemIconName = "rank1" | "rank2" | "rank3" | "trophy" | "synced" | "gold";
 
 export function ItemIcon({
   name,

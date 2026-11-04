@@ -4,6 +4,7 @@ import { Silkscreen, VT323 } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { SITE_URL } from "@/lib/site";
+import { BackgroundLayer } from "@/components/backgrounds/BackgroundLayer";
 
 const pixel = VT323({
   variable: "--font-vt323",
@@ -64,6 +65,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en" className={`${pixel.variable} ${silkscreen.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
         <SupabasePublicConfig />
+        <BackgroundLayer />
         {children}
         <footer className="mt-auto border-t border-edge/60 px-4 py-5 text-center text-sm text-muted">
           <nav

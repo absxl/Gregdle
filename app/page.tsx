@@ -4,6 +4,7 @@ import { ALL_DATASET_KEYS, datasetLabel } from "@/lib/datasets";
 import { getMachines } from "@/lib/game/dataset";
 import { DailyStatus } from "@/components/game/DailyStatus";
 import { AuthPanel } from "@/components/auth/AuthPanel";
+import { BackgroundsButton } from "@/components/backgrounds/BackgroundsButton";
 import { AdSlot } from "@/components/ads/AdSlot";
 import { ItemIcon } from "@/components/ui/ItemIcon";
 
@@ -77,7 +78,8 @@ export default async function Home() {
     <main className="mx-auto flex w-full max-w-3xl flex-col items-center gap-8 p-4 pb-12 sm:p-6">
       {/* Hero + auth */}
       <header className="mt-4 flex w-full flex-col items-center gap-3 text-center">
-        <div className="flex w-full items-center justify-end">
+        <div className="flex w-full items-center justify-between">
+          <BackgroundsButton />
           <AuthPanel compact />
         </div>
         <div className="flex items-center gap-4">

@@ -16,6 +16,7 @@ import {
 import { AdSlot } from "@/components/ads/AdSlot";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
 import { renderSharePng } from "@/lib/game/share-image";
+import { BackgroundsButton } from "@/components/backgrounds/BackgroundsButton";
 
 /**
  * The game screen (PRD §6): autocomplete guess box with images, attribute
@@ -370,7 +371,8 @@ export function GameBoard({ datasetKey, difficulty, mode, initialSeed, pool, col
     <main className="mx-auto flex w-full max-w-5xl flex-col items-center gap-4 p-3 pb-12 sm:p-5">
       {/* Header */}
       <header className="flex w-full flex-wrap items-center justify-between gap-3">
-        <div className="flex items-baseline gap-3">
+        <div className="flex items-center gap-3">
+          <BackgroundsButton />
           <Link
             href="/"
             className="font-pixel text-3xl leading-none tracking-wide hover:text-accent"

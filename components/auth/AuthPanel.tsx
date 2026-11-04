@@ -19,7 +19,6 @@ export function AuthPanel({ compact = false }: { compact?: boolean }) {
   const [phase, setPhase] = useState<Phase>("loading");
   const [displayName, setDisplayName] = useState("");
   const [error, setError] = useState<string | null>(null);
-  const [busy, setBusy] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
