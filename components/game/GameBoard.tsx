@@ -209,6 +209,32 @@ export function GameBoard({ datasetKey, difficulty, mode, initialSeed, pool, col
     [datasetKey, difficulty, mode, today],
   );
 
+  // ---------------------------------------------------- global stat event
+  // One anonymized event per finished daily — guests included (D40).
+  const postGlobalStat = useCallback(
+    async (finalRows: GuessRow[], won: boolean, hintsUsedCount: number) => {
+      if (mode !== "daily") return;
+      try {
+        await fetch("/api/stats", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            date: today,
+            datasetKey,
+            difficulty,
+            won,
+            gaveUp: !won,
+            hintsUsed: hintsUsedCount,
+            guessCount: finalRows.length,
+          }),
+        });
+      } catch {
+        /* stats are best-effort */
+      }
+    },
+    [datasetKey, difficulty, mode, today],
+  );
+
   // ------------------------------------------------------------------ guess
   const submitGuess = useCallback(
     async (guessId: string) => {
@@ -248,6 +274,7 @@ export function GameBoard({ datasetKey, difficulty, mode, initialSeed, pool, col
           setShowResult(true);
           persist(nextRows, "won", hints, data.answer);
           submitResult(nextRows, true, hints.filter(Boolean).length);
+          postGlobalStat(nextRows, true, hints.filter(Boolean).length);
         } else if (mode === "daily") {
           persist(nextRows, "playing", hints);
         }
@@ -295,11 +322,24 @@ export function GameBoard({ datasetKey, difficulty, mode, initialSeed, pool, col
         setShowResult(true);
         persist(rows, "gave_up", hints, data.answer);
         submitResult(rows, false, hints.filter(Boolean).length);
+        postGlobalStat(rows, false, hints.filter(Boolean).length);
       }
     } finally {
       setLoading(false);
     }
-  }, [datasetKey, difficulty, hints, mode, persist, rows, seed, status, submitResult, today]);
+  }, [
+    datasetKey,
+    difficulty,
+    hints,
+    mode,
+    persist,
+    postGlobalStat,
+    rows,
+    seed,
+    status,
+    submitResult,
+    today,
+  ]);
 
   // ------------------------------------------------------------------ hints
   const wrongCount = rows.length;

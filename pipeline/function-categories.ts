@@ -65,8 +65,8 @@ const EXPLICIT_MAP: Record<string, FunctionCategory> = {
   "tesla tower": "power-infrastructure", // wireless power transmission
   "quantum computer": "utility-special", // generates computation
   "antimatter forge": "extraction", // SSASS: creates antimatter from protomatter
-  "chisel": "utility-special", // cosmetic block editing
-  "scanner": "utility-special", // scanning
+  chisel: "utility-special", // cosmetic block editing
+  scanner: "utility-special", // scanning
   "dyson swarm": "power-generation", // ultimate power project
   "fluid extractor": "fluid-chemical", // squeezes fluids from items
   "grinding machine": "ore-processing", // grinds items to dust
@@ -154,7 +154,10 @@ const RULES: Rule[] = [
 ];
 
 function normalizeType(raw: string): string {
-  return raw.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  return raw
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
 }
 
 export function mapFunctionType(raw: string): { category: FunctionCategory; matched: boolean } {

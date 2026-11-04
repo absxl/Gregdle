@@ -14,6 +14,14 @@ export const metadata = {
 
 export const dynamic = "force-dynamic";
 
+interface GlobalStatRow {
+  plays: number;
+  wins: number;
+  gave_ups: number;
+  hinted: number;
+  avg_guesses: number;
+}
+
 export default async function LeaderboardPage(props: {
   searchParams: Promise<{ difficulty?: string }>;
 }) {
@@ -21,6 +29,7 @@ export default async function LeaderboardPage(props: {
   const active = difficulty === "hard" ? "hard" : "easy";
   const today = new Date().toISOString().slice(0, 10);
 
+  let globalStats: GlobalStatRow | null = null;
   let rows: {
     display_name: string;
     guess_count: number | null;
@@ -46,6 +55,21 @@ export default async function LeaderboardPage(props: {
       });
       if (res.ok) rows = await res.json();
       else error = `Leaderboard unavailable (HTTP ${res.status}).`;
+
+      const gqs = new URLSearchParams({
+        select: "plays,wins,gave_ups,hinted,avg_guesses",
+        dataset: "eq.gtnh:machines",
+        difficulty: `eq.${active}`,
+        date: `eq.${today}`,
+      });
+      const gres = await fetch(`${url}/rest/v1/global_daily_stats?${gqs}`, {
+        headers: { apikey: key, Authorization: `Bearer ${key}` },
+        next: { revalidate: 60 },
+      });
+      if (gres.ok) {
+        const g = (await gres.json()) as GlobalStatRow[];
+        globalStats = g[0] ?? null;
+      }
     } else {
       error = "Leaderboard not configured.";
     }
@@ -67,6 +91,30 @@ export default async function LeaderboardPage(props: {
         </Link>
       </header>
 
+      {globalStats && globalStats.plays > 0 && (
+        <section aria-label="Global stats" className="panel corners w-full p-5">
+          <p className="label label-accent mb-3">
+            GLOBAL STATS // TODAY · ALL PLAYERS (GUESTS INCLUDED)
+          </p>
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
+            <GlobalStat label="Games played" value={String(globalStats.plays)} />
+            <GlobalStat
+              label="Win rate"
+              value={`${Math.round((globalStats.wins / globalStats.plays) * 100)}%`}
+            />
+            <GlobalStat
+              label="Gave up"
+              value={`${Math.round((globalStats.gave_ups / globalStats.plays) * 100)}%`}
+            />
+            <GlobalStat
+              label="Used hints"
+              value={`${Math.round((globalStats.hinted / globalStats.plays) * 100)}%`}
+            />
+            <GlobalStat label="Avg guesses" value={globalStats.avg_guesses.toFixed(1)} />
+          </div>
+        </section>
+      )}
+
       <div className="flex w-full gap-2" role="tablist" aria-label="Difficulty">
         {(["easy", "hard"] as const).map((d) => (
           <Link
@@ -83,5 +131,14 @@ export default async function LeaderboardPage(props: {
 
       <LeaderboardTable rows={rows} error={error} />
     </main>
+  );
+}
+
+function GlobalStat({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-[2px] border border-edge bg-surface2 px-3 py-2">
+      <div className="text-[10px] font-bold uppercase tracking-wider text-muted">{label}</div>
+      <div className="font-mono text-2xl font-bold leading-tight tabular-nums">{value}</div>
+    </div>
   );
 }
