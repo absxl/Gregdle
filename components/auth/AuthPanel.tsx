@@ -150,7 +150,7 @@ export function AuthPanel({ compact = false }: { compact?: boolean }) {
     return (
       <div className={compact ? shell : "flex flex-col items-start gap-2"}>
         <button type="button" className="btn btn-primary" onClick={signInWithDiscord}>
-          🎮 Continue with Discord
+          Continue with Discord
         </button>
         {error && <p className="max-w-[16rem] text-xs font-bold text-bad">{error}</p>}
       </div>

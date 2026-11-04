@@ -5,6 +5,7 @@ import { StreakFire } from "@/components/game/StreakFire";
 import { CopyTagButton, SocialLinks } from "@/components/profile/ProfileIdentity";
 import { Lightbox } from "@/components/ui/Lightbox";
 import { MaybeProfileEdit } from "@/components/profile/MaybeProfileEdit";
+import { ProfileAllWallpapers } from "@/components/profile/ProfileAllWallpapers";
 
 /**
  * Public profile (D24): /u/<displayName>. Sourced from the profile_page RPC —
