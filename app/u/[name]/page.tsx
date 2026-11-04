@@ -12,7 +12,7 @@ import { StreakFire } from "@/components/game/StreakFire";
 export const dynamic = "force-dynamic";
 
 interface Payload {
-  profile: { display_name: string; joined: string } | null;
+  profile: { display_name: string; joined: string; avatar_url: string | null } | null;
   results: ProfileResultRow[];
 }
 
@@ -54,9 +54,18 @@ export default async function ProfilePage(props: { params: Promise<{ name: strin
     <main className="mx-auto flex w-full max-w-3xl flex-col gap-5 p-4 pb-12">
       <header className="mt-2 flex w-full flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-4">
-          <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-edge bg-surface2 text-3xl font-black">
-            {displayName.slice(0, 2).toUpperCase()}
-          </div>
+          {data.profile.avatar_url ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={data.profile.avatar_url}
+              alt={displayName}
+              className="h-16 w-16 rounded-2xl border border-edge object-cover"
+            />
+          ) : (
+            <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-edge bg-surface2 text-3xl font-black">
+              {displayName.slice(0, 2).toUpperCase()}
+            </div>
+          )}
           <div>
             <h1 className="text-2xl font-black">{displayName}</h1>
             <p className="text-xs font-semibold text-muted">playing since {joined}</p>

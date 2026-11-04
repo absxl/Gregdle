@@ -8,6 +8,7 @@ import { datasetLabel } from "@/lib/datasets";
 import { AdSlot } from "@/components/ads/AdSlot";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
 import { StreakFire } from "@/components/game/StreakFire";
+import { ItemIcon } from "@/components/ui/ItemIcon";
 
 /**
  * Stats: local (localStorage) always; when signed in, the synced account
@@ -180,7 +181,9 @@ export default function StatsPage() {
 
       {account && (account.easy || account.hard) && (
         <section aria-label="Account stats" className="panel w-full p-5">
-          <h2 className="text-base font-black">☁️ Account stats (synced)</h2>
+          <h2 className="flex items-center gap-2 text-base font-black">
+            <ItemIcon name="synced" size={18} /> Account stats (synced)
+          </h2>
           <div className="mt-3 grid gap-4 sm:grid-cols-2">
             {(["easy", "hard"] as const).map((difficulty) => {
               const s = account[difficulty];

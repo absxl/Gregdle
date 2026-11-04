@@ -5,6 +5,7 @@ import { getMachines } from "@/lib/game/dataset";
 import { DailyStatus } from "@/components/game/DailyStatus";
 import { AuthPanel } from "@/components/auth/AuthPanel";
 import { AdSlot } from "@/components/ads/AdSlot";
+import { ItemIcon } from "@/components/ui/ItemIcon";
 
 /**
  * Home — Loldle-style mode directory (PRD §8): hero + auth, one card per game
@@ -41,7 +42,7 @@ async function topToday(difficulty: "easy" | "hard"): Promise<BoardRow[]> {
   }
 }
 
-const MEDALS = ["🥇", "🥈", "🥉"];
+const MEDALS = ["rank1", "rank2", "rank3"] as const;
 
 export default async function Home() {
   const machines = getMachines();
@@ -58,7 +59,8 @@ export default async function Home() {
               title={`View ${r.display_name}'s profile`}
             >
               <span className="truncate font-bold">
-                <span aria-hidden="true">{MEDALS[i] ?? `${r.rank}.`}</span> {r.display_name}
+                <ItemIcon name={i < 3 ? MEDALS[i] : "gold"} size={18} title={`Rank ${r.rank}`} />{" "}
+                {r.display_name}
               </span>
               <span className="shrink-0 text-muted tabular-nums">
                 {r.guess_count ?? "—"} g{r.hints_used > 0 ? ` · ${r.hints_used} hints` : ""}
@@ -133,7 +135,10 @@ export default async function Home() {
       {/* Leaderboard — prominent preview */}
       <section aria-label="Leaderboard" className="panel w-full p-5">
         <div className="flex items-center justify-between gap-3">
-          <h2 className="text-lg font-black">🏆 Today&apos;s leaderboard</h2>
+          <h2 className="flex items-center gap-2 text-lg font-black">
+            <ItemIcon name="trophy" size={20} title="Today's leaderboard" /> Today&apos;s
+            leaderboard
+          </h2>
           <Link href="/leaderboard" className="btn btn-primary">
             Full leaderboard
           </Link>

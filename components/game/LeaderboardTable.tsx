@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ItemIcon } from "@/components/ui/ItemIcon";
 
 export interface LeaderboardRow {
   display_name: string;

@@ -21,6 +21,8 @@ export function AuthPanel({ compact = false }: { compact?: boolean }) {
   const [displayName, setDisplayName] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     if (!supabase) {
@@ -51,6 +53,9 @@ export function AuthPanel({ compact = false }: { compact?: boolean }) {
       const user = userData.user;
       if (!user) return setPhase("signed-out");
 
+      const meta = (user.user_metadata ?? {}) as Record<string, string | undefined>;
+      if (meta.avatar_url) setAvatarUrl(meta.avatar_url);
+
       const { data: profile } = await supabase
         .from("profiles")
         .select("display_name")
@@ -62,7 +67,6 @@ export function AuthPanel({ compact = false }: { compact?: boolean }) {
         return;
       }
 
-      const meta = (user.user_metadata ?? {}) as Record<string, string | undefined>;
       const base =
         (
           meta.preferred_username ??
@@ -125,11 +129,20 @@ export function AuthPanel({ compact = false }: { compact?: boolean }) {
     if (err) setError(err.message);
   }, [supabase]);
 
-  // One-time guest -> account migration of locally-played dailies (D23).
+  // One-time guest -> account migration of locally-played dailies (D23),
+  // plus keeping the Discord avatar in sync (D27).
   useEffect(() => {
     if (phase !== "signed-in") return;
     void migrateGuestResults();
-  }, [phase]);
+    if (avatarUrl && supabase) {
+      void supabase.rpc("set_my_avatar", { p_avatar_url: avatarUrl });
+    }
+  }, [phase, avatarUrl, supabase]);
+
+  const signOutAndClose = useCallback(async () => {
+    setMenuOpen(false);
+    await signOut();
+  }, [signOut]);
 
   if (!supabase) return null; // auth unavailable (no env) — guests only
 
@@ -185,18 +198,64 @@ export function AuthPanel({ compact = false }: { compact?: boolean }) {
     );
   }
 
+  // Signed in: avatar + name chip opens a small menu (profile / sign out).
   return (
-    <div className={shell}>
-      <Link
-        href={`/u/${encodeURIComponent(displayName)}`}
-        className="chip border-good/60 text-good hover:border-accent"
-        title="Your profile"
+    <div className="relative inline-flex">
+      <button
+        type="button"
+        onClick={() => setMenuOpen((o) => !o)}
+        aria-haspopup="menu"
+        aria-expanded={menuOpen}
+        className="chip max-w-[14rem] border-good/60 py-1 pl-1 pr-3 hover:border-accent"
+        title="Account menu"
       >
-        ● {displayName}
-      </Link>
-      <button type="button" className="btn" onClick={signOut}>
-        Sign out
+        {avatarUrl ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={avatarUrl}
+            alt=""
+            className="h-6 w-6 rounded-full border border-edge object-cover"
+          />
+        ) : (
+          <span className="flex h-6 w-6 items-center justify-center rounded-full border border-edge bg-surface2 text-[11px] font-black">
+            {displayName.slice(0, 2).toUpperCase()}
+          </span>
+        )}
+        <span className="truncate font-bold text-foreground">{displayName}</span>
+        <span className="online-dot" aria-hidden="true" />
       </button>
+
+      {menuOpen && (
+        <>
+          <button
+            type="button"
+            aria-label="Close menu"
+            className="fixed inset-0 z-30 cursor-default"
+            onClick={() => setMenuOpen(false)}
+          />
+          <div
+            role="menu"
+            className="absolute right-0 top-[calc(100%+6px)] z-40 flex w-44 flex-col gap-1 rounded-xl border border-edge bg-surface p-1.5 shadow-xl"
+          >
+            <Link
+              href={`/u/${encodeURIComponent(displayName)}`}
+              role="menuitem"
+              className="rounded-lg px-3 py-2 text-left text-sm font-bold hover:bg-surface2"
+              onClick={() => setMenuOpen(false)}
+            >
+              View profile
+            </Link>
+            <button
+              type="button"
+              role="menuitem"
+              onClick={signOutAndClose}
+              className="rounded-lg px-3 py-2 text-left text-sm font-bold text-muted hover:bg-surface2 hover:text-foreground"
+            >
+              Sign out
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 }
