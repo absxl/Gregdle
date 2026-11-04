@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { levenshtein, resolveGuess } from "./match";
+import { levenshtein, resolveGuess, suggestPartialNames } from "./match";
 
 const pool = [
   { id: "electric-furnace", name: "Electric Furnace" },
@@ -32,5 +32,39 @@ describe("levenshtein", () => {
   it("basic distances", () => {
     expect(levenshtein("kitten", "sitting")).toBe(3);
     expect(levenshtein("same", "same")).toBe(0);
+  });
+});
+
+describe("suggestPartialNames (D38)", () => {
+  const biggerPool = [
+    ...pool,
+    { id: "industrial-bending-machine", name: "Industrial Bending Machine" },
+    { id: "bending-machine", name: "Bending Machine" },
+    { id: "industrial-coking-factory", name: "Industrial Coking Factory" },
+  ];
+
+  it("suggests machines containing every typed word — name only", () => {
+    const out = suggestPartialNames("bending machine", biggerPool);
+    const ids = out.map((m) => m.id);
+    expect(ids).toContain("bending-machine");
+    expect(ids).toContain("industrial-bending-machine");
+    expect(ids).not.toContain("industrial-coking-factory"); // no "bending"
+    // closest full-string edit first
+    expect(ids[0]).toBe("bending-machine");
+  });
+
+  it("single word works", () => {
+    const ids = suggestPartialNames("industrial", biggerPool).map((m) => m.id);
+    expect(ids).toContain("industrial-bending-machine");
+    expect(ids).toContain("industrial-coking-factory");
+    expect(ids).not.toContain("vacuum-freezer");
+  });
+
+  it("no match -> empty", () => {
+    expect(suggestPartialNames("zzz", biggerPool)).toEqual([]);
+  });
+
+  it("respects the limit", () => {
+    expect(suggestPartialNames("machine", biggerPool, 1)).toHaveLength(1);
   });
 });

@@ -30,10 +30,7 @@ export const metadata: Metadata = {
 function KoFiWidget() {
   return (
     <>
-      <Script
-        src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"
-        strategy="lazyOnload"
-      />
+      <Script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js" strategy="lazyOnload" />
       <Script id="kofi-overlay" strategy="lazyOnload">
         {`kofiWidgetOverlay.draw('absxl', {
   type: 'floating-chat',

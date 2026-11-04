@@ -1,8 +1,13 @@
 /**
- * Vague guess resolution for Hard mode (D36): no autocomplete, no machine
- * list — whatever the player types is auto-corrected to the closest machine
- * name (or alias). "Vague" = small typos forgiven, wildly different strings
- * rejected so guesses stay honest.
+ * Vague guess resolution for Hard mode (D36, amended): no attribute chips,
+ * no visible machine list — typed text is auto-corrected to the closest
+ * machine name (or alias). "Vague" = small typos forgiven, wildly different
+ * strings rejected so guesses stay honest.
+ *
+ * D38: partial-name SUGGESTIONS are allowed again (name-only, no tags) —
+ * typing "bending machine" suggests "Industrial Bending Machine" when at
+ * least one word of the query appears in the name. The strict full-string
+ * resolution still gates what actually gets submitted.
  */
 
 export interface Matchable {
@@ -44,6 +49,7 @@ export function levenshtein(a: string, b: string): number {
  * close enough: the tolerance scales with the query length (25%, min 2) so
  * short strings stay strict and long typos are still forgiven.
  */
+
 export function resolveGuess(query: string, pool: readonly Matchable[]): Matchable | null {
   const q = normalize(query);
   if (!q) return null;
@@ -66,4 +72,32 @@ export function resolveGuess(query: string, pool: readonly Matchable[]): Matchab
   if (!best) return null;
   const tolerance = Math.max(2, Math.floor(q.length * 0.25));
   return bestDistance <= tolerance ? best : null;
+}
+
+/**
+ * Name-only suggestions for Hard mode (D38): machines whose name (or alias)
+ * contains every word of the query, ordered by full-string similarity. No
+ * attributes, no chips — just the names. Capped by the caller.
+ */
+export function suggestPartialNames(
+  query: string,
+  pool: readonly Matchable[],
+  limit = 5,
+): Matchable[] {
+  const words = normalize(query).split(" ").filter(Boolean);
+  if (words.length === 0) return [];
+  const q = normalize(query);
+
+  return pool
+    .filter((entry) => {
+      const names = [entry.name, ...(entry.aliases ?? [])].map(normalize);
+      // Every typed word must appear in some form of the name.
+      return names.some((n) => words.every((w) => n.includes(w)));
+    })
+    .sort(
+      (a, b) =>
+        levenshtein(q, normalize(a.name)) - levenshtein(q, normalize(b.name)) ||
+        a.name.localeCompare(b.name),
+    )
+    .slice(0, limit);
 }

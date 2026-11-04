@@ -14,7 +14,7 @@ import {
   utcDateToday,
 } from "@/lib/game/local-state";
 import { AdSlot } from "@/components/ads/AdSlot";
-import { resolveGuess } from "@/lib/game/match";
+import { resolveGuess, suggestPartialNames } from "@/lib/game/match";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
 import { canonicalSiteUrl } from "@/lib/site";
 import { renderSharePng } from "@/lib/game/share-image";
@@ -960,6 +960,11 @@ function HardGuessInput({
 }) {
   const [query, setQuery] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [open, setOpen] = useState(false);
+
+  // Name-only suggestions (D38): no attributes, no chips.
+  const suggestions = useMemo(() => suggestPartialNames(query, pool, 5), [pool, query]);
+  const showSuggestions = open && suggestions.length > 0;
 
   const submit = () => {
     setError(null);
@@ -969,10 +974,12 @@ function HardGuessInput({
     if (!match) {
       // Deliberately vague: no hint about how close the guess was.
       setQuery("");
+      setOpen(false);
       setError("No close machine match — check the spelling and try again.");
       return;
     }
     setQuery("");
+    setOpen(false);
     onPick(match.id);
   };
 
@@ -985,15 +992,46 @@ function HardGuessInput({
         placeholder="Type the name of a machine — no suggestions on Hard."
         aria-label="Type a machine name to guess"
         autoComplete="off"
-        onChange={(e) => setQuery(e.target.value)}
+        onChange={(e) => {
+          setQuery(e.target.value);
+          setOpen(true);
+        }}
+        onBlur={() => setTimeout(() => setOpen(false), 150)}
         onKeyDown={(e) => {
           if (e.key === "Enter") {
             e.preventDefault();
             submit();
+          } else if (e.key === "Escape") {
+            setOpen(false);
           }
         }}
         className="w-full rounded-lg border border-edge bg-surface2 px-4 py-3 text-base font-semibold text-foreground placeholder:font-normal placeholder:text-muted focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/40"
       />
+      {showSuggestions && (
+        <ul
+          role="listbox"
+          aria-label="Name suggestions"
+          className="absolute z-40 mt-1 w-full overflow-auto rounded-lg border border-edge bg-surface shadow-xl"
+        >
+          {suggestions.map((m) => (
+            <li key={m.id} role="option" aria-selected={false}>
+              <button
+                type="button"
+                disabled={disabled}
+                onMouseDown={(e) => e.preventDefault()}
+                onClick={() => {
+                  setQuery("");
+                  setOpen(false);
+                  onPick(m.id);
+                }}
+                className="block w-full px-3 py-2 text-left text-sm font-bold hover:bg-accent/10"
+              >
+                {m.name}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
       {error && (
         <p role="alert" className="text-sm font-bold text-bad">
           {error}
