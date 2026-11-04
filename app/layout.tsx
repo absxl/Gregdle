@@ -33,39 +33,6 @@ export const metadata: Metadata = {
     "Guess the hidden GregTech machine from its attributes. A new answer every day at 00:00 UTC, for GTNH and GTCEu players.",
 };
 
-/**
- * Ko-fi floating support widget (owner account: absxl).
- * The overlay script defaults to bottom-left; CSS pins it bottom-right
- * below the theme's own bg-credit badge.
- */
-function KoFiWidget() {
-  return (
-    <>
-      <style>{`
-        #kofi-widget-container,
-        .kofi-widget-overlay,
-        .kofi-floating-chat,
-        #kofi-overlay-widget,
-        [id^="kofi"] {
-          bottom: 24px !important;
-          right: 16px !important;
-          left: auto !important;
-          top: auto !important;
-        }
-      `}</style>
-      <Script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js" strategy="lazyOnload" />
-      <Script id="kofi-overlay" strategy="lazyOnload">
-        {`kofiWidgetOverlay.draw('absxl', {
-  type: 'floating-chat',
-  'floating-chat.donateButton.text': 'Support me',
-  'floating-chat.donateButton.background-color': '#794bc4',
-  'floating-chat.donateButton.text-color': '#fff'
-});`}
-      </Script>
-    </>
-  );
-}
-
 /** AdSense script loads only when the publisher id is configured. */
 function AdSenseScript() {
   const client = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
@@ -133,30 +100,40 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               PRIVACY
             </Link>
           </nav>
-          <p className="mt-2 text-center tracking-wide">
-            SER.NO {new Date().getFullYear()}-1104 ·{" "}
+          <div className="mt-2 flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+            <p className="tracking-wide">
+              SER.NO {new Date().getFullYear()}-1104 ·{" "}
+              <a
+                href="https://github.com/absxl/Gregdle"
+                className="hover:text-accent"
+                rel="noreferrer"
+                target="_blank"
+              >
+                OPEN SOURCE
+              </a>{" "}
+              · OWNER{" "}
+              <a
+                href="https://github.com/absxl"
+                className="hover:text-accent"
+                rel="noreferrer"
+                target="_blank"
+              >
+                ABSXL
+              </a>{" "}
+              · GREGTECH &amp; GTNH BELONG TO THEIR AUTHORS · NOT AFFILIATED
+            </p>
             <a
-              href="https://github.com/absxl/Gregdle"
-              className="hover:text-accent"
-              rel="noreferrer"
+              href="https://ko-fi.com/absxl"
               target="_blank"
-            >
-              OPEN SOURCE
-            </a>{" "}
-            · OWNER{" "}
-            <a
-              href="https://github.com/absxl"
-              className="hover:text-accent"
               rel="noreferrer"
-              target="_blank"
+              className="inline-flex items-center gap-1.5 rounded-[2px] border border-[#794bc4] bg-[#794bc4] px-3 py-1.5 font-mono text-xs font-bold text-white transition hover:brightness-110"
+              title="Support the project on Ko-fi"
             >
-              ABSXL
-            </a>{" "}
-            · GREGTECH &amp; GTNH BELONG TO THEIR AUTHORS · NOT AFFILIATED
-          </p>
+              ☕ SUPPORT ME
+            </a>
+          </div>
         </footer>
         <AdSenseScript />
-        <KoFiWidget />
       </body>
     </html>
   );
