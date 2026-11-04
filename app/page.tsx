@@ -56,7 +56,7 @@ export default async function Home() {
           <li key={`${r.rank}-${r.display_name}`}>
             <Link
               href={`/u/${encodeURIComponent(r.display_name)}`}
-              className="flex items-center justify-between gap-2 rounded-lg px-2 py-1.5 hover:bg-surface2"
+              className="flex items-center justify-between gap-2 px-2 py-1.5 font-mono text-sm hover:bg-surface2"
               title={`View ${r.display_name}'s profile`}
             >
               <span className="truncate font-bold">
@@ -79,7 +79,7 @@ export default async function Home() {
   return (
     <main className="mx-auto flex w-full max-w-3xl flex-col items-center gap-8 p-4 pb-12 sm:p-6">
       {/* Hero + auth */}
-      <header className="mt-4 flex w-full flex-col items-center gap-3 text-center">
+      <header className="mt-6 flex w-full flex-col gap-4">
         <div className="flex w-full items-center justify-between">
           <BackgroundsButton />
           <AuthPanel compact />
@@ -91,35 +91,31 @@ export default async function Home() {
             alt=""
             width={80}
             height={80}
-            className="h-16 w-16 rounded-xl border border-edge bg-surface object-contain p-1.5 sm:h-20 sm:w-20"
+            className="h-14 w-14 border border-edge bg-surface object-contain p-1 sm:h-16 sm:w-16"
           />
-          <h1 className="font-pixel text-6xl leading-none tracking-wide sm:text-7xl">GREGDLE</h1>
-          <Image
-            src="/gtnh-logo.png"
-            alt=""
-            width={80}
-            height={80}
-            className="h-16 w-16 rounded-xl border border-edge bg-surface object-contain p-1.5 sm:h-20 sm:w-20"
-          />
+          <div>
+            <h1 className="font-pixel text-6xl leading-none tracking-wide sm:text-7xl">GREGDLE</h1>
+            <p className="label mt-1">GREGTECH INDUSTRIES // DAILY MACHINE GUESSING TERMINAL</p>
+          </div>
         </div>
-        <p className="text-base font-semibold text-muted">
-          The daily GregTech guessing game — a new machine every day at 00:00 UTC.
+        <p className="text-sm font-semibold text-muted">
+          One hidden machine every day at 00:00 UTC. Type, guess, read the grid.
         </p>
       </header>
 
       {/* Mode cards */}
       <section aria-label="Game modes" className="grid w-full gap-4 sm:grid-cols-2">
         {(["easy", "hard"] as const).map((difficulty) => (
-          <div key={difficulty} className="panel flex flex-col gap-4 p-5">
+          <div key={difficulty} className="panel corners flex flex-col gap-4 p-5">
             <div className="flex items-start justify-between gap-2">
               <div>
-                <h2 className="text-lg font-black">
-                  GTNH Machines · {difficulty === "easy" ? "Easy" : "Hard"}
-                </h2>
+                <p className="label label-accent mb-1.5">
+                  MODULE // {difficulty === "easy" ? "DAILY-EASY" : "DAILY-HARD"}
+                </p>
                 <p className="text-sm text-muted">
                   {difficulty === "easy"
                     ? "Everyday machines — friendlier pool."
-                    : `Any of the ${machines.length} machines. Good luck.`}
+                    : `Any of the ${machines.length} machines. No hints. Good luck.`}
                 </p>
               </div>
               <DailyStatus datasetKey="gtnh:machines" difficulty={difficulty} />
@@ -147,9 +143,7 @@ export default async function Home() {
             Full leaderboard
           </Link>
         </div>
-        <p className="mt-1 text-xs text-muted">
-          Solve the daily while signed in to compete — unhinted runs rank higher.
-        </p>
+        <p className="label mt-1">SOLVE THE DAILY WHILE SIGNED IN · UNHINTED RANKS HIGHER</p>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
           <div>
             <h3 className="mb-2 text-xs font-bold uppercase tracking-wider text-muted">Easy</h3>

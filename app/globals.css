@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 /*
- * Gregdle design system v2 (2026-11-04 revamp).
- * Direction: dark industrial, calm and readable. VT323 stays as the display
- * voice (headings, numbers, countdown); data text is a clean bold sans.
- * No bevels, no hazard stripes, one amber accent.
+ * Gregdle design system v3 — "GT TERMINAL" (ui-v3 branch, 2026-11-05).
+ * Machine-HUD identity: gunmetal surfaces, hairline borders, 2px corners,
+ * corner brackets, scanline + grid texture, stencil micro-labels, mono data.
+ * Amber stays the single signal color; game state colors unchanged.
  */
 
 :root {
-  --bg: #10151b;
-  --surface: #1a222c;
-  --surface-2: #222d3a;
-  --border: #2d3a49;
-  --text: #e8eef5;
-  --muted: #93a1b1;
+  --bg: #0d1015;
+  --surface: #151a21;
+  --surface-2: #1b222b;
+  --border: #242d38;
+  --text: #e6ebf2;
+  --muted: #8b98a7;
   --accent: #f5a623;
   --good: #2fbf71;
   --good-ink: #06281a;
@@ -23,6 +23,7 @@
   --bad-ink: #2b0806;
   --direction: #4aa3df;
   --direction-ink: #06202f;
+  --radius: 2px;
 }
 
 @theme inline {
@@ -34,6 +35,7 @@
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --font-pixel: var(--font-vt323), "Courier New", monospace;
+  --font-mono: var(--font-plex-mono), ui-monospace, "Cascadia Mono", monospace;
   --font-sans: ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
@@ -51,12 +53,88 @@ body {
   font-family: var(--font-pixel);
 }
 
-/* ---------------------------------------------------------------- surfaces */
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* ------------------------------------------------------------- texture */
+
+/* Fixed full-viewport texture: blueprint grid + scanlines + one hazard
+ * strip at the very top. Sits above bg wallpapers, below content. */
+.texture-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0 1px, transparent 1px 3px),
+    linear-gradient(rgba(139, 152, 167, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 152, 167, 0.025) 1px, transparent 1px);
+  background-size:
+    100% 3px,
+    32px 32px,
+    32px 32px;
+}
+
+.hazard-strip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 50;
+  background: repeating-linear-gradient(-45deg, var(--accent) 0 10px, #2b2417 10px 20px);
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------- stencil labels */
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.label-accent::before {
+  content: "▸ ";
+  color: var(--accent);
+}
+
+/* ------------------------------------------------------------- surfaces */
 
 .panel {
-  background: var(--surface);
+  position: relative;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: var(--radius);
+}
+
+/* Corner brackets — four L-shaped ticks, amber, on a hairline panel. */
+.corners::before,
+.corners::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--accent);
+  opacity: 0.55;
+  pointer-events: none;
+}
+.corners::before {
+  top: -1px;
+  left: -1px;
+  border-right: none;
+  border-bottom: none;
+}
+.corners::after {
+  bottom: -1px;
+  right: -1px;
+  border-left: none;
+  border-top: none;
 }
 
 .btn {
@@ -64,17 +142,19 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
-  border-radius: 8px;
+  border-radius: var(--radius);
   border: 1px solid var(--border);
   background: var(--surface-2);
   color: var(--text);
+  font-family: var(--font-mono);
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
   padding: 0.55rem 1rem;
   cursor: pointer;
   transition:
-    background 120ms ease,
-    border-color 120ms ease;
+    border-color 120ms ease,
+    background 120ms ease;
 }
 
 .btn:hover:not(:disabled) {
@@ -102,10 +182,11 @@ body {
   align-items: center;
   gap: 0.3rem;
   border: 1px solid var(--border);
-  border-radius: 999px;
+  border-radius: var(--radius);
   padding: 0.15rem 0.7rem;
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
   color: var(--muted);
 }
 
@@ -118,7 +199,7 @@ body {
  *   wrong    red    solid   ✕
  *   higher   blue   up-arrow ▲
  *   lower    blue   down-arrow ▼
- * High-contrast fills with dark ink for readability on small screens.
+ * Sharp corners, hairline borders — terminal look.
  */
 
 .cell {
@@ -127,7 +208,9 @@ body {
   justify-content: center;
   gap: 0.35rem;
   min-height: 3.4rem;
-  border-radius: 10px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  font-family: var(--font-mono);
   font-weight: 800;
   font-size: 0.95rem;
   line-height: 1.15;
@@ -195,12 +278,14 @@ body {
   top: 0;
   background: var(--surface-2);
   color: var(--muted);
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   text-align: center;
   padding: 0.55rem 0.4rem;
-  border-radius: 8px;
+  border-radius: var(--radius);
 }
 
 .grid-head-name {
@@ -219,7 +304,7 @@ body {
   align-items: center;
   gap: 0.5rem;
   background: var(--surface);
-  border-radius: 6px;
+  border-radius: var(--radius);
   padding: 0.3rem 0.5rem 0.3rem 0.3rem;
   min-width: 0;
 }
@@ -288,7 +373,7 @@ body {
 .confetti-piece {
   position: absolute;
   top: -12px;
-  border-radius: 2px;
+  border-radius: 1px;
   opacity: 0;
   animation-name: confetti-fall;
   animation-timing-function: ease-in;
@@ -307,55 +392,6 @@ body {
     transform: translateY(340px) rotate(540deg);
     opacity: 0;
   }
-}
-
-/* ---------------------------------------------------------------- ad slots */
-
-.ad-slot {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--surface);
-  padding: 6px;
-}
-
-.ad-slot-label {
-  font-size: 0.65rem;
-  letter-spacing: 0.25em;
-  color: var(--muted);
-}
-
-.ad-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 90px;
-  font-size: 0.85rem;
-  color: var(--muted);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-/* ------------------------------------------------------- streak fire badge */
-
-.streak-number {
-  font-family: var(--font-silkscreen), var(--font-vt323), monospace;
-  color: #ffffff;
-  text-shadow:
-    2px 2px 0 #3f1400,
-    -1px -1px 0 #3f1400,
-    1px -1px 0 #3f1400,
-    -1px 1px 0 #3f1400;
-  margin-bottom: 10%;
 }
 
 /* ---------------------------------------------------------- online status */
@@ -394,5 +430,54 @@ body {
   }
   to {
     opacity: 1;
+  }
+}
+
+/* ------------------------------------------------------- streak fire badge */
+
+.streak-number {
+  font-family: var(--font-silkscreen), var(--font-vt323), monospace;
+  color: #ffffff;
+  text-shadow:
+    2px 2px 0 #3f1400,
+    -1px -1px 0 #3f1400,
+    1px -1px 0 #3f1400,
+    -1px 1px 0 #3f1400;
+  margin-bottom: 10%;
+}
+
+/* ---------------------------------------------------------------- ad slots */
+
+.ad-slot {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 6px;
+}
+
+.ad-slot-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  color: var(--muted);
+}
+
+.ad-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }

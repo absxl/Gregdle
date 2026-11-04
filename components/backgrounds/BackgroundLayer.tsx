@@ -113,7 +113,7 @@ export function BackgroundLayer() {
         href={current.sourceUrl ?? `/u/${encodeURIComponent(current.author)}`}
         target={current.sourceUrl ? "_blank" : undefined}
         rel={current.sourceUrl ? "noreferrer" : undefined}
-        className="pointer-events-auto absolute bottom-1 left-2 z-0 text-[10px] font-semibold text-white/30 hover:text-white/70"
+        className="pointer-events-auto absolute bottom-2 left-3 z-0 rounded bg-black/45 px-2 py-0.5 font-mono text-xs font-semibold text-white/60 hover:text-white"
         title={current.title ? `${current.title} — by ${current.author}` : `by ${current.author}`}
       >
         bg: {current.author}

@@ -603,6 +603,9 @@ export function GameBoard({ datasetKey, difficulty, mode, initialSeed, pool, col
               >
                 {status === "won" ? "✓" : "?"}
               </div>
+              <p className="label label-accent">
+                {status === "won" ? "RESULT // SOLVED" : "RESULT // FAILED"}
+              </p>
               <h2 className="font-pixel text-4xl leading-none tracking-wide">
                 {status === "won" ? "CORRECT!" : "GAME OVER"}
               </h2>
