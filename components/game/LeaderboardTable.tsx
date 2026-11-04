@@ -40,7 +40,7 @@ export function LeaderboardTable({
       <table className="w-full text-sm">
         <thead>
           <tr className="border-b border-edge text-left text-xs font-bold uppercase tracking-wider text-muted">
-            <th className="px-4 py-3">#</th>
+            <th className="px-4 py-3 font-mono">#</th>
             <th className="px-4 py-3">Player</th>
             <th className="px-4 py-3 text-right">Guesses</th>
             <th className="px-4 py-3 text-right">Hints</th>
@@ -52,7 +52,7 @@ export function LeaderboardTable({
               key={`${r.rank}-${r.display_name}`}
               className="border-b border-edge/50 last:border-0"
             >
-              <td className="px-4 py-3 font-black tabular-nums">
+              <td className="px-4 py-3 font-mono font-bold tabular-nums">
                 {medal(r.rank) ? (
                   <ItemIcon name={medal(r.rank)!} size={18} title={`Rank ${r.rank}`} />
                 ) : (

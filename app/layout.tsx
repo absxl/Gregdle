@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Silkscreen, VT323 } from "next/font/google";
+import { IBM_Plex_Mono, Silkscreen, VT323 } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { SITE_URL } from "@/lib/site";
@@ -10,6 +10,13 @@ const pixel = VT323({
   variable: "--font-vt323",
   subsets: ["latin"],
   weight: "400",
+});
+
+/** Mono voice for data, buttons and labels (GT Terminal identity). */
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
 });
 
 /** Blocky face for Minecraft-style numbers (streak badges). */
@@ -30,10 +37,7 @@ export const metadata: Metadata = {
 function KoFiWidget() {
   return (
     <>
-      <Script
-        src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"
-        strategy="lazyOnload"
-      />
+      <Script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js" strategy="lazyOnload" />
       <Script id="kofi-overlay" strategy="lazyOnload">
         {`kofiWidgetOverlay.draw('absxl', {
   type: 'floating-chat',
@@ -82,51 +86,57 @@ function SupabasePublicConfig() {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${pixel.variable} ${silkscreen.variable} h-full antialiased`}>
+    <html
+      lang="en"
+      className={`${pixel.variable} ${silkscreen.variable} ${plexMono.variable} h-full antialiased`}
+    >
       <body className="flex min-h-full flex-col">
         <SupabasePublicConfig />
         <BackgroundLayer />
+        <div className="texture-layer" aria-hidden="true" />
+        <div className="hazard-strip" aria-hidden="true" />
         {children}
-        <footer className="mt-auto border-t border-edge/60 px-4 py-5 text-center text-sm text-muted">
+        <footer className="mt-auto border-t border-edge/60 bg-surface/70 px-4 py-4 font-mono text-xs text-muted">
           <nav
             aria-label="Footer"
             className="flex flex-wrap justify-center gap-x-5 gap-y-2 font-semibold"
           >
             <Link href="/" className="hover:text-accent">
-              Home
+              HOME
             </Link>
             <Link href="/leaderboard" className="hover:text-accent">
-              Leaderboard
+              LEADERBOARD
             </Link>
             <Link href="/stats" className="hover:text-accent">
-              Stats
+              STATS
             </Link>
             <Link href="/about" className="hover:text-accent">
-              About &amp; Credits
+              ABOUT
             </Link>
             <Link href="/privacy" className="hover:text-accent">
-              Privacy
+              PRIVACY
             </Link>
           </nav>
-          <p className="mt-2 text-xs">
+          <p className="mt-2 text-center tracking-wide">
+            SER.NO {new Date().getFullYear()}-1104 ·{" "}
             <a
               href="https://github.com/absxl/Gregdle"
-              className="font-semibold text-muted hover:text-accent"
+              className="hover:text-accent"
               rel="noreferrer"
               target="_blank"
             >
-              Open source
+              OPEN SOURCE
             </a>{" "}
-            · created and owned by{" "}
+            · OWNER{" "}
             <a
               href="https://github.com/absxl"
-              className="font-semibold text-muted hover:text-accent"
+              className="hover:text-accent"
               rel="noreferrer"
               target="_blank"
             >
-              absxl
+              ABSXL
             </a>{" "}
-            · GregTech and GT New Horizons belong to their authors. Not affiliated.
+            · GREGTECH &amp; GTNH BELONG TO THEIR AUTHORS · NOT AFFILIATED
           </p>
         </footer>
         <AdSenseScript />

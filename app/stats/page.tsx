@@ -117,9 +117,10 @@ export default function StatsPage() {
                 aria-label={`${difficulty} daily stats`}
                 className="panel w-full p-5"
               >
-                <h2 className="text-base font-black">
-                  {datasetLabel(datasetKey)} · Daily {difficulty.toUpperCase()}
-                </h2>
+                <p className="label label-accent mb-1.5">
+                  MODULE // DAILY-{difficulty.toUpperCase()}
+                </p>
+                <h2 className="text-base font-black">{datasetLabel(datasetKey)}</h2>
                 <div className="mt-3 flex items-center gap-3">
                   <StreakFire n={s.currentStreak} size={56} />
                   <div className="grid flex-1 grid-cols-3 gap-2 sm:grid-cols-5">
@@ -162,6 +163,7 @@ export default function StatsPage() {
           })}
 
           <section aria-label="Endless stats" className="panel w-full p-5">
+            <p className="label label-accent mb-1.5">MODULE // ENDLESS</p>
             <h2 className="text-base font-black">Endless mode</h2>
             <div className="mt-3 grid grid-cols-3 gap-2">
               <Stat label="Played" value={endless.played} />
@@ -214,7 +216,7 @@ function Stat({ label, value }: { label: string; value: string | number }) {
   return (
     <div className="rounded-lg border border-edge bg-surface2 px-3 py-2">
       <div className="text-[11px] font-bold uppercase tracking-wider text-muted">{label}</div>
-      <div className="font-pixel text-4xl leading-tight tabular-nums">{value}</div>
+      <div className="font-mono text-2xl font-bold leading-tight tabular-nums">{value}</div>
     </div>
   );
 }
