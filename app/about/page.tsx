@@ -27,6 +27,33 @@ export default function AboutPage() {
       </section>
 
       <section className="panel p-5 text-sm leading-relaxed">
+        <h2 className="mb-2 text-base font-black text-accent">Contact</h2>
+        <p className="flex flex-wrap gap-x-6 gap-y-2">
+          <span>
+            Discord:{" "}
+            <span className="font-bold text-foreground">@amidnightgospel</span>
+          </span>
+          <span>
+            GitHub:{" "}
+            <a
+              href="https://github.com/absxl"
+              className="font-semibold text-accent hover:underline"
+              rel="noreferrer"
+              target="_blank"
+            >
+              absxl
+            </a>
+          </span>
+          <span>
+            Email:{" "}
+            <a href="mailto:marcello@carletti.work" className="font-semibold text-accent hover:underline">
+              marcello@carletti.work
+            </a>
+          </span>
+        </p>
+      </section>
+
+      <section className="panel p-5 text-sm leading-relaxed">
         <h2 className="mb-2 text-base font-black text-accent">Open source</h2>
         <p>
           Gregdle is open source — created and owned by{" "}

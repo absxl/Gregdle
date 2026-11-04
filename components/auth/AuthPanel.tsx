@@ -6,18 +6,16 @@ import { getSupabaseBrowser } from "@/lib/supabase/client";
 import { migrateGuestResults } from "@/lib/game/migrate";
 
 /**
- * Sign-in panel (D22/D25): Discord OAuth is the default; email magic link is
- * the fallback. Display names are taken from the Discord tag (or email
+ * Sign-in panel (D22/D25/D28): Discord OAuth only. Display names are taken from the Discord tag (or email
  * prefix) and are NEVER editable — the profile row is provisioned
  * automatically on first login, with numeric suffixes resolving collisions.
  */
 
-type Phase = "loading" | "signed-out" | "email-form" | "sent" | "provisioning" | "signed-in";
+type Phase = "loading" | "signed-out" | "provisioning" | "signed-in";
 
 export function AuthPanel({ compact = false }: { compact?: boolean }) {
   const supabase = getSupabaseBrowser();
   const [phase, setPhase] = useState<Phase>("loading");
-  const [email, setEmail] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
@@ -98,19 +96,6 @@ export function AuthPanel({ compact = false }: { compact?: boolean }) {
     })();
   }, [phase, supabase]);
 
-  const sendLink = useCallback(async () => {
-    if (!supabase || !email.includes("@")) return;
-    setBusy(true);
-    setError(null);
-    const { error: err } = await supabase.auth.signInWithOtp({
-      email,
-      options: { emailRedirectTo: window.location.origin },
-    });
-    setBusy(false);
-    if (err) setError(err.message);
-    else setPhase("sent");
-  }, [email, supabase]);
-
   const signOut = useCallback(async () => {
     if (!supabase) return;
     await supabase.auth.signOut();
@@ -162,39 +147,8 @@ export function AuthPanel({ compact = false }: { compact?: boolean }) {
         <button type="button" className="btn btn-primary" onClick={signInWithDiscord}>
           🎮 Continue with Discord
         </button>
-        <button type="button" className="btn text-muted" onClick={() => setPhase("email-form")}>
-          or use email
-        </button>
         {error && <p className="max-w-[16rem] text-xs font-bold text-bad">{error}</p>}
       </div>
-    );
-  }
-
-  if (phase === "email-form") {
-    return (
-      <div className={shell}>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && sendLink()}
-          placeholder="you@example.com"
-          aria-label="Email for magic link"
-          className="rounded-lg border border-edge bg-surface2 px-3 py-2 text-sm font-semibold focus:border-accent focus:outline-none"
-        />
-        <button type="button" className="btn btn-primary" disabled={busy} onClick={sendLink}>
-          Send link
-        </button>
-        {error && <p className="text-xs font-bold text-bad">{error}</p>}
-      </div>
-    );
-  }
-
-  if (phase === "sent") {
-    return (
-      <p className="text-sm font-semibold text-good">
-        ✓ Magic link sent to {email} — check your inbox (and spam). You can close this.
-      </p>
     );
   }
 

@@ -22,7 +22,7 @@ export default function PrivacyPage() {
 
         <h2 className="mb-2 text-base font-black text-accent">Accounts (optional)</h2>
         <p className="mb-4">
-          If you create an account, we store your email/auth provider identity, a display name, and
+          If you create an account, we store your Discord account identity (user id, username, avatar), a display name, and
           your game results — solely to sync your progress and show leaderboards. We never sell
           personal data. Authentication is handled by Supabase Auth.
         </p>
