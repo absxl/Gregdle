@@ -26,7 +26,14 @@ interface Payload {
     twitter: string | null;
   } | null;
   results: ProfileResultRow[];
-  backgrounds: { id: string; path: string; title: string | null; description: string | null }[];
+  backgrounds: {
+    id: string;
+    path: string;
+    title: string | null;
+    description: string | null;
+    source_url: string | null;
+    author: string;
+  }[];
 }
 
 async function loadProfile(name: string): Promise<Payload | null> {

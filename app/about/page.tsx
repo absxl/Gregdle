@@ -54,7 +54,7 @@ export default async function AboutPage() {
         <section className="panel p-5 text-sm leading-relaxed">
           <h2 className="mb-2 text-base font-black text-accent">Background artists</h2>
           <p>
-            The rotating site backgrounds were submitted by the community — thanks to{" "}
+            The rotating site backgrounds come from the community and the GTNH homepage showcase — thanks to{" "}
             {artists.map((a, i) => (
               <span key={a}>
                 {i > 0 && ", "}
