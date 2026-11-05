@@ -135,7 +135,7 @@ export async function renderSharePng(input: ShareImageInput): Promise<Blob> {
   ctx.fillStyle = MUTED;
   ctx.textAlign = "center";
   const host = originOrFallback().replace(/^https?:\/\//, "");
-  ctx.fillText(`${host} — a daily GregTech guessing game`, W / 2, H - 28);
+  ctx.fillText(`${host} · daily GregTech guessing game`, W / 2, H - 28);
 
   return new Promise((resolve, reject) => {
     canvas.toBlob(

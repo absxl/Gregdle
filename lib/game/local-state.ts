@@ -201,7 +201,7 @@ const CELL_EMOJI: Record<string, string> = {
 
 /** Spoiler-free share text (PRD §6.4). */
 export function shareText(game: DailyGame): string {
-  const head = `Gregdle ${game.datasetKey.replace(":", " ").toUpperCase()} [${game.difficulty.toUpperCase()}] — ${game.date}`;
+  const head = `Gregdle ${game.datasetKey.replace(":", " ").replace("machines", "Machines").replace("items", "Items").replace("materials", "Materials")} · ${game.difficulty.toUpperCase()} daily · ${game.date}`;
   const grid = game.rows
     .map((r) => r.cells.map((c) => CELL_EMOJI[c.state] ?? "⬛").join(""))
     .join("\n");

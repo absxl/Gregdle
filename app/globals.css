@@ -403,19 +403,6 @@ body {
   border-radius: 9999px;
   background: #23a55a;
   box-shadow: 0 0 0 2px rgba(35, 165, 90, 0.25);
-  animation: online-pulse 2s ease-out infinite;
-}
-
-@keyframes online-pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(35, 165, 90, 0.45);
-  }
-  70% {
-    box-shadow: 0 0 0 7px rgba(35, 165, 90, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(35, 165, 90, 0);
-  }
 }
 
 /* ------------------------------------------------- background carousel */
@@ -530,4 +517,20 @@ body {
   color: #1a0d2b;
   background: linear-gradient(90deg, #ff5f5f, #f5a623, #2fbf71, #4aa3df, #b57bee);
   animation: rainbow-shift 6s linear infinite;
+}
+
+/* ------------------------------------------------------------- scrollbars */
+
+/* Catalog/grid scrollers: hide the bar, keep the swipe (the mobile hint
+ * already says so). Page scrollbar stays but is styled thin and dark. */
+.grid-outer {
+  scrollbar-width: none;
+}
+.grid-outer::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  scrollbar-color: #242d38 transparent;
+  scrollbar-width: thin;
 }
