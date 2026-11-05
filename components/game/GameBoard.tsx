@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import type { DatasetKey } from "@/lib/datasets";
 import { datasetLabel } from "@/lib/datasets";
-import type { GuessRow } from "@/lib/game/local-state";
+import type { GuessRow, GameDifficulty } from "@/lib/game/local-state";
 import {
   indexDaily,
   loadDaily,
@@ -15,6 +15,7 @@ import {
 } from "@/lib/game/local-state";
 import { AdSlot } from "@/components/ads/AdSlot";
 import { resolveGuess, suggestPartialNames } from "@/lib/game/match";
+import { levelCount, type PuzzleKind } from "@/lib/game/puzzle";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
 import { canonicalSiteUrl } from "@/lib/site";
 import { renderSharePng } from "@/lib/game/share-image";
@@ -27,8 +28,7 @@ import { BackgroundsButton } from "@/components/backgrounds/BackgroundsButton";
  * Comparisons always come from /api/guess; state persists to localStorage.
  */
 
-type Difficulty = "easy" | "hard";
-type Mode = "daily" | "endless";
+type Mode = "daily" | "endless" | "puzzle";
 
 interface PoolEntry {
   id: string;
@@ -53,11 +53,13 @@ interface Hint {
 
 interface Props {
   datasetKey: DatasetKey;
-  difficulty: Difficulty;
+  difficulty: GameDifficulty;
   mode: Mode;
   initialSeed: string | null;
   pool: PoolEntry[];
   columns: string[];
+  /** Set when this is a puzzle run (D45). */
+  puzzleKind?: PuzzleKind;
 }
 
 /** Wrong-guess counts that unlock hint 0 / hint 1 (D18). */
@@ -83,7 +85,17 @@ function httpsUrl(url: string): string {
   return url.startsWith("//") ? `https:${url}` : url;
 }
 
-export function GameBoard({ datasetKey, difficulty, mode, initialSeed, pool, columns }: Props) {
+export function GameBoard({
+  datasetKey,
+  difficulty,
+  mode,
+  initialSeed,
+  pool,
+  columns,
+  puzzleKind,
+}: Props) {
+  const isPuzzle = puzzleKind !== undefined;
+  const puzzleLevelMax = puzzleKind ? levelCount(puzzleKind) - 1 : 0;
   const today = utcDateToday();
   const [seed, setSeed] = useState<string | null>(initialSeed);
   const [rows, setRows] = useState<GuessRow[]>([]);
@@ -102,6 +114,9 @@ export function GameBoard({ datasetKey, difficulty, mode, initialSeed, pool, col
   const [copied, setCopied] = useState(false);
   const [copiedImage, setCopiedImage] = useState(false);
   const [lightbox, setLightbox] = useState<{ src: string; name: string } | null>(null);
+  const [puzzleLevel, setPuzzleLevel] = useState(0);
+  const [puzzleGuesses, setPuzzleGuesses] = useState<{ name: string; correct: boolean }[]>([]);
+  const [puzzleSrc, setPuzzleSrc] = useState<string | null>(null);
   const [guest, setGuest] = useState(false);
   const [sameGuessCount, setSameGuessCount] = useState<number | null>(null);
   const [totalGaveUps, setTotalGaveUps] = useState<number | null>(null);
@@ -156,6 +171,24 @@ export function GameBoard({ datasetKey, difficulty, mode, initialSeed, pool, col
       setSeed(Math.random().toString(36).slice(2) + Date.now().toString(36));
     }
   }, [mode, seed]);
+
+  // Puzzle mode: fetch the current level's crop (D45). Advances on wrong guesses.
+  useEffect(() => {
+    if (!isPuzzle || mode !== "puzzle" || puzzleKind) {
+      if (!isPuzzle) {
+        setPuzzleSrc(null);
+        setPuzzleLevel(0);
+      }
+      return;
+    }
+    const controller = new AbortController();
+    const qs = new URLSearchParams({ date: today, kind: puzzleKind!, level: String(puzzleLevel) });
+    void fetch(`/api/puzzle/image?${qs}`, { signal: controller.signal, cache: "no-store" })
+      .then((r) => (r.ok ? r.blob() : null))
+      .then((b) => b && setPuzzleSrc(URL.createObjectURL(b)))
+      .catch(() => undefined);
+    return () => controller.abort();
+  }, [isPuzzle, puzzleKind, puzzleLevel, mode, today]);
 
   // Guest detection: enables the "sign in to save progress" nudge (D37).
   useEffect(() => {
@@ -507,8 +540,8 @@ export function GameBoard({ datasetKey, difficulty, mode, initialSeed, pool, col
         </p>
       )}
 
-      {/* Legend — always visible */}
-      <div className="flex w-full flex-wrap items-center gap-x-4 gap-y-1 text-xs font-semibold text-muted">
+      {/* Legend — always visible (classic modes) */}
+      <div className={`flex w-full flex-wrap items-center gap-x-4 gap-y-1 text-xs font-semibold text-muted ${isPuzzle ? "hidden" : ""}`}>
         <LegendItem cls="cell-correct" icon="✓" label="correct" />
         <LegendItem cls="cell-partial" icon="◐" label="partial" />
         <LegendItem cls="cell-wrong" icon="✕" label="wrong" />
@@ -635,8 +668,47 @@ export function GameBoard({ datasetKey, difficulty, mode, initialSeed, pool, col
         </div>
       )}
 
-      {/* Give up */}
-      {status === "playing" && rows.length >= 3 && (
+      {/* Give up — puzzle: after 3 wrong guesses */}
+      {isPuzzle && status === "playing" && puzzleGuesses.length >= 3 && (
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            disabled={loading}
+            className="btn text-muted"
+            onClick={() => {
+              void (async () => {
+                const res = await fetch("/api/guess", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({
+                    datasetKey,
+                    difficulty,
+                    mode,
+                    date: today,
+                    kind: puzzleKind,
+                    guessId: "x",
+                    giveUp: true,
+                  }),
+                });
+                const data = (await res.json()) as { answer?: typeof answer };
+                if (data.answer) {
+                  setAnswer(data.answer);
+                  setStatus("gave_up");
+                  setShowResult(true);
+                }
+              })();
+            }}
+          >
+            Give up
+          </button>
+          {totalGaveUps !== null && totalGaveUps > 0 && (
+            <span className="font-mono text-xs text-muted">
+              {totalGaveUps} player{totalGaveUps === 1 ? " has" : "s have"} given up so far.
+            </span>
+          )}
+        </div>
+      )}
+      {!isPuzzle && status === "playing" && rows.length >= 3 && (
         <div className="flex items-center gap-2">
           <button type="button" onClick={giveUp} disabled={loading} className="btn text-muted">
             Give up

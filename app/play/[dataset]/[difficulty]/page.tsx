@@ -20,9 +20,12 @@ export default async function PlayPage(props: {
 
   const datasetKey = parseDatasetKey(dataset.replace("-", ":").replace("machines", "machines"));
   if (!datasetKey || !DATASET_KEYS.includes(datasetKey)) notFound();
-  if (difficulty !== "easy" && difficulty !== "hard") notFound();
 
-  const gameMode = mode === "endless" ? "endless" : "daily";
+  // Puzzle routes: /play/gtnh-machines/puzzle-single|puzzle-multi (D45).
+  const isPuzzle = difficulty === "puzzle-single" || difficulty === "puzzle-multi";
+  if (!isPuzzle && difficulty !== "easy" && difficulty !== "hard") notFound();
+
+  const gameMode = isPuzzle ? "puzzle" : mode === "endless" ? "endless" : "daily";
 
   // Autocomplete pool (D20). Attributes are public wiki knowledge shown per
   // suggestion Minedle-style — nothing here identifies the hidden answer;
@@ -43,6 +46,7 @@ export default async function PlayPage(props: {
   return (
     <GameBoard
       datasetKey={datasetKey}
+      puzzleKind={isPuzzle ? (difficulty === "puzzle-single" ? "single" : "multi") : undefined}
       difficulty={difficulty}
       mode={gameMode}
       initialSeed={gameMode === "endless" ? (seed ?? null) : null}
