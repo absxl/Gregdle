@@ -118,7 +118,7 @@ export default function StatsPage() {
                 className="panel w-full p-5"
               >
                 <p className="label label-accent mb-1.5">
-                  MODULE // DAILY-{difficulty.toUpperCase()}
+                  Daily · {difficulty === "easy" ? "Easy" : "Hard"}
                 </p>
                 <h2 className="text-base font-black">{datasetLabel(datasetKey)}</h2>
                 <div className="mt-3 flex items-center gap-3">
@@ -163,7 +163,7 @@ export default function StatsPage() {
           })}
 
           <section aria-label="Endless stats" className="panel w-full p-5">
-            <p className="label label-accent mb-1.5">MODULE // ENDLESS</p>
+            <p className="label label-accent mb-1.5">Endless</p>
             <h2 className="text-base font-black">Endless mode</h2>
             <div className="mt-3 grid grid-cols-3 gap-2">
               <Stat label="Played" value={endless.played} />

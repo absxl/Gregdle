@@ -27,7 +27,7 @@ export default function MachinesPage() {
         <div>
           <h1 className="font-pixel text-5xl leading-none tracking-wide">MACHINE CATALOG</h1>
           <p className="label mt-1">
-            {machines.length} MACHINES · SOURCE // GTNH WIKI (
+            {machines.length} MACHINES · SOURCE: GTNH WIKI (
             {machines.length > 0 ? machines[0].dataset.replace(":", " · ") : ""})
           </p>
         </div>

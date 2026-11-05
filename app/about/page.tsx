@@ -40,7 +40,6 @@ export default async function AboutPage() {
       </header>
 
       <section className="panel p-5 text-sm leading-relaxed">
-        <p className="label label-accent mb-2">SECTION // 01</p>
         <h2 className="mb-2 text-base font-black">What is this?</h2>
         <p>
           Gregdle is a Loldle-style daily guessing game for GregTech players. Each day one machine
@@ -53,7 +52,6 @@ export default async function AboutPage() {
 
       {artists.length > 0 && (
         <section className="panel p-5 text-sm leading-relaxed">
-          <p className="label label-accent mb-2">SECTION // 03</p>
           <h2 className="mb-2 text-base font-black">Background artists</h2>
           <p>
             The rotating site backgrounds come from the community and the GTNH homepage showcase —
@@ -70,7 +68,6 @@ export default async function AboutPage() {
       )}
 
       <section className="panel p-5 text-sm leading-relaxed">
-        <p className="label label-accent mb-2">SECTION // 04</p>
         <h2 className="mb-2 text-base font-black">Contact</h2>
         <p className="flex flex-wrap gap-x-6 gap-y-2">
           <span>
@@ -100,7 +97,6 @@ export default async function AboutPage() {
       </section>
 
       <section className="panel p-5 text-sm leading-relaxed">
-        <p className="label label-accent mb-2">SECTION // 02</p>
         <h2 className="mb-2 text-base font-black">Open source</h2>
         <p>
           Gregdle is open source — created and owned by{" "}

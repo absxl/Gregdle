@@ -82,14 +82,7 @@ function httpsUrl(url: string): string {
   return url.startsWith("//") ? `https:${url}` : url;
 }
 
-export function GameBoard({
-  datasetKey,
-  difficulty,
-  mode,
-  initialSeed,
-  pool,
-  columns,
-}: Props) {
+export function GameBoard({ datasetKey, difficulty, mode, initialSeed, pool, columns }: Props) {
   const today = utcDateToday();
   const [seed, setSeed] = useState<string | null>(initialSeed);
   const [rows, setRows] = useState<GuessRow[]>([]);
@@ -686,9 +679,7 @@ export function GameBoard({
               >
                 {status === "won" ? "✓" : "?"}
               </div>
-              <p className="label label-accent">
-                {status === "won" ? "RESULT // SOLVED" : "RESULT // FAILED"}
-              </p>
+              <p className="label label-accent">{status === "won" ? "Solved" : "Failed"}</p>
               <h2 className="font-pixel text-4xl leading-none tracking-wide">
                 {status === "won" ? "CORRECT!" : "GAME OVER"}
               </h2>

@@ -50,7 +50,7 @@ export function ReleaseBanner() {
       ) : (
         <div className="panel corners w-72 border-accent/60 bg-surface/95 p-4 shadow-2xl">
           <div className="flex items-start justify-between gap-2">
-            <p className="label label-accent">RELEASE // v{CURRENT_VERSION} UNO</p>
+            <p className="label label-accent">New release · v{CURRENT_VERSION} Uno</p>
             <button
               type="button"
               onClick={dismiss}

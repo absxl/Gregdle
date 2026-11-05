@@ -79,7 +79,7 @@ export default function FaqPage() {
       </header>
 
       <section className="panel corners p-5">
-        <p className="label label-accent mb-3">THE GUESS GRID // COLUMN BY COLUMN</p>
+        <p className="label label-accent mb-3">The guess grid, column by column</p>
         <div className="flex flex-col gap-4">
           {COLUMNS.map((c) => (
             <div key={c.name}>
@@ -92,7 +92,7 @@ export default function FaqPage() {
       </section>
 
       <section className="panel p-5">
-        <p className="label label-accent mb-3">COMMON QUESTIONS</p>
+        <p className="label label-accent mb-3">Common questions</p>
         <div className="flex flex-col gap-4">
           {FAQS.map((f) => (
             <div key={f.q}>

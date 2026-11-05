@@ -111,26 +111,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             </Link>
           </nav>
           <div className="mt-2 flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
-            <p className="tracking-wide">
-              SER.NO {new Date().getFullYear()}-1104 ·{" "}
-              <a
-                href="https://github.com/absxl/Gregdle"
-                className="hover:text-accent"
-                rel="noreferrer"
-                target="_blank"
-              >
-                OPEN SOURCE
-              </a>{" "}
-              · OWNER{" "}
+            <p>
+              Open source · made by{" "}
               <a
                 href="https://github.com/absxl"
                 className="hover:text-accent"
                 rel="noreferrer"
                 target="_blank"
               >
-                ABSXL
+                absxl
               </a>{" "}
-              · GREGTECH &amp; GTNH BELONG TO THEIR AUTHORS · NOT AFFILIATED
+              · GregTech and GT New Horizons belong to their authors. Not affiliated.
             </p>
             <a
               href="https://ko-fi.com/absxl"

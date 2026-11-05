@@ -99,9 +99,7 @@ export default async function LeaderboardPage(props: {
 
       {(globalStats.easy || globalStats.hard) && (
         <section aria-label="Global stats" className="panel corners w-full p-5">
-          <p className="label label-accent mb-3">
-            GLOBAL STATS // TODAY · ALL PLAYERS (GUESTS INCLUDED)
-          </p>
+          <p className="label label-accent mb-3">Global stats today · guests included</p>
           <div className="grid gap-4 sm:grid-cols-2">
             {(["easy", "hard"] as const).map((difficulty) => {
               const g = globalStats[difficulty];

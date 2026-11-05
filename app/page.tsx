@@ -117,11 +117,8 @@ export default async function Home() {
             className="h-20 w-auto sm:h-28"
           />
         </div>
-        <p className="label -mt-2 text-center">
-          GREGTECH INDUSTRIES // DAILY MACHINE GUESSING TERMINAL
-        </p>
-        <p className="text-center text-sm font-semibold text-muted">
-          One hidden machine every day at 00:00 UTC. Type, guess, read the grid.
+        <p className="-mt-2 text-center text-sm font-semibold text-muted">
+          One hidden machine every day at 00:00 UTC. Type a guess, read the grid.
         </p>
       </header>
 
@@ -132,11 +129,11 @@ export default async function Home() {
             <div className="flex items-start justify-between gap-2">
               <div>
                 <p className="label label-accent mb-1.5">
-                  MODULE // {difficulty === "easy" ? "DAILY-EASY" : "DAILY-HARD"}
+                  Daily · {difficulty === "easy" ? "Easy" : "Hard"}
                 </p>
                 <p className="text-sm text-muted">
                   {difficulty === "easy"
-                    ? "Everyday machines — friendlier pool."
+                    ? "Everyday machines, a friendlier pool."
                     : `Any of the ${machines.length} machines. No hints. Good luck.`}
                 </p>
               </div>
@@ -178,7 +175,9 @@ export default async function Home() {
             Full leaderboard
           </Link>
         </div>
-        <p className="label mt-1">SOLVE THE DAILY WHILE SIGNED IN · UNHINTED RANKS HIGHER</p>
+        <p className="mt-1 text-xs text-muted">
+          Solve the daily while signed in. Unhinted runs rank higher.
+        </p>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
           <div>
             <h3 className="mb-2 text-xs font-bold uppercase tracking-wider text-muted">Easy</h3>
