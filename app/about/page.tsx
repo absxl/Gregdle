@@ -43,10 +43,10 @@ export default async function AboutPage() {
         <h2 className="mb-2 text-base font-black">What is this?</h2>
         <p>
           Gregdle is a Loldle-style daily guessing game for GregTech players. Each day one machine
-          is hidden: type guesses, and the grid tells you how each attribute compares — voltage
-          tier, structure, size, function and more. Green = correct, amber = partial overlap, arrows
-          = the answer is higher/lower. A new daily unlocks at 00:00 UTC; endless mode picks a
-          random machine anytime.
+          is hidden: type guesses, and the grid tells you how each attribute compares, from voltage
+          tier to structure, size, function and more. Green = correct, amber = partial overlap,
+          arrows = the answer is higher or lower. A new daily unlocks at 00:00 UTC; endless mode
+          picks a random machine anytime.
         </p>
       </section>
 
@@ -99,7 +99,7 @@ export default async function AboutPage() {
       <section className="panel p-5 text-sm leading-relaxed">
         <h2 className="mb-2 text-base font-black">Open source</h2>
         <p>
-          Gregdle is open source — created and owned by{" "}
+          Gregdle is open source, created and owned by{" "}
           <a
             href="https://github.com/absxl"
             className="font-semibold text-accent hover:underline"
@@ -118,7 +118,7 @@ export default async function AboutPage() {
             GitHub
           </a>
           : found a wrong attribute on a machine? A bug? An idea for a new mode? Open an issue or
-          send a pull request — contributions welcome.
+          send a pull request. Contributions welcome!
         </p>
       </section>
 

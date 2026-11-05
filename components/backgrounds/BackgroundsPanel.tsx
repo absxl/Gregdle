@@ -255,7 +255,7 @@ export function BackgroundsPanel({ onClose }: { onClose: () => void }) {
                   <figure key={bg.id} className="flex flex-col gap-1">
                     <Lightbox
                       src={bg.url}
-                      caption={bg.title ? `${bg.title} — by ${bg.author}` : `by ${bg.author}`}
+                      caption={bg.title ? `${bg.title} (by ${bg.author})` : `by ${bg.author}`}
                       className="rounded-lg"
                     >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -288,8 +288,8 @@ export function BackgroundsPanel({ onClose }: { onClose: () => void }) {
             )}
             <p className="mt-3 text-xs text-muted">
               {pinned
-                ? "Pinned — opens with your favorite every time."
-                : "Carousel mode — a random background every 30 seconds."}
+                ? "Pinned. Your favorite shows on every visit."
+                : "Carousel mode. A random background every 30 seconds."}
             </p>
           </div>
         )}
@@ -306,9 +306,8 @@ export function BackgroundsPanel({ onClose }: { onClose: () => void }) {
             >
               <p className="text-sm text-muted">
                 Landscape 16:9 images fit best (at least {MIN_WIDTH}px wide, JPG/PNG/WebP up to 2
-                MB) — other proportions are center-cropped to 16:9 automatically. Everything is
-                compressed automatically before upload — roughly 500 KB is stored per image.
-                Credited as{" "}
+                MB). Other proportions are center-cropped to 16:9 automatically, and everything is
+                compressed before upload to roughly 500 KB per image. Credited as{" "}
                 <span className="font-bold text-foreground">
                   {signedIn ? displayName : "your Discord name"}
                 </span>

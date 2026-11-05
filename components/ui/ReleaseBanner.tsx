@@ -61,10 +61,10 @@ export function ReleaseBanner() {
             </button>
           </div>
           <ul className="mt-2 flex flex-col gap-1 text-xs leading-relaxed text-muted">
-            <li>▸ GT Terminal theme — the machine HUD look</li>
-            <li>▸ Community wallpapers with artist credits</li>
-            <li>▸ Public profiles, streaks and fire badges</li>
-            <li>▸ Global stats — guests count too</li>
+            <li>▸ The new GT Terminal theme</li>
+            <li>▸ Community wallpapers with credits</li>
+            <li>▸ Profiles, streaks and fire badges</li>
+            <li>▸ Global stats: guests count too</li>
             <li>▸ Ko-fi support in the footer</li>
           </ul>
           <Link
