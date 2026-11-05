@@ -154,19 +154,6 @@ export default async function Home() {
         ))}
       </section>
 
-      {gaveUps !== null && gaveUps > 0 && (
-        <section
-          aria-label="Give-up counter"
-          className="panel corners flex w-full items-center justify-between gap-3 px-5 py-3"
-        >
-          <p className="font-mono text-sm font-bold text-muted">
-            <span className="font-pixel text-2xl text-bad">{gaveUps}</span> player
-            {gaveUps === 1 ? " has" : "s have"} given up entirely.
-          </p>
-          <p className="label">WILL YOU?</p>
-        </section>
-      )}
-
       {/* Puzzle */}
       <section aria-label="Puzzle mode" className="panel corners flex w-full flex-col gap-4 p-5">
         <div className="flex items-start justify-between gap-2">
@@ -187,6 +174,19 @@ export default async function Home() {
           </Link>
         </div>
       </section>
+
+      {gaveUps !== null && gaveUps > 0 && (
+        <section
+          aria-label="Give-up counter"
+          className="panel corners flex w-full items-center justify-between gap-3 px-5 py-3"
+        >
+          <p className="font-mono text-sm font-bold text-muted">
+            <span className="font-pixel text-2xl text-bad">{gaveUps}</span> player
+            {gaveUps === 1 ? " has" : "s have"} given up entirely.
+          </p>
+          <p className="label">WILL YOU?</p>
+        </section>
+      )}
 
       {/* Leaderboard — prominent preview */}
       <section aria-label="Leaderboard" className="panel w-full p-5">
