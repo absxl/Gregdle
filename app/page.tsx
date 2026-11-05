@@ -168,7 +168,7 @@ export default async function Home() {
       )}
 
       {/* Puzzle */}
-      <section aria-label="Puzzle mode" className="panel corners w-full p-5">
+      <section aria-label="Puzzle mode" className="panel corners flex w-full flex-col gap-4 p-5">
         <div className="flex items-start justify-between gap-2">
           <div>
             <p className="label label-accent mb-1.5">MODULE // PUZZLE</p>
@@ -178,12 +178,12 @@ export default async function Home() {
             </p>
           </div>
         </div>
-        <div className="mt-4 flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2">
           <Link href="/play/gtnh-machines/puzzle-single" className="btn btn-primary">
-            SINGLE SPRITE
+            Single sprite
           </Link>
-          <Link href="/play/gtnh-machines/puzzle-multi" className="btn btn-primary">
-            MULTIBLOCK RENDER
+          <Link href="/play/gtnh-machines/puzzle-multi" className="btn">
+            Multiblock render
           </Link>
         </div>
       </section>
