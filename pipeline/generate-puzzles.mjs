@@ -15,7 +15,6 @@ const ROOT = path.resolve(import.meta.dirname, "..");
 const DATASET = JSON.parse(readFileSync(path.join(ROOT, "data/gtnh/machines.json"), "utf8"));
 const PUZZLES_FILE = path.join(ROOT, "data/gtnh/puzzles.json");
 const CACHE_DIR = path.join(ROOT, "pipeline/cache/puzzles");
-const SITE = "https://www.gtnewhorizons.com"; // not used; sprites come from wikitide URLs in dataset
 
 const SINGLE_LEVELS = [3, 4, 5, 6, 7, 8, 10, 12, 14, 16];
 const MULTI_FRACTIONS = [0.06, 0.09, 0.12, 0.16, 0.2, 0.25, 0.35, 0.5, 1];
@@ -33,9 +32,7 @@ const limitArg = process.argv.includes("--limit")
   : Infinity;
 
 // Stable uuid map
-let puzzles = existsSync(PUZZLES_FILE)
-  ? JSON.parse(readFileSync(PUZZLES_FILE, "utf8"))
-  : {};
+let puzzles = existsSync(PUZZLES_FILE) ? JSON.parse(readFileSync(PUZZLES_FILE, "utf8")) : {};
 
 function uuidFor(machineId) {
   if (!puzzles[machineId]) {

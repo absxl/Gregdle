@@ -160,8 +160,8 @@ export default async function Home() {
           <div>
             <p className="label label-accent mb-1.5">MODULE // PUZZLE</p>
             <p className="text-sm text-muted">
-              One machine shown as a tiny pixel fragment. Every wrong guess dezooms — name it
-              before the full image gives it away. Two puzzles a day.
+              One machine shown as a tiny pixel fragment. Every wrong guess dezooms — name it before
+              the full image gives it away. Two puzzles a day.
             </p>
           </div>
         </div>

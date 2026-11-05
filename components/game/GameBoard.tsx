@@ -19,6 +19,7 @@ import { levelCount, type PuzzleKind } from "@/lib/game/puzzle";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
 import { canonicalSiteUrl } from "@/lib/site";
 import { renderSharePng } from "@/lib/game/share-image";
+import { getEntryById } from "@/lib/game/dataset";
 import { BackgroundsButton } from "@/components/backgrounds/BackgroundsButton";
 
 /**
@@ -174,13 +175,7 @@ export function GameBoard({
 
   // Puzzle mode: fetch the current level's crop (D45). Advances on wrong guesses.
   useEffect(() => {
-    if (!isPuzzle || mode !== "puzzle" || puzzleKind) {
-      if (!isPuzzle) {
-        setPuzzleSrc(null);
-        setPuzzleLevel(0);
-      }
-      return;
-    }
+    if (!isPuzzle || mode !== "puzzle") return;
     const controller = new AbortController();
     const qs = new URLSearchParams({ date: today, kind: puzzleKind!, level: String(puzzleLevel) });
     void fetch(`/api/puzzle/image?${qs}`, { signal: controller.signal, cache: "no-store" })
@@ -316,6 +311,23 @@ export function GameBoard({
         };
         if (!data.result) {
           setError("Guess failed — try again.");
+          return;
+        }
+        if (isPuzzle) {
+          const correct = data.result.won;
+          setPuzzleGuesses((g) => [
+            ...g,
+            { name: getEntryById(guessId)?.name ?? guessId, correct },
+          ]);
+          if (correct && data.answer) {
+            setAnswer(data.answer);
+            setStatus("won");
+            setShowResult(true);
+          } else {
+            // Wrong guess: dezoom one step.
+            setPuzzleLevel((l) => Math.min(l + 1, puzzleLevelMax));
+          }
+          setLoading(false);
           return;
         }
         const nextRows = [...rows, data.result];
@@ -523,6 +535,46 @@ export function GameBoard({
         )}
       </header>
 
+      {/* Puzzle image — placed above the guess input (D45) */}
+      {isPuzzle && (
+        <div className="flex w-full flex-col items-center gap-3">
+          <div className="panel corners w-72 border-accent/40 p-2">
+            {puzzleSrc ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={puzzleSrc}
+                alt="Zoomed machine image"
+                className="h-72 w-full object-contain"
+                style={{ imageRendering: "pixelated" }}
+                draggable={false}
+              />
+            ) : (
+              <div className="flex h-72 w-full items-center justify-center font-mono text-sm text-muted">
+                LOADING FRAGMENT…
+              </div>
+            )}
+          </div>
+          <p className="label">
+            LEVEL {puzzleLevel + 1}/{puzzleLevelMax + 1} {"// WRONG GUESS = DEZOOM"}
+          </p>
+          {puzzleGuesses.length > 0 && (
+            <div className="flex w-full flex-wrap justify-center gap-1.5">
+              {puzzleGuesses.map((g, i) => (
+                <span
+                  key={`${g.name}-${i}`}
+                  className={`chip font-mono ${
+                    g.correct ? "border-good/60 text-good" : "border-bad/60 text-bad line-through"
+                  }`}
+                >
+                  {g.correct ? "✓ " : "✕ "}
+                  {g.name}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
       {/* Guess input */}
       {status === "playing" &&
         (difficulty === "hard" ? (
@@ -541,7 +593,9 @@ export function GameBoard({
       )}
 
       {/* Legend — always visible (classic modes) */}
-      <div className={`flex w-full flex-wrap items-center gap-x-4 gap-y-1 text-xs font-semibold text-muted ${isPuzzle ? "hidden" : ""}`}>
+      <div
+        className={`flex w-full flex-wrap items-center gap-x-4 gap-y-1 text-xs font-semibold text-muted ${isPuzzle ? "hidden" : ""}`}
+      >
         <LegendItem cls="cell-correct" icon="✓" label="correct" />
         <LegendItem cls="cell-partial" icon="◐" label="partial" />
         <LegendItem cls="cell-wrong" icon="✕" label="wrong" />
@@ -817,6 +871,14 @@ export function GameBoard({
                   Home
                 </Link>
               </div>
+              {mode === "daily" && (
+                <div className="mt-1 w-full border-t border-edge pt-3">
+                  <p className="label mb-2 text-center">OTHER DAILIES TODAY</p>
+                  <OtherDailies
+                    except={difficulty === "easy" || difficulty === "hard" ? difficulty : "hard"}
+                  />
+                </div>
+              )}
               {guest && mode === "daily" && (
                 <button type="button" onClick={loginToSave} className="btn text-muted">
                   Sign in to save progress
@@ -1218,5 +1280,38 @@ function WikiNameLink({ name }: { name: string }) {
     >
       {name}
     </a>
+  );
+}
+
+// ---------------------------------------------------------- other dailies --
+
+/**
+ * Post-game engagement (Loldle-style): after finishing a daily, point the
+ * player at the dailies they haven't solved yet.
+ */
+function OtherDailies({ except }: { except: "easy" | "hard" }) {
+  const modes = [
+    { label: "EASY", href: "/play/gtnh-machines/easy", key: "easy" as const },
+    { label: "HARD", href: "/play/gtnh-machines/hard", key: "hard" as const },
+    {
+      label: "PUZZLE SINGLE",
+      href: "/play/gtnh-machines/puzzle-single",
+      key: "puzzle-single" as const,
+    },
+    {
+      label: "PUZZLE MULTI",
+      href: "/play/gtnh-machines/puzzle-multi",
+      key: "puzzle-multi" as const,
+    },
+  ].filter((m) => m.key !== except);
+
+  return (
+    <div className="flex flex-wrap justify-center gap-2">
+      {modes.map((m) => (
+        <Link key={m.key} href={m.href} className="btn px-3 py-1.5 text-xs">
+          {m.label}
+        </Link>
+      ))}
+    </div>
   );
 }
