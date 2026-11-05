@@ -23,11 +23,9 @@ export interface HintData {
   image?: string;
 }
 
-export type GameDifficulty = "easy" | "hard" | "puzzle-single" | "puzzle-multi";
-
 export interface DailyGame {
   datasetKey: string;
-  difficulty: GameDifficulty;
+  difficulty: "easy" | "hard";
   date: string; // YYYY-MM-DD (UTC)
   rows: GuessRow[];
   hintsUsed: number;
@@ -94,7 +92,7 @@ export function dailyKey(datasetKey: string, difficulty: string, date: string): 
 
 export function loadDaily(
   datasetKey: string,
-  difficulty: GameDifficulty,
+  difficulty: "easy" | "hard",
   date: string,
 ): DailyGame | null {
   const g = readJson<DailyGame | null>(dailyKey(datasetKey, difficulty, date), null);
@@ -106,7 +104,7 @@ export function saveDaily(game: DailyGame): void {
 }
 
 /** Streaks walk backwards through finished dailies by UTC date. */
-export function dailyStats(datasetKey: string, difficulty: GameDifficulty): DailyStats {
+export function dailyStats(datasetKey: string, difficulty: "easy" | "hard"): DailyStats {
   const games = readJson<Record<string, DailyGame>>("index:daily", {});
   const finished = Object.values(games)
     .filter(

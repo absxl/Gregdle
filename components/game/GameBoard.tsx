@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import type { DatasetKey } from "@/lib/datasets";
 import { datasetLabel } from "@/lib/datasets";
-import type { GuessRow, GameDifficulty } from "@/lib/game/local-state";
+import type { GuessRow } from "@/lib/game/local-state";
 import {
   indexDaily,
   loadDaily,
@@ -15,11 +15,9 @@ import {
 } from "@/lib/game/local-state";
 import { AdSlot } from "@/components/ads/AdSlot";
 import { resolveGuess, suggestPartialNames } from "@/lib/game/match";
-import { levelCount, type PuzzleKind } from "@/lib/game/puzzle";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
 import { canonicalSiteUrl } from "@/lib/site";
 import { renderSharePng } from "@/lib/game/share-image";
-import { getEntryById } from "@/lib/game/dataset";
 import { BackgroundsButton } from "@/components/backgrounds/BackgroundsButton";
 
 /**
@@ -54,13 +52,11 @@ interface Hint {
 
 interface Props {
   datasetKey: DatasetKey;
-  difficulty: GameDifficulty;
+  difficulty: "easy" | "hard";
   mode: Mode;
   initialSeed: string | null;
   pool: PoolEntry[];
   columns: string[];
-  /** Set when this is a puzzle run (D45). */
-  puzzleKind?: PuzzleKind;
 }
 
 /** Wrong-guess counts that unlock hint 0 / hint 1 (D18). */
@@ -93,10 +89,7 @@ export function GameBoard({
   initialSeed,
   pool,
   columns,
-  puzzleKind,
 }: Props) {
-  const isPuzzle = puzzleKind !== undefined;
-  const puzzleLevelMax = puzzleKind ? levelCount(puzzleKind) - 1 : 0;
   const today = utcDateToday();
   const [seed, setSeed] = useState<string | null>(initialSeed);
   const [rows, setRows] = useState<GuessRow[]>([]);
@@ -115,9 +108,6 @@ export function GameBoard({
   const [copied, setCopied] = useState(false);
   const [copiedImage, setCopiedImage] = useState(false);
   const [lightbox, setLightbox] = useState<{ src: string; name: string } | null>(null);
-  const [puzzleLevel, setPuzzleLevel] = useState(0);
-  const [puzzleGuesses, setPuzzleGuesses] = useState<{ name: string; correct: boolean }[]>([]);
-  const [puzzleSrc, setPuzzleSrc] = useState<string | null>(null);
   const [guest, setGuest] = useState(false);
   const [sameGuessCount, setSameGuessCount] = useState<number | null>(null);
   const [totalGaveUps, setTotalGaveUps] = useState<number | null>(null);
@@ -172,18 +162,6 @@ export function GameBoard({
       setSeed(Math.random().toString(36).slice(2) + Date.now().toString(36));
     }
   }, [mode, seed]);
-
-  // Puzzle mode: fetch the current level's crop (D45). Advances on wrong guesses.
-  useEffect(() => {
-    if (!isPuzzle || mode !== "puzzle") return;
-    const controller = new AbortController();
-    const qs = new URLSearchParams({ date: today, kind: puzzleKind!, level: String(puzzleLevel) });
-    void fetch(`/api/puzzle/image?${qs}`, { signal: controller.signal, cache: "no-store" })
-      .then((r) => (r.ok ? r.blob() : null))
-      .then((b) => b && setPuzzleSrc(URL.createObjectURL(b)))
-      .catch(() => undefined);
-    return () => controller.abort();
-  }, [isPuzzle, puzzleKind, puzzleLevel, mode, today]);
 
   // Guest detection: enables the "sign in to save progress" nudge (D37).
   useEffect(() => {
@@ -311,23 +289,6 @@ export function GameBoard({
         };
         if (!data.result) {
           setError("Guess failed — try again.");
-          return;
-        }
-        if (isPuzzle) {
-          const correct = data.result.won;
-          setPuzzleGuesses((g) => [
-            ...g,
-            { name: getEntryById(guessId)?.name ?? guessId, correct },
-          ]);
-          if (correct && data.answer) {
-            setAnswer(data.answer);
-            setStatus("won");
-            setShowResult(true);
-          } else {
-            // Wrong guess: dezoom one step.
-            setPuzzleLevel((l) => Math.min(l + 1, puzzleLevelMax));
-          }
-          setLoading(false);
           return;
         }
         const nextRows = [...rows, data.result];
@@ -535,46 +496,6 @@ export function GameBoard({
         )}
       </header>
 
-      {/* Puzzle image — placed above the guess input (D45) */}
-      {isPuzzle && (
-        <div className="flex w-full flex-col items-center gap-3">
-          <div className="panel corners w-72 border-accent/40 p-2">
-            {puzzleSrc ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={puzzleSrc}
-                alt="Zoomed machine image"
-                className="h-72 w-full object-contain"
-                style={{ imageRendering: "pixelated" }}
-                draggable={false}
-              />
-            ) : (
-              <div className="flex h-72 w-full items-center justify-center font-mono text-sm text-muted">
-                LOADING FRAGMENT…
-              </div>
-            )}
-          </div>
-          <p className="label">
-            LEVEL {puzzleLevel + 1}/{puzzleLevelMax + 1} {"// WRONG GUESS = DEZOOM"}
-          </p>
-          {puzzleGuesses.length > 0 && (
-            <div className="flex w-full flex-wrap justify-center gap-1.5">
-              {puzzleGuesses.map((g, i) => (
-                <span
-                  key={`${g.name}-${i}`}
-                  className={`chip font-mono ${
-                    g.correct ? "border-good/60 text-good" : "border-bad/60 text-bad line-through"
-                  }`}
-                >
-                  {g.correct ? "✓ " : "✕ "}
-                  {g.name}
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
-      )}
-
       {/* Guess input */}
       {status === "playing" &&
         (difficulty === "hard" ? (
@@ -594,7 +515,7 @@ export function GameBoard({
 
       {/* Legend — always visible (classic modes) */}
       <div
-        className={`flex w-full flex-wrap items-center gap-x-4 gap-y-1 text-xs font-semibold text-muted ${isPuzzle ? "hidden" : ""}`}
+        className={`flex w-full flex-wrap items-center gap-x-4 gap-y-1 text-xs font-semibold text-muted`}
       >
         <LegendItem cls="cell-correct" icon="✓" label="correct" />
         <LegendItem cls="cell-partial" icon="◐" label="partial" />
@@ -722,47 +643,8 @@ export function GameBoard({
         </div>
       )}
 
-      {/* Give up — puzzle: after 3 wrong guesses */}
-      {isPuzzle && status === "playing" && puzzleGuesses.length >= 3 && (
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            disabled={loading}
-            className="btn text-muted"
-            onClick={() => {
-              void (async () => {
-                const res = await fetch("/api/guess", {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({
-                    datasetKey,
-                    difficulty,
-                    mode,
-                    date: today,
-                    kind: puzzleKind,
-                    guessId: "x",
-                    giveUp: true,
-                  }),
-                });
-                const data = (await res.json()) as { answer?: typeof answer };
-                if (data.answer) {
-                  setAnswer(data.answer);
-                  setStatus("gave_up");
-                  setShowResult(true);
-                }
-              })();
-            }}
-          >
-            Give up
-          </button>
-          {totalGaveUps !== null && totalGaveUps > 0 && (
-            <span className="font-mono text-xs text-muted">
-              {totalGaveUps} player{totalGaveUps === 1 ? " has" : "s have"} given up so far.
-            </span>
-          )}
-        </div>
-      )}
-      {!isPuzzle && status === "playing" && rows.length >= 3 && (
+      {/* Give up */}
+      {status === "playing" && rows.length >= 3 && (
         <div className="flex items-center gap-2">
           <button type="button" onClick={giveUp} disabled={loading} className="btn text-muted">
             Give up
@@ -1293,16 +1175,6 @@ function OtherDailies({ except }: { except: "easy" | "hard" }) {
   const modes = [
     { label: "EASY", href: "/play/gtnh-machines/easy", key: "easy" as const },
     { label: "HARD", href: "/play/gtnh-machines/hard", key: "hard" as const },
-    {
-      label: "PUZZLE SINGLE",
-      href: "/play/gtnh-machines/puzzle-single",
-      key: "puzzle-single" as const,
-    },
-    {
-      label: "PUZZLE MULTI",
-      href: "/play/gtnh-machines/puzzle-multi",
-      key: "puzzle-multi" as const,
-    },
   ].filter((m) => m.key !== except);
 
   return (

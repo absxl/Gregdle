@@ -154,27 +154,6 @@ export default async function Home() {
         ))}
       </section>
 
-      {/* Puzzle */}
-      <section aria-label="Puzzle mode" className="panel corners flex w-full flex-col gap-4 p-5">
-        <div className="flex items-start justify-between gap-2">
-          <div>
-            <p className="label label-accent mb-1.5">MODULE // PUZZLE</p>
-            <p className="text-sm text-muted">
-              One machine shown as a tiny pixel fragment. Every wrong guess dezooms — name it before
-              the full image gives it away. Two puzzles a day.
-            </p>
-          </div>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          <Link href="/play/gtnh-machines/puzzle-single" className="btn btn-primary">
-            Single sprite
-          </Link>
-          <Link href="/play/gtnh-machines/puzzle-multi" className="btn">
-            Multiblock render
-          </Link>
-        </div>
-      </section>
-
       {gaveUps !== null && gaveUps > 0 && (
         <section
           aria-label="Give-up counter"

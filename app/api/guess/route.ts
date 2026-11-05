@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { compareMachine } from "@/lib/game/compare";
-import { getDailyAnswerId, getEndlessAnswerId, getPuzzleAnswerId } from "@/lib/game/answers";
+import { getDailyAnswerId, getEndlessAnswerId } from "@/lib/game/answers";
 import { getEntryById, getMachines } from "@/lib/game/dataset";
 import { clientIp, rateLimit } from "@/lib/game/rate-limit";
 
@@ -14,10 +14,8 @@ export const runtime = "nodejs";
 
 const guessRequest = z.object({
   datasetKey: z.literal("gtnh:machines"),
-  difficulty: z.enum(["easy", "hard", "puzzle"]),
-  mode: z.enum(["daily", "endless", "puzzle"]),
-  /** Puzzle variant. */
-  kind: z.enum(["single", "multi"]).optional(),
+  difficulty: z.enum(["easy", "hard"]),
+  mode: z.enum(["daily", "endless"]),
   /** UTC date (YYYY-MM-DD) for dailies. */
   date: z
     .string()
@@ -45,7 +43,7 @@ export async function POST(req: Request) {
   if (!parsed.success) {
     return Response.json({ error: "invalid_request" }, { status: 400 });
   }
-  const { datasetKey, difficulty, mode, date, kind, seed, guessId, giveUp } = parsed.data;
+  const { datasetKey, difficulty, mode, date, seed, guessId, giveUp } = parsed.data;
 
   if (mode === "daily" && !date) {
     return Response.json({ error: "date_required" }, { status: 400 });
@@ -53,19 +51,14 @@ export async function POST(req: Request) {
   if (mode === "endless" && !seed) {
     return Response.json({ error: "seed_required" }, { status: 400 });
   }
-  if (mode === "puzzle" && (!date || !kind)) {
-    return Response.json({ error: "date_and_kind_required" }, { status: 400 });
-  }
 
   const entries = getMachines();
   let answerId: string;
   try {
     answerId =
-      mode === "puzzle"
-        ? await getPuzzleAnswerId(datasetKey, date!, kind!)
-        : mode === "daily"
-          ? (await getDailyAnswerId(entries, datasetKey, difficulty as "easy" | "hard", date!)).id
-          : getEndlessAnswerId(entries, datasetKey, difficulty as "easy" | "hard", seed!);
+      mode === "daily"
+        ? (await getDailyAnswerId(entries, datasetKey, difficulty, date!)).id
+        : getEndlessAnswerId(entries, datasetKey, difficulty, seed!);
   } catch {
     return Response.json({ error: "no_answer_available" }, { status: 503 });
   }

@@ -55,10 +55,6 @@ const FAQS: { q: string; a: string }[] = [
     a: "Every machine's attributes come from its GTNH wiki page. The Function column groups the wiki's hyper-specific Machine Type into 12 buckets (for example both Gas Turbines and Nuclear Reactors are POWER GEN; Macerators and Ore Washers are ORE PROC). Hovering a cell always shows the raw wiki type.",
   },
   {
-    q: "How does puzzle mode work?",
-    a: "Puzzle shows one machine as a heavily zoomed image — a 3×3 pixel fragment of the sprite, or a tiny crop of a multiblock render. Every wrong guess dezooms one step until the full image is visible. Name it at any zoom level to win. There are two puzzles a day: SINGLE SPRITE and MULTIBLOCK RENDER.",
-  },
-  {
     q: "Does my run count if I'm not signed in?",
     a: "Your guesses and streaks are always saved on your device. Sign in with Discord to additionally appear on the leaderboard, keep a public profile, and sync results across devices — your guest progress migrates automatically on your first sign-in.",
   },

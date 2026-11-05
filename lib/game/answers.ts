@@ -1,5 +1,4 @@
 import type { MachineEntry } from "@/pipeline/schema";
-import type { GameDifficulty } from "@/lib/game/local-state";
 
 /**
  * Server-side answer resolution (PRD §7.3): the answer never leaves the
@@ -45,7 +44,7 @@ export function seededPick<T>(items: readonly T[], seed: string): T {
 
 export function dailyPool(
   entries: readonly MachineEntry[],
-  difficulty: GameDifficulty,
+  difficulty: "easy" | "hard",
 ): MachineEntry[] {
   return difficulty === "easy" ? entries.filter((e) => e.difficulty === "easy") : [...entries];
 }
@@ -54,7 +53,7 @@ export function dailyPool(
 export function fallbackDailyAnswerId(
   entries: readonly MachineEntry[],
   datasetKey: string,
-  difficulty: GameDifficulty,
+  difficulty: "easy" | "hard",
   date: string,
 ): string {
   const pool = dailyPool(entries, difficulty);
@@ -89,7 +88,7 @@ async function supabaseRpc(path: string, params: URLSearchParams): Promise<unkno
 export async function getDailyAnswerId(
   entries: readonly MachineEntry[],
   datasetKey: string,
-  difficulty: GameDifficulty,
+  difficulty: "easy" | "hard",
   date: string,
 ): Promise<{ id: string; source: "db" | "fallback" }> {
   try {
@@ -116,49 +115,12 @@ export async function getDailyAnswerId(
 export function getEndlessAnswerId(
   entries: readonly MachineEntry[],
   datasetKey: string,
-  difficulty: GameDifficulty,
+  difficulty: "easy" | "hard",
   seed: string,
 ): string {
   const pool = dailyPool(entries, difficulty);
   if (pool.length === 0) throw new Error(`empty ${difficulty} pool for ${datasetKey}`);
   return seededPick(pool, `${datasetKey}:${difficulty}:endless:${seed}`).id;
-}
-
-// ------------------------------------------------------------ puzzle mode --
-
-/**
- * Puzzle daily answer (D45): own answer per (date, dataset, kind), stored in
- * puzzle_answers. Deterministic fallback keyed on date+kind keeps everyone
- * in sync when the DB is unreachable.
- */
-export async function getPuzzleAnswerId(
-  datasetKey: string,
-  date: string,
-  kind: "single" | "multi",
-): Promise<string> {
-  try {
-    const rows = (await supabaseRpc(
-      "puzzle_answers",
-      new URLSearchParams({
-        select: "entry_id",
-        date: `eq.${date}`,
-        dataset: `eq.${datasetKey}`,
-        kind: `eq.${kind}`,
-        limit: "1",
-      }),
-    )) as { entry_id: string }[] | null;
-    if (rows && rows.length > 0 && rows[0].entry_id) {
-      return rows[0].entry_id;
-    }
-  } catch {
-    /* fall through to deterministic pick */
-  }
-  // Fallback: seeded pick from the matching structure pool.
-  const entries = (await import("@/lib/game/dataset")).getMachines();
-  const structure = kind === "single" ? "single" : "multiblock";
-  const pool = entries.filter((e) => e.attributes.structure === structure);
-  if (pool.length === 0) throw new Error(`empty ${kind} puzzle pool for ${datasetKey}`);
-  return seededPick(pool, `${datasetKey}:puzzle:${kind}:${date}`).id;
 }
 
 // ------------------------------------------------------------------- hints --
