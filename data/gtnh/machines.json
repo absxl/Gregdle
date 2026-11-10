@@ -1,7 +1,7 @@
 {
   "dataset": "gtnh:machines",
   "snapshotVersion": "GTNH 2.9 (wiki default render, 2026-11-03)",
-  "scrapedAt": "2026-11-04T16:44:58.205Z",
+  "scrapedAt": "2026-11-10T21:31:15.654Z",
   "source": "https://wiki.gtnewhorizons.com",
   "entries": [
     {
@@ -22,7 +22,7 @@
         },
         "functionCategory": "ore-processing",
         "functionTypeRaw": "Purification Unit",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -74,7 +74,7 @@
         },
         "functionCategory": "smelting-alloying",
         "functionTypeRaw": "Essentia Smeltery",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -128,7 +128,7 @@
         },
         "functionCategory": "smelting-alloying",
         "functionTypeRaw": "Coke Oven",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -338,7 +338,7 @@
         },
         "functionCategory": "utility-special",
         "functionTypeRaw": "Beam Splitter",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -364,7 +364,7 @@
         },
         "functionCategory": "utility-special",
         "functionTypeRaw": "Beam Stabilizer",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -546,7 +546,7 @@
         },
         "functionCategory": "storage-logistics",
         "functionTypeRaw": "Input Bus, Output Bus",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -572,7 +572,7 @@
         },
         "functionCategory": "smelting-alloying",
         "functionTypeRaw": "Blast Furnace",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -598,7 +598,7 @@
         },
         "functionCategory": "extraction",
         "functionTypeRaw": "Charcoal Pile Igniter",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -652,7 +652,7 @@
         },
         "functionCategory": "ore-processing",
         "functionTypeRaw": "Purification Unit",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -705,7 +705,7 @@
         },
         "functionCategory": "smelting-alloying",
         "functionTypeRaw": "Coke Oven",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -809,7 +809,7 @@
         },
         "functionCategory": "power-infrastructure",
         "functionTypeRaw": "Coolant Tower",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -1176,7 +1176,7 @@
         },
         "functionCategory": "power-generation",
         "functionTypeRaw": "Chaos Reactor",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -1203,7 +1203,7 @@
         },
         "functionCategory": "utility-special",
         "functionTypeRaw": "Drone Centre",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -1360,7 +1360,7 @@
         },
         "functionCategory": "extraction",
         "functionTypeRaw": "Miner",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -1569,7 +1569,7 @@
         },
         "functionCategory": "fluid-chemical",
         "functionTypeRaw": "Heat Exchanger",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -1621,7 +1621,7 @@
         },
         "functionCategory": "ore-processing",
         "functionTypeRaw": "Purification Unit",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -1673,7 +1673,7 @@
         },
         "functionCategory": "utility-special",
         "functionTypeRaw": "Spacetime Manipulator",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: unique"
         ],
@@ -1699,7 +1699,7 @@
         },
         "functionCategory": "ore-processing",
         "functionTypeRaw": "Purification Unit",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -1804,7 +1804,7 @@
         },
         "functionCategory": "smelting-alloying",
         "functionTypeRaw": "Stellar Forge",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: imperfect"
         ],
@@ -1830,7 +1830,7 @@
         },
         "functionCategory": "utility-special",
         "functionTypeRaw": "Alchemy Catalyst mana pool",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -1856,7 +1856,7 @@
         },
         "functionCategory": "utility-special",
         "functionTypeRaw": "Conjuration Catalyst mana pool",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -1908,7 +1908,7 @@
         },
         "functionCategory": "ore-processing",
         "functionTypeRaw": "Purification Unit",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -2587,7 +2587,7 @@
         },
         "functionCategory": "power-generation",
         "functionTypeRaw": "Boiler",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -2796,7 +2796,7 @@
         },
         "functionCategory": "fluid-chemical",
         "functionTypeRaw": "Heat Exchanger",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -3161,7 +3161,7 @@
         },
         "functionCategory": "utility-special",
         "functionTypeRaw": "Mana Pool",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -3500,7 +3500,7 @@
         },
         "functionCategory": "farming-breeding",
         "functionTypeRaw": "Crop Farm",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -3840,7 +3840,7 @@
         },
         "functionCategory": "ore-processing",
         "functionTypeRaw": "Purification Unit",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -3892,7 +3892,7 @@
         },
         "functionCategory": "ore-processing",
         "functionTypeRaw": "Purification Unit",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -4075,7 +4075,7 @@
         },
         "functionCategory": "power-generation",
         "functionTypeRaw": "Boiler",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -4102,7 +4102,7 @@
         },
         "functionCategory": "storage-logistics",
         "functionTypeRaw": "Fluid Tank",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -4208,7 +4208,7 @@
         },
         "functionCategory": "ore-processing",
         "functionTypeRaw": "Purification Unit",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -4312,7 +4312,7 @@
         },
         "functionCategory": "smelting-alloying",
         "functionTypeRaw": "Smeltery",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -4339,7 +4339,7 @@
         },
         "functionCategory": "power-generation",
         "functionTypeRaw": "Solar Tower",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -4497,7 +4497,7 @@
         },
         "functionCategory": "utility-special",
         "functionTypeRaw": "Interdimensional Teleporter",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -4523,7 +4523,7 @@
         },
         "functionCategory": "fluid-chemical",
         "functionTypeRaw": "Mixer",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -4549,7 +4549,7 @@
         },
         "functionCategory": "smelting-alloying",
         "functionTypeRaw": "Alloy Smelter",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -4575,7 +4575,7 @@
         },
         "functionCategory": "ore-processing",
         "functionTypeRaw": "Macerator",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a",
           "papercraft model"
@@ -4602,7 +4602,7 @@
         },
         "functionCategory": "smelting-alloying",
         "functionTypeRaw": "Furnace",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -4628,7 +4628,7 @@
         },
         "functionCategory": "smelting-alloying",
         "functionTypeRaw": "Furnace",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -4654,7 +4654,7 @@
         },
         "functionCategory": "solid-processing",
         "functionTypeRaw": "Forge Hammer",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a",
           "papercraft model"
@@ -4681,7 +4681,7 @@
         },
         "functionCategory": "ore-processing",
         "functionTypeRaw": "Ore Washer, Simple Washer",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -4707,7 +4707,7 @@
         },
         "functionCategory": "ore-processing",
         "functionTypeRaw": "Centrifuge",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -4733,7 +4733,7 @@
         },
         "functionCategory": "solid-processing",
         "functionTypeRaw": "Compressor",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -4864,7 +4864,7 @@
         },
         "functionCategory": "fluid-chemical",
         "functionTypeRaw": "Heat Exchanger",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -4942,7 +4942,7 @@
         },
         "functionCategory": "fluid-chemical",
         "functionTypeRaw": "Transcendent Mixer",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -5125,7 +5125,7 @@
         },
         "functionCategory": "utility-special",
         "functionTypeRaw": "Vending Machine",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -5204,7 +5204,7 @@
         },
         "functionCategory": "extraction",
         "functionTypeRaw": "Water Pump",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -5256,7 +5256,7 @@
         },
         "functionCategory": "storage-logistics",
         "functionTypeRaw": "Water Tank",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -5282,7 +5282,7 @@
         },
         "functionCategory": "fluid-chemical",
         "functionTypeRaw": "Heat Exchanger",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -5308,7 +5308,7 @@
         },
         "functionCategory": "ore-processing",
         "functionTypeRaw": "Macerator",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],
@@ -5412,7 +5412,7 @@
         },
         "functionCategory": "storage-logistics",
         "functionTypeRaw": "Fluid Tank",
-        "energyHatches": "N/A",
+        "energyHatches": null,
         "extras": [
           "overclocks: n/a"
         ],

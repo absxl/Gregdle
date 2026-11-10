@@ -187,6 +187,18 @@ function difficultyHeuristic(entry: Omit<MachineEntry, "difficulty">): "easy" | 
   return "hard";
 }
 
+
+/**
+ * Energy hatch normalization (D47): "N/A" / "n/a" variants become null so
+ * they compare equal to machines with no energy hatch at all (steam age).
+ */
+function normalizeEnergy(value: string | undefined): string | null {
+  if (!value) return null;
+  const trimmed = value.trim();
+  if (/^n\/a$/i.test(trimmed) || /^not applicable$/i.test(trimmed)) return null;
+  return trimmed;
+}
+
 async function main() {
   const files = (await readdir(PAGES_DIR)).filter((f) => f.endsWith(".html"));
   console.log(`Parsing ${files.length} cached pages…`);
@@ -245,7 +257,7 @@ async function main() {
         size: structure === "single" ? { l: 1, w: 1, h: 1 } : size.size,
         functionCategory: functionMap.category,
         functionTypeRaw: machineType,
-        energyHatches: bySource.energyHatches ?? null,
+        energyHatches: normalizeEnergy(bySource.energyHatches),
         extras: [
           ...(bySource.overclocks ? [`overclocks: ${bySource.overclocks.toLowerCase()}`] : []),
           ...(bySource.other ? [bySource.other.toLowerCase()] : []),

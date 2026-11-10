@@ -84,7 +84,7 @@ export function compareMachine(guess: MachineEntry, answer: MachineEntry): Guess
     enumCell(a.functionCategory, b.functionCategory, FUNCTION_CATEGORY_LABELS[a.functionCategory], {
       detail: a.functionTypeRaw,
     }),
-    nullableTextCell(a.energyHatches, b.energyHatches, a.energyHatches ?? "n/a"),
+    nullableTextCell(a.energyHatches, b.energyHatches, a.energyHatches ?? "N/A"),
     setCell(a.extras, b.extras, a.extras.length ? a.extras.join(", ") : "none"),
   ];
 
