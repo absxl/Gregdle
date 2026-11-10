@@ -2,7 +2,7 @@
 
 A Wordle-style daily guessing game for GregTech players. Guess the hidden machine from its
 attributes — voltage tier, structure, size, function, energy. New dailies at 00:00 UTC,
-endless mode anytime. **Live:** <https://gregdle.carletti.work>
+endless mode anytime. **Live:** <https://gregdle.party>
 
 ## Features
 

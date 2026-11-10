@@ -44,6 +44,10 @@ yarn-error.log*
 # pipeline caches (raw scraped HTML — re-fetchable, do not commit)
 pipeline/cache/
 
+# ads — evidence of ads never enters git history (ads live on the site, not the repo):
+# the publisher id lives in .env.local / CF build env vars, ads.txt stays deploy-side only
+/public/ads.txt
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

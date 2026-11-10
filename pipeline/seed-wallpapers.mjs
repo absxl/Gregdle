@@ -72,7 +72,7 @@ let n = 0;
 for (const item of MANIFEST) {
   n += 1;
   const res = await fetch(SITE + item.file, {
-    headers: { "User-Agent": "GregdleBot/0.1 (https://gregdle.carletti.work)" },
+    headers: { "User-Agent": "GregdleBot/0.1 (https://gregdle.party)" },
   });
   if (!res.ok) {
     console.error(`skip ${item.title}: HTTP ${res.status}`);

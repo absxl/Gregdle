@@ -182,3 +182,14 @@ v0.2 Éna (EL), v0.3 Eins (DE), v0.4 Un (FR), v0.5 Uno (ES), v0.6 Jeden (PL), v0
 and the first stable **v1.0 Uno (ES)**. The changelog page (/changelog) is the public record;
 a dismissible bottom-right announcement pill advertises the newest release per localStorage
 version key. Bump `CURRENT_VERSION` in `lib/changelog.ts` and add a Release entry per launch.
+
+## D45 — Domain move to gregdle.party (2026-11-11, user decision)
+
+The canonical domain is now **https://gregdle.party**. Single knob: the `NEXT_PUBLIC_SITE_URL`
+worker var (wrangler.jsonc) — metadataBase, share text/images and Discord auth redirects derive
+from it at runtime (`lib/site.ts`); the hardcoded fallback matches the new domain. The old
+personal domain serves a 301 redirect to the new one (Cloudflare redirect rule, path + query
+preserved); it stays in the Supabase redirect allow-list during the transition. The personal
+"MY SITE" link and contact email were removed from the UI. localStorage `gregdle:v1:` keys and
+`__GREGDLE_*__` globals are untouched — no user data impact. The bottom-right announcement
+advertises the move (static dismiss key `gregdle:v1:release-seen:domain-move`).

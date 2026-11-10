@@ -84,15 +84,6 @@ export default async function AboutPage() {
               absxl
             </a>
           </span>
-          <span>
-            Email:{" "}
-            <a
-              href="mailto:marcello@carletti.work"
-              className="font-semibold text-accent hover:underline"
-            >
-              marcello@carletti.work
-            </a>
-          </span>
         </p>
       </section>
 
