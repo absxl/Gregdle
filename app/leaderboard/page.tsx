@@ -1,16 +1,19 @@
 import Link from "next/link";
 import { LinkGrid } from "@/components/ui/LinkGrid";
 import { LeaderboardTable } from "@/components/game/LeaderboardTable";
+import { BestPlayersTable } from "@/components/game/BestPlayersTable";
 
 export const metadata = {
   title: "Leaderboard — Gregdle",
-  description: "Today's fastest Gregdle solvers, per difficulty.",
+  description: "Today's fastest Gregdle solvers and all-time best players, per difficulty.",
 };
 
 /**
- * Daily leaderboard (PRD §7.1, D6): winning runs ranked unhinted first, then
- * fewer guesses, then earlier finish. Reads the anon-readable
- * leaderboard_daily view; sign in on the home page to compete.
+ * Leaderboard (PRD §7.1, D6): the Today tab ranks the day's winning runs
+ * unhinted first, then fewer guesses, then earlier finish, via the
+ * anon-readable leaderboard_daily view. The Best players tab ranks all-time
+ * streaks (longest run of consecutive daily wins, hinted included, min 3
+ * wins) via leaderboard_best. Sign in on the home page to compete.
  */
 
 export const dynamic = "force-dynamic";
@@ -24,9 +27,10 @@ interface GlobalStatRow {
 }
 
 export default async function LeaderboardPage(props: {
-  searchParams: Promise<{ difficulty?: string }>;
+  searchParams: Promise<{ tab?: string; difficulty?: string }>;
 }) {
-  const { difficulty } = await props.searchParams;
+  const { tab: tabParam, difficulty } = await props.searchParams;
+  const tab = tabParam === "best" ? "best" : "today";
   const active = difficulty === "hard" ? "hard" : "easy";
   const today = new Date().toISOString().slice(0, 10);
 
@@ -40,41 +44,63 @@ export default async function LeaderboardPage(props: {
     hints_used: number;
     rank: number;
   }[] = [];
+  let bestRows: {
+    display_name: string;
+    best_streak: number;
+    win_count: number;
+    rank: number;
+  }[] = [];
   let error: string | null = null;
   try {
     const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const key = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
     if (url && key) {
-      const qs = new URLSearchParams({
-        select: "display_name,guess_count,hints_used,rank",
-        dataset: "eq.gtnh:machines",
-        difficulty: `eq.${active}`,
-        date: `eq.${today}`,
-        order: "rank.asc",
-        limit: "50",
-      });
-      const res = await fetch(`${url}/rest/v1/leaderboard_daily?${qs}`, {
-        headers: { apikey: key, Authorization: `Bearer ${key}` },
-        next: { revalidate: 60 },
-      });
-      if (res.ok) rows = await res.json();
-      else error = `Leaderboard unavailable (HTTP ${res.status}).`;
+      if (tab === "best") {
+        const qs = new URLSearchParams({
+          select: "display_name,best_streak,win_count,rank",
+          dataset: "eq.gtnh:machines",
+          difficulty: `eq.${active}`,
+          order: "rank.asc",
+          limit: "50",
+        });
+        const res = await fetch(`${url}/rest/v1/leaderboard_best?${qs}`, {
+          headers: { apikey: key, Authorization: `Bearer ${key}` },
+          next: { revalidate: 300 },
+        });
+        if (res.ok) bestRows = await res.json();
+        else error = `Leaderboard unavailable (HTTP ${res.status}).`;
+      } else {
+        const qs = new URLSearchParams({
+          select: "display_name,guess_count,hints_used,rank",
+          dataset: "eq.gtnh:machines",
+          difficulty: `eq.${active}`,
+          date: `eq.${today}`,
+          order: "rank.asc",
+          limit: "50",
+        });
+        const res = await fetch(`${url}/rest/v1/leaderboard_daily?${qs}`, {
+          headers: { apikey: key, Authorization: `Bearer ${key}` },
+          next: { revalidate: 60 },
+        });
+        if (res.ok) rows = await res.json();
+        else error = `Leaderboard unavailable (HTTP ${res.status}).`;
 
-      const gqs = new URLSearchParams({
-        select: "difficulty,plays,wins,gave_ups,hinted,avg_guesses",
-        dataset: "eq.gtnh:machines",
-        date: `eq.${today}`,
-      });
-      const gres = await fetch(`${url}/rest/v1/global_daily_stats?${gqs}`, {
-        headers: { apikey: key, Authorization: `Bearer ${key}` },
-        next: { revalidate: 60 },
-      });
-      if (gres.ok) {
-        const g = (await gres.json()) as (GlobalStatRow & { difficulty: string })[];
-        globalStats = {
-          easy: g.find((x) => x.difficulty === "easy") ?? null,
-          hard: g.find((x) => x.difficulty === "hard") ?? null,
-        };
+        const gqs = new URLSearchParams({
+          select: "difficulty,plays,wins,gave_ups,hinted,avg_guesses",
+          dataset: "eq.gtnh:machines",
+          date: `eq.${today}`,
+        });
+        const gres = await fetch(`${url}/rest/v1/global_daily_stats?${gqs}`, {
+          headers: { apikey: key, Authorization: `Bearer ${key}` },
+          next: { revalidate: 60 },
+        });
+        if (gres.ok) {
+          const g = (await gres.json()) as (GlobalStatRow & { difficulty: string })[];
+          globalStats = {
+            easy: g.find((x) => x.difficulty === "easy") ?? null,
+            hard: g.find((x) => x.difficulty === "hard") ?? null,
+          };
+        }
       }
     } else {
       error = "Leaderboard not configured.";
@@ -89,7 +115,9 @@ export default async function LeaderboardPage(props: {
         <div>
           <h1 className="font-pixel text-5xl leading-none tracking-wide">LEADERBOARD</h1>
           <p className="mt-1 text-sm font-semibold text-muted">
-            Today&apos;s fastest solvers ({today} UTC) · unhinted runs rank higher
+            {tab === "best"
+              ? "Longest win streaks · all time · minimum 3 wins"
+              : `Today's fastest solvers (${today} UTC) · unhinted runs rank higher`}
           </p>
         </div>
         <Link href="/" className="btn">
@@ -97,7 +125,7 @@ export default async function LeaderboardPage(props: {
         </Link>
       </header>
 
-      {(globalStats.easy || globalStats.hard) && (
+      {tab === "today" && (globalStats.easy || globalStats.hard) && (
         <section aria-label="Global stats" className="panel corners w-full p-5">
           <p className="label label-accent mb-3">Global stats today · guests included</p>
           <div className="grid gap-4 sm:grid-cols-2">
@@ -141,11 +169,25 @@ export default async function LeaderboardPage(props: {
         </section>
       )}
 
+      <div className="flex w-full gap-2" role="tablist" aria-label="Leaderboard view">
+        {(["today", "best"] as const).map((t) => (
+          <Link
+            key={t}
+            href={`/leaderboard?tab=${t}&difficulty=${active}`}
+            className={`btn ${t === tab ? "btn-primary" : ""}`}
+            role="tab"
+            aria-selected={t === tab}
+          >
+            {t === "today" ? "Today" : "Best players"}
+          </Link>
+        ))}
+      </div>
+
       <div className="flex w-full gap-2" role="tablist" aria-label="Difficulty">
         {(["easy", "hard"] as const).map((d) => (
           <Link
             key={d}
-            href={`/leaderboard?difficulty=${d}`}
+            href={`/leaderboard?tab=${tab}&difficulty=${d}`}
             className={`btn ${d === active ? "btn-primary" : ""}`}
             role="tab"
             aria-selected={d === active}
@@ -155,7 +197,11 @@ export default async function LeaderboardPage(props: {
         ))}
       </div>
 
-      <LeaderboardTable rows={rows} error={error} />
+      {tab === "best" ? (
+        <BestPlayersTable rows={bestRows} error={error} />
+      ) : (
+        <LeaderboardTable rows={rows} error={error} />
+      )}
 
       <LinkGrid />
     </main>
